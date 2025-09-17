@@ -41,7 +41,7 @@ public class Perfume {
 
     public void getInformation() {
         String customerName = CisUtility.getInputString("Enter customer name: ");
-        String perfumeName = CisUtility.getInputString("Enter perfume choice (1 to 3)==> ");
+        System.out.println("Enter perfume choice (1 to 3)==>");
         System.out.println("Choose a perfume brand: ");
         System.out.println("1) Dior");
         System.out.println("2) Chanel");
