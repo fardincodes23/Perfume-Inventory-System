@@ -1,15 +1,14 @@
 package info.hccis;
 
+import info.hccis.perfume.Perfume;
 import info.hccis.util.CisUtility;
 import java.util.Scanner;
 
 /**
- * A starting project which we can use for applications that need a menu driven
- * program. Note that the name of the project should be modified to reflect the
- * specific requirements.
+ * Working to create an Application for a perfume shop. Here it will prompt user with the options choose.
  *
- * @author bjmaclean
- * @since 20181115
+ * @author Fardin Sahriar Al Rafat
+ * @since 20250917
  */
 public class Controller {
 
@@ -19,29 +18,22 @@ public class Controller {
 
     private static final String MENU
             = "\n-------------------------\n"
-            + "- CIS Menu\n"
-            + "- A-Process A\n"
-            + "- B-Process B\n"
-            + "- C-Process C\n"
-            + "- X-eXit\n"
+            + "- Perfume Shop -\n"
+            + "- A) Buy a perfume\n"
+            + "- B) Show perfume total\n"
+            + "- X) EXIT\n"
             + "-------------------------\n"
             + "Option-->";
 
+    private static Perfume perfume; // it will keep record of the perfume purchase
+
     public static void main(String[] args) {
 
-        //Add a loop below to continuously promput the user for their choice
+        //Add a loop below to continuously prompt the user for their choice
         //until they choose to exit.
-        String option = "";
-
-        System.out.println((char)27 + "[33mYELLOW");
-
-        cisUtility.setIsGUI(true);
-
-        cisUtility.display("Today is: "+cisUtility.getCurrentDate(null), "Red");
-        cisUtility.display("The random number is "+cisUtility.getRandom(20), "Green");
-
+        String option = " ";
         do {
-            option = cisUtility.getInputString(MENU, "Green");
+            option = CisUtility.getInputString(MENU);
             processMenuOption(option);
         } while (!option.equalsIgnoreCase(EXIT));
 
@@ -57,25 +49,26 @@ public class Controller {
      *
      */
     public static void processMenuOption(String option) {
-        //Add a switch to process the option
         switch (option.toUpperCase()) {
             case "A":
-                cisUtility.display("User picked a");
+                perfume = new Perfume();
+                perfume.getInformation();
+                System.out.println("Perfume added successfully!");
                 break;
+
             case "B":
-                cisUtility.display("User picked b");
+                if(perfume != null) {
+                    System.out.println(perfume.toString());
+                }else {
+                    System.out.println("No perfume added to the cart");
+                }
                 break;
-            case "C":
-                cisUtility.display("User picked c");
-                break;
-            case "GV":
-                cisUtility.display(cisUtility.getRandom());
-                break;
+
             case "X":
-                cisUtility.display("User picked x");
+                System.out.println(" Thanks for the purchase");
                 break;
             default:
-                cisUtility.display("Invalid entry");
+                System.out.println("Invalid option");
         }
     }
 

@@ -1,10 +1,9 @@
-
 package info.hccis.util;
 
+import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  * Class containing utility methods that are useful for our projects.
@@ -17,35 +16,12 @@ public class CisUtility {
     private static Scanner input = new Scanner(System.in);
 
     //The isGUI will be used to determine if JOptionPane is used or console
-    private boolean isGUI = false;
+    private static boolean isGUI = false;
 
-    public void setIsGUI(boolean isGUI) {
-        this.isGUI = isGUI;
+    public static void setIsGUI(boolean isGUI) {
+        CisUtility.isGUI = isGUI;
     }
 
-    /**
-     * This method capitalizes the first letter of each name (separated by " ")
-     *
-     * @author Arthur Zuliani
-     * @since 20220209
-     *
-     * @param inputString
-     * @return String with Capitalized First Letter of each name
-     */
-    public static String capitalizeFirstLetterOfEachWord(String inputString) {
-
-        String outputString = "";
-
-        inputString = inputString.trim();
-
-        String[] names = inputString.split(" ");
-
-        for (String currentName : names) {
-            outputString += currentName.substring(0, 1).toUpperCase() + currentName.substring(1).toLowerCase() + " ";
-        }
-
-        return outputString.trim();
-    }
 
     /*
     Methods to get input from the user
@@ -59,38 +35,14 @@ public class CisUtility {
      * @return The String entered by the user
      * @since 20181121
      */
-    public  String getInputString(String prompt) {
+    public static String getInputString(String prompt) {
 
         String userOption;
 
         if (isGUI) {
             userOption = JOptionPane.showInputDialog(prompt);
         } else {
-            display(prompt);
-            userOption = input.nextLine();
-        }
-
-        return userOption;
-    }
-
-    /**
-     * Method which will prompt the user and return the value entered as a
-     * String.
-     *
-     * @author BJ MacLean
-     * @param prompt The user prompt
-     * @param color Color for prompt text
-     * @return The String entered by the user
-     * @since 20181121
-     */
-    public  String getInputString(String prompt, String color) {
-
-        String userOption;
-
-        if (isGUI) {
-            userOption = JOptionPane.showInputDialog(prompt);
-        } else {
-            display(prompt, color);
+            System.out.println(prompt);
             userOption = input.nextLine();
         }
 
@@ -105,7 +57,7 @@ public class CisUtility {
      * @return The number entered by the user
      * @since 20181121
      */
-    public  int getInputInt(String prompt) {
+    public static int getInputInt(String prompt) {
         String enteredString = getInputString(prompt);
         int entered = Integer.parseInt(enteredString);
         return entered;
@@ -119,7 +71,7 @@ public class CisUtility {
      * @return The number entered by the user
      * @since 20181121
      */
-    public  double getInputDouble(String prompt) {
+    public static double getInputDouble(String prompt) {
         String enteredString = getInputString(prompt);
         double entered = Double.parseDouble(enteredString);
         return entered;
@@ -127,25 +79,19 @@ public class CisUtility {
 
     /**
      * Method to input a boolean value.The prompt will have y/n instructions
-     * appended to it.
+ appended to it.
      *
      * @author BJ MacLean
      * @param prompt Base prompt for the user
      * @return true/false
      * @since 20200129
      */
-    public  boolean getInputBoolean(String prompt) {
-        String temp = getInputString(prompt + " (y/n)");
+    public static boolean getInputBoolean(String prompt) {
+        String temp = getInputString(prompt+" (y/n)");
         return temp.equalsIgnoreCase("y") || temp.equalsIgnoreCase("yes") || temp.equalsIgnoreCase("true")
                 || temp.equalsIgnoreCase("1");
     }
-
-    //https://www.santhoshreddymandadi.com/java/coloring-java-output-on-console.html
-    public static final String BLACK = "\033[30m";
-    public static final String RED = "\033[31m";
-    public static final String GREEN = "\033[32m";
-    public static final String YELLOW = "\033[33m";
-
+    
     /**
      * Method to display a string for the user
      *
@@ -153,43 +99,11 @@ public class CisUtility {
      * @since 20181115
      * @author BJM
      */
-    public  void display(String output) {
+    public static void display(String output) {
         //System.out.println(output);
         if (isGUI) {
             JOptionPane.showMessageDialog(null, output);
         } else {
-            System.out.println(output);
-        }
-    }
-
-    /**
-     * Method to display a string for the user
-     *
-     * @param output The string that will be displayed to the user
-     * @param color Red, Black (default), or Green
-     * @since 20181115
-     * @author BJM
-     */
-    public  void display(String output, String color) {
-        //System.out.println(output);
-
-        String colorCode = BLACK;
-        if (color.equalsIgnoreCase("Red")) {
-            colorCode = RED;
-        } else if (color.equalsIgnoreCase("Green")) {
-            colorCode = GREEN;
-        } else if (color.equalsIgnoreCase("Yellow")) {
-            colorCode = YELLOW;
-        }
-
-        output = colorCode + output + BLACK;
-        //Make sure color shows up on multiple lines.
-        output = output.replaceAll("\n", "\n" + colorCode);
-
-        if (isGUI) {
-            JOptionPane.showMessageDialog(null, output);
-        } else {
-
             System.out.println(output);
         }
     }
@@ -215,7 +129,7 @@ public class CisUtility {
      * @author BJ MacLean
      * @since 2020
      */
-    public  String getRandom() {
+    public static String getRandom() {
 
         String[][] theClass;
 
@@ -290,7 +204,7 @@ public class CisUtility {
             name = theClass[rowRandom][seatRandom];
             //CisUtility.display("Person at the random seat=" + name);
         } while (name == null || name.equals(""));
-        display("The winner is=" + name);
+        CisUtility.display("The winner is=" + name);
         return name;
     }
 
@@ -312,11 +226,31 @@ public class CisUtility {
     }
 
     /**
+     * Get the formatted date adjusted based on offset
+     * https://stackoverflow.com/questions/1459656/how-to-get-the-current-time-in-yyyy-mm-dd-hhmisec-millisecond-format-in-java
+     * @param offsetDays Days to offset the date
+     * @param format Format for date (default yyyy-MM-dd)
+     * @author BJ MacLean
+     * @since 20241018
+     */
+    public static String getCurrentDate(int offsetDays, String format) {
+        //Set the default format.
+        if (format == null || format.length() == 0) {
+            format = "yyyy-MM-dd";
+        }
+
+        LocalDateTime theDate = LocalDateTime.now().plusDays(offsetDays);
+        return theDate.format(DateTimeFormatter.ofPattern(format));
+
+    }
+
+
+    /**
      * This method will return the current time in milliseconds since a specific
      * start of time.
      *
      * https://www.tutorialspoint.com/java/lang/system_currenttimemillis.htm
-     *
+     * 
      * @author BJ MacLean
      * @since 20200127
      */
