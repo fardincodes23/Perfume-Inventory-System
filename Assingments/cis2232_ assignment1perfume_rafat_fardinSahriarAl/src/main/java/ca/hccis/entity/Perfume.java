@@ -1,6 +1,7 @@
-package info.hccis.perfume;
+package ca.hccis.entity;
 
-import info.hccis.util.CisUtility;
+import ca.hccis.util.CisUtility;
+import com.google.gson.Gson;
 
 
 /*
@@ -16,6 +17,14 @@ public class Perfume {
     private static final double TAX_RATE = 0.10;
     private static final double MIDDLE_SIZE_BOTTLE_RATE = 40;
     private static final double LARGE_SIZE_BOTTLE_RATE = 60;
+    private static final String PERFUME_LIST
+            = "\n-------------------------\n"
+            + "- Perfume Shop -\n"
+            + "Enter perfume choice (1 to 3)==>\n"
+            + "- 1) Dior\n"
+            + "- 2) Chanel\n"
+            + "- 3) Gucci\n"
+            + "-------------------------\n";
 
 
     private String customerName;
@@ -29,8 +38,12 @@ public class Perfume {
     private double taxAmount;
     private double totalPrice;
 
+
+    // default constructor
     public Perfume() {
     }
+
+
     /*
      * @author fsar
      * @since 16092025
@@ -38,16 +51,10 @@ public class Perfume {
      * */
 
 
-
     public void getInformation() {
         String customerName = CisUtility.getInputString("Enter customer name: ");
-        System.out.println("Enter perfume choice (1 to 3)==>");
-        System.out.println("Choose a perfume brand: ");
-        System.out.println("1) Dior");
-        System.out.println("2) Chanel");
-        System.out.println("3) Gucci");
 
-        int perfumeChoice = CisUtility.getInputInt("Enter perfume choice: ");
+        int perfumeChoice = CisUtility.getInputInt(PERFUME_LIST);
 
         switch (perfumeChoice) {
             case 1:
@@ -65,9 +72,9 @@ public class Perfume {
         //choose size of the perfume
 
         size = CisUtility.getInputInt("Enter perfume size: 1) 90ml or 2) 120ml . Select 1 OR 2");
-        if (size == 1){
+        if (size == 1) {
             pricePerBottle = MIDDLE_SIZE_BOTTLE_RATE;
-        }else{
+        } else {
             pricePerBottle = LARGE_SIZE_BOTTLE_RATE;
         }
 
@@ -82,9 +89,9 @@ public class Perfume {
     public void calculateTotalPrice() {
         subTotal = pricePerBottle * quantity;
         taxAmount = subTotal * TAX_RATE;
-        totalPrice =subTotal + taxAmount;
+        totalPrice = subTotal + taxAmount;
     }
-
+    //Getters and Setters
 
     public String getCustomerName() {
         return customerName;
@@ -126,17 +133,26 @@ public class Perfume {
         this.pricePerBottle = pricePerBottle;
     }
 
-@Override
+
+    //JSON Serialization using Gson
+    public String toJson(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+
+    //ToString method for displaying all data
+    @Override
     public String toString() {
         return "Perfume purchase details: \n" +
                 "Customer Name: " + customerName + "\n" +
                 "Perfume Name: " + perfumeName + "\n" +
                 "Perfume Size: " + size + "\n" +
                 "Perfume Quantity: " + quantity + "\n" +
-                "Total Price: " + totalPrice + "\n"+
-                "Total Tax Amount: " + taxAmount + "\n" ;
+                "Total Price: " + totalPrice + "\n" +
+                "Total Tax Amount: " + taxAmount + "\n";
 
-}
+    }
 
 
 }

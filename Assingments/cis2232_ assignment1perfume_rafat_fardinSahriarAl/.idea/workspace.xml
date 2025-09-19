@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d52477c-49a5-40bb-8f4f-8e4947ed5edd" name="Changes" comment="added the class" />
+    <list default="true" id="4d52477c-49a5-40bb-8f4f-8e4947ed5edd" name="Changes" comment="added the class">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cis2232_ assignment1perfume_rafat_fardinSahriarAl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cis2232_ assignment1perfume_rafat_fardinSahriarAl.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/hccis/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/hccis/perfume/Perfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/entity/Perfume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/hccis/util/CisUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/util/CisUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/perfume_sales_tracker/info/hccis/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/perfume_sales_tracker/info/hccis/perfume/Perfume.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/perfume_sales_tracker/info/hccis/util/CisUtility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/perfume_sales_tracker.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JAVA notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../JAVA notes.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,14 +66,16 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Assingments/cis2232_ assignment1perfume_rafat_fardinSahriarAl",
-    "project.structure.last.edited": "Project",
+    "onboarding.tips.debug.path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Assingments/cis2232_ assignment1perfume_rafat_fardinSahriarAl/pom.xml/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\fardi\Documents\CIS2232\cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t\Assingments\cis2232_ assignment1perfume_rafat_fardinSahriarAl" />
       <recent name="C:\Users\fardi\Documents\CIS2232\cis2232_20252026_project_rafat_fardinsahriaral_topic\Project\perfume_sales_tracker\src" />
       <recent name="C:\Users\fardi\Documents\CIS2232\cis2232_20252026_project_rafat_fardinsahriaral_topic\Project\perfume_sales_tracker\src\main\java\info\hccis" />
     </key>

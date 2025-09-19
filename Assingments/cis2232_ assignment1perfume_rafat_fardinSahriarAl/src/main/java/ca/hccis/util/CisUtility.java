@@ -1,4 +1,4 @@
-package info.hccis.util;
+package ca.hccis.util;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
