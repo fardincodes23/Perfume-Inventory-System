@@ -1,29 +1,42 @@
-# README #
+# Project: Perfume Sales track #
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+### Development Team ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Business Client: Farhan Farham
+* Lead Developer: Fardin Sahriar AL Rafat
+* Quality Control : Chris Hopkins
 
-### How do I get set up? ###
+### Description ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* This is a console based java application for tracking perfume sales. It allows users to select their choice of perfume from two different sizes. The program calculates subtotal, the tax amount and the total. *
 
-### Contribution guidelines ###
+### Color ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* Main Color: #B76E79(Rose Quartz)
+* Secondary: #F7E7CE(Soft Champagne)
+* ACcent: #333333(Deep Charcoal)
 
-### Who do I talk to? ###
+### Required Fileds ###
 
-* Repo owner or admin
-* Other community or team contact
+* -id: int //primary key
+* -transactionDate: String Note: yyyy-MM-dd
+* -customerName: String
+* perfumeName: String
+* quantity: int
+* subTotal: double //cost before tax
+* total: double //total with tax
+* id: int // an unique id number for every transactions
+* transactionDate: String // date needed to keep track of the transaction
+
+### Calculation ###
+
+* Constant Values:
+* TAX_AMOUNT = 0.10
+* MEDIUM_SIZE_BOTTLE = 40
+* LARGE_SIZE_BOTTLE = 60
+
+
+* subtotal = quantity * pricePerBottle
+* taxAmount = subtotal * 0.10
+* totalPrice = subTotal +taxAmount
