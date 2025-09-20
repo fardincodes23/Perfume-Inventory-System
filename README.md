@@ -3,8 +3,8 @@
 
 ### Development Team ###
 
-* Business Client: Farhan Farham
 * Lead Developer: Fardin Sahriar AL Rafat
+* Business Client: Farhan Farhan
 * Quality Control : Chris Hopkins
 
 ### Description ###
