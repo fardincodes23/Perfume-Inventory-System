@@ -30,14 +30,14 @@ public class Controller {
             + "- Perfume Shop -\n"
             + "- Select A,B or X -\n"
             + "- A) Buy a perfume\n"
-            + "- B) Show perfume total\n"
+            + "- V) View perfume total\n"
             + "- X) EXIT\n"
             + "-------------------------\n"
             + "Option-->";
 
     //Adding Json stuffs
     public static final String PATH = "c:\\CIS2232\\";
-    public static final String FILE_NAME = "perfume_data_fardin.json";
+    public static final String FILE_NAME = "perfume_data_rafat_fardinsahriaral.json";
     private static Path journalPath = null;
     private static FileWriter journalWriter = null;
 
@@ -79,8 +79,8 @@ public class Controller {
                 processPurchase();
                 break;
 
-            case "B":
-                showPurchase();
+            case "V":
+                viewPurchase();
                 break;
 
             case "X":
@@ -112,7 +112,7 @@ public class Controller {
     }
 
 
-    public static void showPurchase() {
+    public static void viewPurchase() {
 
         System.out.println();
         Gson gson = new Gson();

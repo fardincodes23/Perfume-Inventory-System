@@ -52,7 +52,7 @@ public class Perfume {
 
 
     public void getInformation() {
-        String customerName = CisUtility.getInputString("Enter customer name: ");
+        customerName = CisUtility.getInputString("Enter customer name: ");
 
         int perfumeChoice = CisUtility.getInputInt(PERFUME_LIST);
 
