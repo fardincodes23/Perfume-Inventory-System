@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title id="pageTitle" th:text="${session.title}"></title>
+    </head>
+    <body>
+    <nav th:replace="fragments/navHeader :: navbar"></nav>
+    <div class="container">
+        <h2 class="title is-2" th:text="${session.title}"></h2>
+        <h3><span th:text="${session.title}"></span> Data is Exported </h3>
+    </div>
+    </body>
+    <footer th:replace="fragments/footer :: footer"></footer>
+
+</html>

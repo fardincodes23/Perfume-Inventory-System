@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title id="pageTitle"  th:text="#{label.add.edit}">Label Add/Edit</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container has-text-centered">
+            <h2 class="title is-2" th:if= "${busPass.id != null}" th:text="#{label.edit.order}">label Edit</h2>
+            <h2 class="title is-2" th:if= "${busPass.id == null}" th:text="#{label.add.order}">label Add</h2>
+
+
+
+            <form th:action="@{/buspass/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
+                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${busPass.id}"></input>
+                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${busPass.cost}"></input>
+
+                <p><label>Name: </label>                
+                    <input type="text" th:field="${busPass.name}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.name}')}" th:errors="${busPass.name}"></p>
+
+                <p><label>Address: </label>
+                    <input type="text" th:field="${busPass.address}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.address}')}" th:errors="${busPass.address}"></p>
+
+                <p><label>City: </label>
+                    <input type="text" th:field="${busPass.city}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.city}')}" th:errors="${busPass.city}"></p>
+
+                <p><label>Preferred Route: </label>
+                    <input type="text" th:field="${busPass.preferredRoute}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.preferredRoute}')}" th:errors="${busPass.preferredRoute}"></p>
+
+<!--                <p><label>Pass type(1,2,3,4): </label>-->
+<!--                    <input type="text" th:field="${busPass.passType}"></input>-->
+<!--                </p>-->
+
+                <p><label for="busPassType" th:text="#{label.bus.pass.type}">Bus Pass Type </label>
+                    <select id="busPassType" th:field="${busPass.passType}">
+                        <option value="0">select option</option>
+                        <option th:each="option : ${session.busPassTypes}" th:value="${option.codeValueSequence}" th:text="${option.englishDescription}"></option>                    </select>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.passType}')}" th:errors="${busPass.passType}"></p>
+
+
+                <p><label>Valid for rural?  (true/false): </label>
+                    <input type="text" th:field="${busPass.validForRuralRoute}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.validForRuralRoute}')}" th:errors="${busPass.validForRuralRoute}"></p>
+
+                <p><label>Length of pass: </label>
+                    <input type="number" th:field="${busPass.lengthOfPass}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.lengthOfPass}')}" th:errors="${busPass.lengthOfPass}"></p>
+
+                <p><label>Start date: </label>
+                    <input type="text" th:field="${busPass.startDate}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${busPass.startDate}')}" th:errors="${busPass.startDate}"></p>
+                <!--            Show any business validation issues-->
+                <ul th:each="businessValidationError : ${businessValidationErrorsStartDate}">
+                    <li class="cd" th:text="${businessValidationError}"></li>
+                </ul>
+                <button style="display:block;margin-top:24px!important" class="centered" th:text="#{label.submit}">label Submit</button>
+            </form>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

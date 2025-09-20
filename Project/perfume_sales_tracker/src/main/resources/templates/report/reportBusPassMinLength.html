@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+<style scoped="scoped">input:not(.hidden) {
+    display: inline-block;
+    float: right
+}
+
+.cd {
+    color: #F00 !important;
+    font-weight: bold;
+    margin-bottom: -48px
+}
+
+label {
+    margin-right: 8px
+}</style>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{label.report.bus.pass.min.length}">_</h2>
+    <form th:action="@{/report/buspass/minlength/submit}" method="post" class="wbb"
+          style="display:inline-block;text-align:left!important">
+        <label>Min Length: </label>
+        <input type="number" th:field="${reportInput.minLength}"></input>
+        <br></br>
+        <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
+    </form>
+    <br></br>
+
+    <p th:if="${not #strings.isEmpty(message)}" th:text="${message}" >Message from controller</p>
+
+
+    <!--https://stackoverflow.com/a/33106495-->
+    <table class="wbb centered" th:if="${not #lists.isEmpty(reportInput.busPasses)}"
+           style="padding:0!important;display:inline-block!important">
+        <tr><!--All style overrides still needed. Not a great way to force spacing between elements but works.-->
+            <th>ID</th>
+            <th class="a"></th>
+            <th>Name</th>
+            <th class="a"></th>
+            <th>Address</th>
+            <th class="a"></th>
+            <th>City</th>
+            <th>Length</th>
+            <th>Cost</th>
+            <th class="a"></th>
+        </tr>
+        <tr th:each="current,iterStat : ${reportInput.busPasses}">
+            <td th:text="${current.id}"></td>
+            <td></td>
+            <td th:text="${current.name}"></td>
+            <td></td>
+            <td th:text="${current.address}"></td>
+            <td></td>
+            <td th:text="${current.city}"></td>
+            <td></td>
+            <td th:text="${current.lengthOfPass}"></td>
+            <td></td>
+            <td th:text="${#numbers.formatCurrency(current.cost)}"></td>
+            <td></td>
+        </tr><!--Ignore this error, as there will only be one td (the if above).-->
+    </table>
+
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

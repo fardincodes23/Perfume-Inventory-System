@@ -1,0 +1,6 @@
+Launch xampp and start the MySql
+
+For first time will need to run the createDatabase.sql script to setup your database.
+
+Notes:
+Check security - is there a password on the database and in the db config in the code.

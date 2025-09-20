@@ -1,0 +1,29 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title id="pageTitle" th:text="#{application.name}">App name</title>
+    </head>
+    <body>
+    <nav th:replace="fragments/navHeader :: navbar"></nav>
+    <div class="container has-text-centered">
+        <h2 class="title is-2" th:text="#{about}"></h2>
+        <table class="wbb centered">
+            <tr class="centered2">
+                <th>Member Name</th>
+                <th>&nbsp;&nbsp;</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td>BJ MacLean</td>
+                <td>&nbsp;&nbsp;</td>
+                <td>Business Representative</td>
+            </tr>
+            <tr>
+                <td>BJ MacLean</td>
+                <td>&nbsp;&nbsp;</td>
+                <td>Lead Developer</td>
+            </tr>
+        </table>
+    </div>
+    </body>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</html>
