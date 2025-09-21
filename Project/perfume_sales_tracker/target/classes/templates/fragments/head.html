@@ -1,0 +1,33 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="headerFragment">
+        <meta charset="UTF-8"></meta>
+        <title id="pageTitle" th:text="#{application.name}">Sample App</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+        
+        <!--        BJM 20220616 adding material design -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet"></link>
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+
+        <!--        BJM 20201023 Adding imports for the Bootstrap data table-->
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css"/>
+        <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+        
+        
+        <script src="/js/cis.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"/>
+        <link rel="stylesheet" href="/css/styles.css"/>
+        <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    </head>
+    <body>
+
+    </body>
+</html>

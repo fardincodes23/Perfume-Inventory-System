@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<!--Thanks to Ferhad, Francisco, and Carter from grad 2022 for the styling on this page.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title id="pageTitle" th:text="${session.title}">Bus Passes</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container has-text-centered">
+            <h2 class="title is-2">Bus Passes</h2>
+            <p th:if="${not #strings.isEmpty(message)}" th:text="${message}" >Message from controller</p>
+
+            <form th:object="${busPass}" action="replacedBeforePageRendered" th:action="@{/buspass/search}"  method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" th:field="${busPass.name}"/>
+                <button type="submit">Search</button>
+            </form>
+
+            <table class="wbb centered" >
+                <tr><!--All style overrides still needed. Not a great way to force spacing between elements but works.-->
+
+                    <th>ID</th>
+                    <th class="a"></th>
+                    <th>Name</th>
+                    <th class="a"></th>
+                    <th>Address</th>
+                    <th class="a"></th>
+                    <th>City</th>
+                    <th>Cost</th>
+                    <th class="a"></th>
+                    <th>Options</th>
+                </tr>
+                <tr th:each="current,iterStat : ${busPasses}">
+                    <td th:text="${current.id}"></td>
+                    <td></td>
+                    <td th:text="${current.name}"></td>
+                    <td></td>
+                    <td th:text="${current.address}"></td>
+                    <td></td>
+                    <td th:text="${current.city}"></td>
+                    <td></td>
+                    <td th:text="${#numbers.formatCurrency(current.cost)}"></td>
+                    <td></td>
+                    <td class='centered2'><!--Icon misalignment cannot be solved since the icons are too small and the text is too long.-->
+                        <a th:href="@{/buspass/edit/{id}(id=${current.id})}">
+                            <span class="icon"><i class="fas fa-edit" title="Edit"></i></span>
+                        </a>
+                        <a th:href="@{/buspass/delete/{id}(id=${current.id})}">
+                            <span class="icon"><i class="fas fa-trash" title="Delete"></i></span>
+                        </a>
+                    </td>
+                </tr><!--Ignore this error, as there will only be one td (the if above).-->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="padding:0!important;text-align:center!important">
+                        <a th:href="@{/buspass/add}">
+                            <span class="icon"><i class="fas fa-plus-square" title="New"></i></span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <br></br>
+            <p class="wbb" style="display:inline-block">Total: <b><span th:text="${#lists.size(busPasses)}"></span></b> bus passes.</p>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

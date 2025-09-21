@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<nav th:fragment="navbar" class="navbar nav" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a th:href="@{/}" class="vert-align">
+            <img src="/images/ic_launcher.png" class="logo"></span>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" id="burg"
+           onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');"
+           data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a th:href="@{/buspass}" href="/buspass" class=" navbar-link">Assessments</a>
+                <div class="navbar-dropdown">
+                    <a th:href="@{/buspass}" class="navbar-item">View</a>
+                    <hr class="navbar-divider">
+                </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a th:href="@{/report}" href="/about" class=" navbar-link">Reports</a>
+                    <div class="navbar-dropdown">
+                        <a th:href="@{/report/buspass/daterange}" class="navbar-item"
+                           th:text="#{label.report.bus.pass.date.range}">Date Range</a>
+                        <a th:href="@{/report/buspass/minlength}" class="navbar-item"
+                           th:text="#{label.report.bus.pass.min.length}">Min Pass Length</a>
+                        <hr class="navbar-divider">
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a th:href="@{/about}" href="/about" class=" navbar-link">Other</a>
+                        <div class="navbar-dropdown">
+                            <a th:href="@{/about}" href="/about" class="navbar-item">About</a>
+                            <hr class="navbar-divider">
+                            <a th:href="@{/pirate}" href="/pirate" class="navbar-item">Pirate</a>
+                            <hr class="navbar-divider">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
