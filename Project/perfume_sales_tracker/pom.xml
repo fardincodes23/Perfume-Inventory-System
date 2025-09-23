@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>info.hccis</groupId>
-    <artifactId>squash_skills</artifactId>
+    <artifactId>bus_pass</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bus_pass</name>
     <description>Bus Pas Application</description>

@@ -7,11 +7,11 @@ html{
 :root {
     /*Variable for team color*/
     /*light ac3e37 main 770711 dark 470000*/
-    --main-color-light: #9c9a9a ;
-    --main-color-primary: #B76E79;
-    --main-color-dark: #F7E7CE;
-    --main-color-text: #ffffff;
-    --main-color-bright:#333333;
+    --main-color-light: #68b04d;
+    --main-color-primary: #68b04d;
+    --main-color-dark: #68b04d;
+    --main-color-text: #000000;
+    --main-color-bright: #ffffff;
 
 }
 
