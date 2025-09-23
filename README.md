@@ -14,7 +14,7 @@
 ### Color ###
 
 * Main Color: #B76E79(Rose Quartz)
-* Secondary: #F7E7CE(Soft Champagne)
+* Secondary: #b47511
 * ACcent: #333333(Deep Charcoal)
 
 ### Required Fileds ###
