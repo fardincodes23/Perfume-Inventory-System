@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7ccc0c7-28fb-4a4f-9b39-9c4b68aa264f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,27 +25,60 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 1
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="334sdwBVfoFS8mmAD6u3bjTn5YS" />
+  <component name="ProjectId" id="334xTWFnxjTrIWoRnuRCPKxHCkV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.TheApplication.executor": "Run",
+    "Database Script.createDatabase1.sql.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.TheApplication.executor": "Run",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Project/perfume_sales_tracker",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ],
+    "RunConfigurationTargetLRU": [
+      "339cfdf0-3db3-43dc-8f6c-98e20f98911c"
+    ]
   }
 }]]></component>
+  <component name="RunManager" selected="Spring Boot.TheApplication">
+    <configuration name="createDatabase1.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="339cfdf0-3db3-43dc-8f6c-98e20f98911c" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TheApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="bus_pass" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="info.hccis.bus.pass.TheApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -59,13 +89,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b7ccc0c7-28fb-4a4f-9b39-9c4b68aa264f" name="Changes" comment="" />
-      <created>1758587771755</created>
+      <changelist id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="" />
+      <created>1758590153662</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1758587771755</updated>
-      <workItem from="1758589772993" duration="221000" />
-      <workItem from="1758590011608" duration="139000" />
+      <updated>1758590153662</updated>
+      <workItem from="1758590154783" duration="4066000" />
+      <workItem from="1758594373532" duration="35000" />
     </task>
     <servers />
   </component>
