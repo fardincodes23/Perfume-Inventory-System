@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * Working to create an Application for a perfume shop. Here it will prompt user with the options choose.
- *
  * @author Fardin Sahriar Al Rafat
  * @since 20250917
  * Took the structure from @BJM

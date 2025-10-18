@@ -1,5 +1,14 @@
+/**
+ * Unit tests for the Perfume class.
+ * Following Test Driven Development principles.
+ * @author fsar
+ * @since 20251017
+ *
+ */
+
 package ca.hccis.entity;
 
+import ca.hccis.exception.PerfumeException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -58,5 +67,72 @@ class PerfumeTest {
 
         Assertions.assertEquals(66,actual);
     }
+
+    @Test
+    void calculateTotalPrice_negativeQuantity_throwsException() {
+
+        Assertions.assertThrows(PerfumeException.class, () -> {
+           perfume.setQuantity(-1);
+
+        });
+    }
+    @Test
+    void calculateTotalPrice_quantityOver50_throwsException() {
+
+        Assertions.assertThrows(PerfumeException.class, () -> {
+            perfume.setQuantity(51);
+
+        });
+    }
+
+    @Test
+    void calculateTotalPrice_sizeOver2_throwsException() {
+
+        Assertions.assertThrows(PerfumeException.class, () -> {
+            perfume.setSize(5);
+
+        });
+    }
+
+    @Test
+    void calculateTotalPrice_negativeSize_throwsException() {
+
+        Assertions.assertThrows(PerfumeException.class, () -> {
+            perfume.setSize(-1);
+
+        });
+    }
+
+    @Test
+    void calculateTotalPrice_totalGreaterThanSubTotal() {
+
+        perfume.setPricePerBottle(60.00);
+        perfume.setQuantity(1);
+        perfume.calculateTotalPrice();
+        double subTotal = perfume.getSubTotal();
+        double totalPrice =  perfume.getTotalPrice();
+
+        Assertions.assertTrue(totalPrice > subTotal);
+
+
+    }
+
+    @Test
+    void calculateTotalPrice_subTotalGreaterThanTaxAmount() {
+
+        perfume.setPricePerBottle(60.00);
+        perfume.setQuantity(1);
+        perfume.calculateTotalPrice();
+        double subTotal = perfume.getSubTotal();
+        double taxAmount =  perfume.getTaxAmount();
+
+        Assertions.assertTrue(subTotal > taxAmount);
+
+
+    }
+
+
+
+
 
 }

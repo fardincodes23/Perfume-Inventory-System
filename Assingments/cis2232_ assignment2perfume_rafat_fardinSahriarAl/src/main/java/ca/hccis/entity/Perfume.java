@@ -1,5 +1,6 @@
 package ca.hccis.entity;
 
+import ca.hccis.exception.PerfumeException;
 import ca.hccis.util.CisUtility;
 import com.google.gson.Gson;
 
@@ -78,6 +79,9 @@ public class Perfume {
             pricePerBottle = LARGE_SIZE_BOTTLE_RATE;
         }
 
+
+
+
         //take the quantity from the customer
 
         quantity = CisUtility.getInputInt("Enter perfume quantity: ");
@@ -92,6 +96,8 @@ public class Perfume {
         totalPrice = subTotal + taxAmount;
         return totalPrice;
     }
+
+
     //Getters and Setters
 
     public String getCustomerName() {
@@ -114,16 +120,36 @@ public class Perfume {
         return size;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setSize(int size) throws  PerfumeException {
+        if (size > 2 || size < 0) {
+
+            throw new PerfumeException();
+
+        }else{
+            this.size = size;
+
+        }
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+
+
+    /*
+    *ADDED AN EXCEPTION CONDITION TO TEST VALID RANGE FOR THE QUANTITY
+    * @author: fsar
+    * @since 20251018
+    * */
+
+    public void setQuantity(int quantity) throws PerfumeException {
+
+        if (quantity > 50 || quantity < 0) {
+            throw new PerfumeException();
+        }else{
+            this.quantity = quantity;
+        }
     }
 
     public Double getPricePerBottle() {
@@ -133,6 +159,7 @@ public class Perfume {
     public void setPricePerBottle(Double pricePerBottle) {
         this.pricePerBottle = pricePerBottle;
     }
+
 
     public double getSubTotal() {
         return subTotal;
