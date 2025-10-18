@@ -86,10 +86,11 @@ public class Perfume {
 
     }
 
-    public void calculateTotalPrice() {
+    public double calculateTotalPrice() {
         subTotal = pricePerBottle * quantity;
         taxAmount = subTotal * TAX_RATE;
         totalPrice = subTotal + taxAmount;
+        return totalPrice;
     }
     //Getters and Setters
 
@@ -133,9 +134,32 @@ public class Perfume {
         this.pricePerBottle = pricePerBottle;
     }
 
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public double getTaxAmount() {
+        return taxAmount;
+    }
+
+    public void setTaxAmount(double taxAmount) {
+        this.taxAmount = taxAmount;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     //JSON Serialization using Gson
-    public String toJson(){
+    public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
