@@ -16,7 +16,7 @@ public class CisUtility {
     private static Scanner input = new Scanner(System.in);
 
     //The isGUI will be used to determine if JOptionPane is used or console
-    private static boolean isGUI = false;
+    private static boolean isGUI = true;
 
     public static void setIsGUI(boolean isGUI) {
         CisUtility.isGUI = isGUI;
