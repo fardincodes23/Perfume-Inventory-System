@@ -16,10 +16,10 @@ public class CisUtility {
     private static Scanner input = new Scanner(System.in);
 
     //The isGUI will be used to determine if JOptionPane is used or console
-    private static boolean isGUI = true;
+    private static boolean isGUI = false;
 
-    public static void setIsGUI(boolean isGUI) {
-        CisUtility.isGUI = isGUI;
+    public  void setIsGUI(boolean isGUI) {
+        this.isGUI = isGUI;
     }
 
 
@@ -71,7 +71,7 @@ public class CisUtility {
      * @return The number entered by the user
      * @since 20181121
      */
-    public static double getInputDouble(String prompt) {
+    public  double getInputDouble(String prompt) {
         String enteredString = getInputString(prompt);
         double entered = Double.parseDouble(enteredString);
         return entered;
@@ -79,19 +79,19 @@ public class CisUtility {
 
     /**
      * Method to input a boolean value.The prompt will have y/n instructions
- appended to it.
+     appended to it.
      *
      * @author BJ MacLean
      * @param prompt Base prompt for the user
      * @return true/false
      * @since 20200129
      */
-    public static boolean getInputBoolean(String prompt) {
+    public  boolean getInputBoolean(String prompt) {
         String temp = getInputString(prompt+" (y/n)");
         return temp.equalsIgnoreCase("y") || temp.equalsIgnoreCase("yes") || temp.equalsIgnoreCase("true")
                 || temp.equalsIgnoreCase("1");
     }
-    
+
     /**
      * Method to display a string for the user
      *
@@ -99,7 +99,7 @@ public class CisUtility {
      * @since 20181115
      * @author BJM
      */
-    public static void display(String output) {
+    public  void display(String output) {
         //System.out.println(output);
         if (isGUI) {
             JOptionPane.showMessageDialog(null, output);
@@ -116,9 +116,9 @@ public class CisUtility {
      * @param max The upper limit for the random number (inclusive)
      * @since 20181121
      */
-    public static int getRandom(int max) {
+    public  int getRandom(int max) {
 
-        //Math.random will give a fraction between 0 
+        //Math.random will give a fraction between 0
         double theFraction = Math.random();
         int theResult = (int) (theFraction * max);
         return 1 + theResult;
@@ -129,7 +129,7 @@ public class CisUtility {
      * @author BJ MacLean
      * @since 2020
      */
-    public static String getRandom() {
+    public  String getRandom() {
 
         String[][] theClass;
 
@@ -204,7 +204,7 @@ public class CisUtility {
             name = theClass[rowRandom][seatRandom];
             //CisUtility.display("Person at the random seat=" + name);
         } while (name == null || name.equals(""));
-        CisUtility.display("The winner is=" + name);
+        display("The winner is=" + name);
         return name;
     }
 
@@ -215,7 +215,7 @@ public class CisUtility {
      * @author BJ MacLean
      * @since 20190301
      */
-    public static String getCurrentDate(String format) {
+    public  String getCurrentDate(String format) {
         //Set the default format.
         if (format == null || format.length() == 0) {
             format = "yyyy-MM-dd";
@@ -233,7 +233,7 @@ public class CisUtility {
      * @author BJ MacLean
      * @since 20241018
      */
-    public static String getCurrentDate(int offsetDays, String format) {
+    public  String getCurrentDate(int offsetDays, String format) {
         //Set the default format.
         if (format == null || format.length() == 0) {
             format = "yyyy-MM-dd";
@@ -250,11 +250,11 @@ public class CisUtility {
      * start of time.
      *
      * https://www.tutorialspoint.com/java/lang/system_currenttimemillis.htm
-     * 
+     *
      * @author BJ MacLean
      * @since 20200127
      */
-    public static long getNowMillis() {
+    public  long getNowMillis() {
         return System.currentTimeMillis();
     }
 

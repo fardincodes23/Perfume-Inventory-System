@@ -15,9 +15,9 @@ import com.google.gson.Gson;
 public class Perfume {
 
     //Constant value
-    private static final double TAX_RATE = 0.10;
-    private static final double MIDDLE_SIZE_BOTTLE_RATE = 40;
-    private static final double LARGE_SIZE_BOTTLE_RATE = 60;
+    public static final double TAX_RATE = 0.10;
+    public static final double MIDDLE_SIZE_BOTTLE_RATE = 40;
+    public static final double LARGE_SIZE_BOTTLE_RATE = 60;
     private static final String PERFUME_LIST
             = "\n-------------------------\n"
             + "- Perfume Shop -\n"
@@ -31,8 +31,9 @@ public class Perfume {
     private String customerName;
     private String perfumeName;
     private int size;
-    private Double pricePerBottle;
+    public Double pricePerBottle;
     private int quantity;
+    private int perfumeChoice;
 
 
     private double subTotal;
@@ -55,7 +56,7 @@ public class Perfume {
     public void getInformation() {
         customerName = CisUtility.getInputString("Enter customer name: ");
 
-        int perfumeChoice = CisUtility.getInputInt(PERFUME_LIST);
+        perfumeChoice = CisUtility.getInputInt(PERFUME_LIST);
 
         switch (perfumeChoice) {
             case 1:
@@ -90,11 +91,10 @@ public class Perfume {
 
     }
 
-    public double calculateTotalPrice() {
+    public void calculateTotalPrice() {
         subTotal = pricePerBottle * quantity;
         taxAmount = subTotal * TAX_RATE;
         totalPrice = subTotal + taxAmount;
-        return totalPrice;
     }
 
 
@@ -118,6 +118,14 @@ public class Perfume {
 
     public int getSize() {
         return size;
+    }
+
+    public int getPerfumeChoice() {
+        return perfumeChoice;
+    }
+
+    public void setPerfumeChoice(int perfumeChoice) {
+        this.perfumeChoice = perfumeChoice;
     }
 
     public void setSize(int size) throws  PerfumeException {
