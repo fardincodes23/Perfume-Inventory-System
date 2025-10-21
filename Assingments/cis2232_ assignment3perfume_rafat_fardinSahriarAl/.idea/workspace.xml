@@ -8,10 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/entity/Perfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/entity/Perfume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/services/PerfumeJournalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/services/PerfumeJournalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread1ConsolePerfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread1ConsolePerfume.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread2GUIPerfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread2GUIPerfume.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/util/CisUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/util/CisUtility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/entity/Perfume.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/entity/Perfume.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/services/PerfumeJournalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/services/PerfumeJournalService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread1ConsolePerfume.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread1ConsolePerfume.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread2GUIPerfume.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread2GUIPerfume.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/util/CisUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/util/CisUtility.class" afterDir="false" />
     </list>
@@ -121,7 +125,7 @@
       <workItem from="1760756070116" duration="11247000" />
       <workItem from="1760767439360" duration="166000" />
       <workItem from="1760767641802" duration="59000" />
-      <workItem from="1760845319872" duration="18228000" />
+      <workItem from="1760845319872" duration="29506000" />
     </task>
     <servers />
   </component>
@@ -137,8 +141,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread2GUIPerfume.java</url>
-          <line>70</line>
+          <line>58</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread1ConsolePerfume.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

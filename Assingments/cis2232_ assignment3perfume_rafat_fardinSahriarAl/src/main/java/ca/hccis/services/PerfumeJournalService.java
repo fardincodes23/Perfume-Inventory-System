@@ -1,3 +1,13 @@
+/**
+ * About: This class is responsible to handle writing and reading perfume objects to/from a JSON file.
+ *        This class is used by both the console and GUI threads.
+ *
+ *
+ * @author fsar
+ * @since 20251017
+ * **/
+
+
 package ca.hccis.services;
 
 import ca.hccis.entity.Perfume;

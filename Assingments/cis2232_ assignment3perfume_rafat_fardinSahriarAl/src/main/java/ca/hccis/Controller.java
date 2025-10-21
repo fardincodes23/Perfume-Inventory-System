@@ -1,6 +1,7 @@
 
 package ca.hccis;
 
+import ca.hccis.services.PerfumeJournalService;
 import ca.hccis.threads.Thread1ConsolePerfume;
 import ca.hccis.threads.Thread2GUIPerfume;
 
@@ -17,9 +18,11 @@ public class Controller {
 
         System.out.println("Starting Perfume Sales Application...");
 
+        PerfumeJournalService sharedService = new PerfumeJournalService();
+
         // Create two threads: one console, one GUI
-        Thread threadConsole = new Thread(new Thread1ConsolePerfume());
-        Thread threadGUI = new Thread(new Thread2GUIPerfume());
+        Thread threadConsole = new Thread(new Thread1ConsolePerfume(sharedService));
+        Thread threadGUI = new Thread(new Thread2GUIPerfume(sharedService));
 
         // Start both threads
         threadConsole.start();

@@ -5,7 +5,7 @@ import ca.hccis.util.CisUtility;
 import com.google.gson.Gson;
 
 
-/*
+/**
  * @author:Fardin Sahriar Al Rafat
  * @since 16092025
  * project: Working of a project which tracks sales of a perfume shop
@@ -18,14 +18,14 @@ public class Perfume {
     public static final double TAX_RATE = 0.10;
     public static final double MIDDLE_SIZE_BOTTLE_RATE = 40;
     public static final double LARGE_SIZE_BOTTLE_RATE = 60;
-    private static final String PERFUME_LIST
-            = "\n-------------------------\n"
+    public static final String PERFUME_LIST
+            = "\n"
             + "- Perfume Shop -\n"
             + "Enter perfume choice (1 to 3)==>\n"
             + "- 1) Dior\n"
             + "- 2) Chanel\n"
             + "- 3) Gucci\n"
-            + "-------------------------\n";
+            + "\n";
 
 
     private String customerName;
@@ -46,17 +46,21 @@ public class Perfume {
     }
 
 
-    /*
+    /**
      * @author fsar
      * @since 16092025
      * topic: taking information from customer
      * */
 
 
-    public void getInformation() {
-        customerName = CisUtility.getInputString("Enter customer name: ");
+    CisUtility cisUtility = new CisUtility();     //creating an CisUtility object
 
-        perfumeChoice = CisUtility.getInputInt(PERFUME_LIST);
+    public void getInformation(CisUtility cisUtility) {
+
+
+        customerName = cisUtility.getInputString("Enter customer name: ");
+
+        perfumeChoice = cisUtility.getInputInt(PERFUME_LIST);
 
         switch (perfumeChoice) {
             case 1:
@@ -73,7 +77,7 @@ public class Perfume {
 
         //choose size of the perfume
 
-        size = CisUtility.getInputInt("Enter perfume size: 1) 90ml or 2) 120ml . Select 1 OR 2");
+        size = cisUtility.getInputInt("Enter perfume size: 1) 90ml or 2) 120ml . Select 1 OR 2");
         if (size == 1) {
             pricePerBottle = MIDDLE_SIZE_BOTTLE_RATE;
         } else {
@@ -85,7 +89,7 @@ public class Perfume {
 
         //take the quantity from the customer
 
-        quantity = CisUtility.getInputInt("Enter perfume quantity: ");
+        quantity = cisUtility.getInputInt("Enter perfume quantity: ");
 
         calculateTotalPrice();
 
@@ -145,7 +149,7 @@ public class Perfume {
 
 
 
-    /*
+    /**
     *ADDED AN EXCEPTION CONDITION TO TEST VALID RANGE FOR THE QUANTITY
     * @author: fsar
     * @since 20251018

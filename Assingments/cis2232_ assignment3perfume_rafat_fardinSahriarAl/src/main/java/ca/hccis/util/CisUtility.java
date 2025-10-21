@@ -16,7 +16,7 @@ public class CisUtility {
     private static Scanner input = new Scanner(System.in);
 
     //The isGUI will be used to determine if JOptionPane is used or console
-    private static boolean isGUI = false;
+    private boolean isGUI = false;
 
     public  void setIsGUI(boolean isGUI) {
         this.isGUI = isGUI;
@@ -35,7 +35,7 @@ public class CisUtility {
      * @return The String entered by the user
      * @since 20181121
      */
-    public static String getInputString(String prompt) {
+    public String getInputString(String prompt) {
 
         String userOption;
 
@@ -57,7 +57,7 @@ public class CisUtility {
      * @return The number entered by the user
      * @since 20181121
      */
-    public static int getInputInt(String prompt) {
+    public int getInputInt(String prompt) {
         String enteredString = getInputString(prompt);
         int entered = Integer.parseInt(enteredString);
         return entered;
