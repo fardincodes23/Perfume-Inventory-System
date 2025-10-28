@@ -1,18 +1,14 @@
 package info.hccis.bus.pass.controllers;
 
 import info.hccis.bus.pass.bo.BusPassBO;
-import info.hccis.bus.pass.jpa.entity.CodeValue;
 import info.hccis.bus.pass.repositories.CodeValueRepository;
 import info.hccis.bus.pass.util.CisUtility;
 
 import javax.servlet.http.HttpSession;
 
-import info.hccis.bus.pass.util.CisUtilityNetwork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 /**
  * Base controller which control general functionality in the app.

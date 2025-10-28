@@ -5,11 +5,11 @@ import info.hccis.bus.pass.jpa.entity.BusPass;
 import java.util.ArrayList;
 
 /**
- * Entity class to hold the attributes of the bus pass related reports.
+ * Entity class to hold the attributes of the reports.
  * @author bjmaclean
  * @since 20241010
  */
-public class ReportBusPass {
+public class ReportPerfume {
     private String dateStart;
     private String dateEnd;
     private int minLength;

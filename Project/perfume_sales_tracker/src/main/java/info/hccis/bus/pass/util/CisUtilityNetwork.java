@@ -1,13 +1,9 @@
 package info.hccis.bus.pass.util;
 
-import info.hccis.bus.pass.controllers.PirateController;
-import org.apache.tomcat.util.json.JSONParser;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 

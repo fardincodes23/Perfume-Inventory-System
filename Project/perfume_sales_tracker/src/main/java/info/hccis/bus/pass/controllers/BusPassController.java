@@ -3,10 +3,8 @@ package info.hccis.bus.pass.controllers;
 import info.hccis.bus.pass.bo.BusPassBO;
 import info.hccis.bus.pass.bo.BusPassValidationBO;
 import info.hccis.bus.pass.jpa.entity.BusPass;
-import info.hccis.bus.pass.jpa.entity.CodeValue;
 import info.hccis.bus.pass.repositories.BusPassRepository;
 import info.hccis.bus.pass.repositories.CodeValueRepository;
-import info.hccis.bus.pass.util.CisUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 /**
