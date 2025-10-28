@@ -28,6 +28,7 @@
 * total: double //total with tax
 * id: int // an unique id number for every transactions
 * transactionDate: String // date needed to keep track of the transaction
+* size: int
 
 ### Calculation ###
 
@@ -40,3 +41,9 @@
 * subtotal = quantity * pricePerBottle
 * taxAmount = subtotal * 0.10
 * totalPrice = subTotal +taxAmount
+
+
+### Report Details ###
+
+The user will enter a perfumes name, and the program will output the list of the particular perfumes that were sold.
+The list will be in descending order by order id (primary key), and also mention the quantity sold in each order.
