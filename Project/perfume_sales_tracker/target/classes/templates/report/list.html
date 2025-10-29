@@ -3,43 +3,49 @@
 <!--Thanks to Ferhad, Francisco, and Carter from grad 2022 for the styling on this page.-->
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/head :: head">
-        <title id="pageTitle" th:text="${session.title}">Reports</title>
-    </head>
-    <body>
-        <style scoped="scoped">th,tr,td{
-                text-align:left!important
-            }
-            td{
-                padding:0!important
-            }
-            tr th{
-                line-height:1;
-                padding-bottom:8px
-            }
-            tr:nth-child(even){
-                background-color: #FFF
-            }
-            .a{
-                padding:0 32px 0 0
-            }</style>
-        <!--^This is illegal. However, th:replace doesn't allow custom styling. This CSS is needed.^-->
-        <nav th:replace="fragments/navHeader :: navbar"></nav>
-        <div class="container has-text-centered">
-            <h2 class="title is-2" style="margin-bottom:-10px!important">Reports</h2>
-            <br></br>
-            <table class="wbb centered" style="padding:0!important;display:inline-block!important">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle" th:text="${session.title}">Reports</title>
+</head>
+<body>
+<style scoped="scoped">th, tr, td {
+    text-align: left !important
+}
 
-                <tr>
-                    <td><a th:href="@{/report/buspass/daterange}" th:text="#{label.report.bus.pass.date.range}" >Date Range</a></td>
-                    <td></td>
-                </tr><!-- comment -->
-                <tr>
-                    <td><a th:href="@{/report/buspass/minlength}"th:text="#{label.report.bus.pass.min.length}" >Min Pass Length</a></td>
-                    <td></td>
-                </tr><!-- comment -->
-            </table>
-        </div>
-        <footer th:replace="fragments/footer :: footer"></footer>
-    </body>
+td {
+    padding: 0 !important
+}
+
+tr th {
+    line-height: 1;
+    padding-bottom: 8px
+}
+
+tr:nth-child(even) {
+    background-color: #FFF
+}
+
+.a {
+    padding: 0 32px 0 0
+}</style>
+<!--^This is illegal. However, th:replace doesn't allow custom styling. This CSS is needed.^-->
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+<div class="container has-text-centered">
+    <h2 class="title is-2" style="margin-bottom:-10px!important">Reports</h2>
+    <br></br>
+    <table class="wbb centered" style="padding:0!important;display:inline-block!important">
+
+        <tr>
+            <td><a th:href="@{/report/perfume/name}" th:text="#{label.report.perfume.name.report}">Perfume Name</a></td>
+            <td></td>
+        </tr>
+
+<!--        <tr>-->
+<!--            <td><a th:href="@{/report/buspass/minlength}" th:text="#{label.report.bus.pass.min.length}">Min Pass-->
+<!--                Length</a></td>-->
+<!--            <td></td>-->
+<!--        </tr>-->
+    </table>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
 </html>

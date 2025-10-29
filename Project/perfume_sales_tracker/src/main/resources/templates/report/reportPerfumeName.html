@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+<style scoped="scoped">input:not(.hidden) {
+    display: inline-block;
+    float: right
+}
+
+.cd {
+    color: #F00 !important;
+    font-weight: bold;
+    margin-bottom: -48px
+}
+
+label {
+    margin-right: 8px
+}</style>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+
+<!--
+Task: This is where i will make changes for the perfume name report page
+@author: Fardin
+@since: 2025-10-28
+
+-->
+
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{label.report.perfume.name.report}">_</h2>
+</div>
+
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

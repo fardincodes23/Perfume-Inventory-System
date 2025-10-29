@@ -44,6 +44,22 @@ public class ReportController {
         return "report/list";
     }
 
+
+    /**
+     * Method to send user to the Perfume name report.
+     *
+     * @param model
+     * @return view for list
+     * @author Fardin
+     * @since 2025-10-28
+     */
+    @RequestMapping("/perfume/name")
+    public String reportPerfumeNme(Model model, HttpSession session) {
+        logger.info("Running the reports controller perfume name method");
+        return "report/reportPerfumeName";
+    }
+
+
     /**
      * Method to send user to the date range report.
      *
@@ -102,7 +118,7 @@ public class ReportController {
         }
 
         //Put object in model so it can be used on the view (html)
-       model.addAttribute("reportInput", reportPerfume);
+        model.addAttribute("reportInput", reportPerfume);
 
         return "report/reportBusPassDateRange";
     }
