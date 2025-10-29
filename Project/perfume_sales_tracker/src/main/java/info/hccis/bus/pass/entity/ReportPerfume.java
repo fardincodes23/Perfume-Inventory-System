@@ -10,40 +10,13 @@ import java.util.ArrayList;
  * @since 20241010
  */
 public class ReportPerfume {
-    private String dateStart;
-    private String dateEnd;
-    private int minLength;
-    private ArrayList<BusPass> busPasses;
+    private String name;
 
-    public int getMinLength() {
-        return minLength;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setMinLength(int minLength) {
-        this.minLength = minLength;
-    }
-
-    public String getDateStart() {
-        return dateStart;
-    }
-
-    public void setDateStart(String dateStart) {
-        this.dateStart = dateStart;
-    }
-
-    public String getDateEnd() {
-        return dateEnd;
-    }
-
-    public void setDateEnd(String dateEnd) {
-        this.dateEnd = dateEnd;
-    }
-
-    public ArrayList<BusPass> getBusPasses() {
-        return busPasses;
-    }
-
-    public void setBusPasses(ArrayList<BusPass> busPasses) {
-        this.busPasses = busPasses;
-    }
 }

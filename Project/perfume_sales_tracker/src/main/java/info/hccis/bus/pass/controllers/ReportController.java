@@ -1,6 +1,7 @@
 package info.hccis.bus.pass.controllers;
 
 import info.hccis.bus.pass.bo.BusPassBO;
+import info.hccis.bus.pass.entity.ReportBusPass;
 import info.hccis.bus.pass.entity.ReportPerfume;
 import info.hccis.bus.pass.jpa.entity.BusPass;
 import info.hccis.bus.pass.util.CisUtility;
@@ -44,7 +45,6 @@ public class ReportController {
         return "report/list";
     }
 
-
     /**
      * Method to send user to the Perfume name report.
      *
@@ -56,8 +56,54 @@ public class ReportController {
     @RequestMapping("/perfume/name")
     public String reportPerfumeNme(Model model, HttpSession session) {
         logger.info("Running the reports controller perfume name method");
+        model.addAttribute("reportInput", new ReportPerfume());
         return "report/reportPerfumeName";
     }
+
+
+    /**
+     * Process the report
+     *
+     * @param model
+     * @param reportPerfume Object containing inputs for the report
+     * @return view to show report
+     * @author Fardin
+     * @since 2025-10-28
+     */
+    @RequestMapping("/perfume/name/submit")
+    public String reportPerfumeNameSubmit(Model model, @ModelAttribute("reportInput") ReportPerfume reportPerfume) {
+
+        System.out.println("Name from input form: " + reportPerfume.getName());
+
+
+        //Write some model code to go to the db and get the appropriate reports
+        //Add them to a collection in the ReportPerfume class
+
+        
+        //Put object in model so it can be used on the view (html)
+        model.addAttribute("reportInput", reportPerfume);
+
+        return "report/reportPerfumeName";
+    }
+
+
+
+
+
+
+//Remove below later
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /**
@@ -83,7 +129,7 @@ public class ReportController {
         // Put the report object in the model and send the user
         // to the report input view.
         //**********************************************************************
-        ReportPerfume reportPerfume = new ReportPerfume();
+        ReportBusPass reportPerfume = new ReportBusPass();
         //Set the default start/end dates for the report
         reportPerfume.setDateStart(start);
         reportPerfume.setDateEnd(end);
@@ -103,7 +149,7 @@ public class ReportController {
      * @since 2024-10-10
      */
     @RequestMapping("/buspass/daterange/submit")
-    public String reportBusPassDateRangeSubmit(Model model, @ModelAttribute("reportInput") ReportPerfume reportPerfume) {
+    public String reportBusPassDateRangeSubmit(Model model, @ModelAttribute("reportInput") ReportBusPass reportPerfume) {
 
         //Call BO method to process the report
         ArrayList<BusPass> busPasses = BusPassBO.processDateRangeReport(reportPerfume.getDateStart(), reportPerfume.getDateEnd());
@@ -138,7 +184,7 @@ public class ReportController {
         // Put the report object in the model and send the user
         // to the report input view.
         //**********************************************************************
-        model.addAttribute("reportInput", new ReportPerfume());
+        model.addAttribute("reportInput", new ReportBusPass());
 
         return "report/reportBusPassMinLength";
     }
@@ -153,7 +199,7 @@ public class ReportController {
      * @since 2024-10-11
      */
     @RequestMapping("/buspass/minlength/submit")
-    public String reportBusPassMinLengthSubmit(Model model, @ModelAttribute("reportInput") ReportPerfume reportPerfume) {
+    public String reportBusPassMinLengthSubmit(Model model, @ModelAttribute("reportInput") ReportBusPass reportPerfume) {
 
         ArrayList<BusPass> busPasses;
         try {
