@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+<style scoped="scoped">input:not(.hidden) {
+    display: inline-block;
+    float: right
+}
+
+.cd {
+    color: #F00 !important;
+    font-weight: bold;
+    margin-bottom: -48px
+}
+
+label {
+    margin-right: 8px
+}</style>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+
+<!--
+Task: This is where i will make changes to show all perfume records
+@author: Fardin
+@since: 2025-10-29
+
+-->
+
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{label.report.perfume.records}">_</h2>
+
+
+    <form th:action="@{/report/perfume/records/submit}" method="post" class="wbb"
+          style="display:inline-block;text-align:left!important">
+        <label>Show All The Records of Sales </label>
+        <input type="text" th:field="${reportInput.records}"></input>
+        <br></br>
+        <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
+    </form>
+
+
+</div>
+
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
