@@ -9,7 +9,8 @@ import com.google.gson.Gson;
  * @author:Fardin Sahriar Al Rafat
  * @since 16092025
  * project: Working of a project which tracks sales of a perfume shop
- * */
+ *
+ */
 
 
 public class Perfume {
@@ -29,11 +30,13 @@ public class Perfume {
 
 
     private String customerName;
-    private String perfumeName;
-    private int size;
+    private String phoneNumber;
+    private int perfumeName;
+    private String perfumeChoice;
+    private int sizeInput;
+    private String perfumeSize;
     public Double pricePerBottle;
     private int quantity;
-    private int perfumeChoice;
 
 
     private double subTotal;
@@ -50,7 +53,8 @@ public class Perfume {
      * @author fsar
      * @since 16092025
      * topic: taking information from customer
-     * */
+     *
+     */
 
 
     CisUtility cisUtility = new CisUtility();     //creating an CisUtility object
@@ -59,32 +63,63 @@ public class Perfume {
 
 
         customerName = cisUtility.getInputString("Enter customer name: ");
+        phoneNumber = cisUtility.getInputString("Enter phone number: ");
 
-        perfumeChoice = cisUtility.getInputInt(PERFUME_LIST);
+        /*
+         * Task: adding validation so that user give a numeric input for the Perfume Name (1 ,2 or 3)
+         * @author Fardin
+         * @since 2025-10-29
+         *
+         * */
 
-        switch (perfumeChoice) {
+        boolean validation = false;
+
+        do {
+            try {
+                setPerfumeName(Integer.parseInt(cisUtility.getInputString(PERFUME_LIST)));
+                validation = true;
+            } catch (PerfumeException e) {
+                cisUtility.display(("Enter perfume choice (1 to 3)"));
+            } catch (NumberFormatException e) {
+                cisUtility.display(("No String is accepted. Enter perfume choice (1 to 3)"));
+            }
+        } while (!validation);
+
+        switch (perfumeName) {
             case 1:
-                perfumeName = "Dior";
+                perfumeChoice = "Dior";
                 break;
             case 2:
-                perfumeName = "Chanel";
+                perfumeChoice = "Chanel";
                 break;
             case 3:
-                perfumeName = "Gucci";
+                perfumeChoice = "Gucci";
                 break;
 
         }
 
-        //choose size of the perfume
+        /*
+         * Task: adding validation so that user give a numeric input for the Perfume Size (1 for medium size bottle or 2 for large size bottle)
+         *
+         * @author Fardin
+         * @since 2025-10-29
+         *
+         * */
 
-        size = cisUtility.getInputInt("Enter perfume size: 1) 90ml or 2) 120ml . Select 1 OR 2");
-        if (size == 1) {
-            pricePerBottle = MIDDLE_SIZE_BOTTLE_RATE;
-        } else {
-            pricePerBottle = LARGE_SIZE_BOTTLE_RATE;
-        }
+        do {
+            sizeInput = cisUtility.getInputInt("Enter perfume size: 1) 90ml or 2) 120ml . Select 1 OR 2");
+            if (sizeInput == 1) {
+                pricePerBottle = MIDDLE_SIZE_BOTTLE_RATE;
+                perfumeSize = "90ml";
+            } else if (sizeInput == 2) {
+                pricePerBottle = LARGE_SIZE_BOTTLE_RATE;
+                perfumeSize = "120ml";
 
+            } else {
+                System.out.println("Please enter 1 or 2 got the size selection");
 
+            }
+        } while (sizeInput < 1 || sizeInput > 2);
 
 
         //take the quantity from the customer
@@ -112,33 +147,70 @@ public class Perfume {
         this.customerName = customerName;
     }
 
-    public String getPerfumeName() {
+    public int getPerfumeName() {
         return perfumeName;
     }
 
-    public void setPerfumeName(String perfumeName) {
-        this.perfumeName = perfumeName;
+
+    /*
+     * Task: system will throw exception if not a valid input
+     * @author Fardin
+     * @since 2025-10-29
+     *
+     * */
+
+    public void setPerfumeName(int perfumeName) throws PerfumeException {
+
+        if (perfumeName < 1 || perfumeName > 3) {
+            throw new PerfumeException();
+        } else {
+            this.perfumeName = perfumeName;
+        }
     }
 
-    public int getSize() {
-        return size;
+    public CisUtility getCisUtility() {
+        return cisUtility;
     }
 
-    public int getPerfumeChoice() {
+    public void setCisUtility(CisUtility cisUtility) {
+        this.cisUtility = cisUtility;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPerfumeSize() {
+        return perfumeSize;
+    }
+
+    public void setPerfumeSize(String perfumeSize) {
+        this.perfumeSize = perfumeSize;
+    }
+
+    public int getSizeInput() {
+        return sizeInput;
+    }
+
+    public String getPerfumeChoice() {
         return perfumeChoice;
     }
 
-    public void setPerfumeChoice(int perfumeChoice) {
+    public void setPerfumeChoice(String perfumeChoice) {
         this.perfumeChoice = perfumeChoice;
     }
 
-    public void setSize(int size) throws  PerfumeException {
-        if (size > 2 || size < 0) {
+    public void setSizeInput(int sizeInput) throws PerfumeException {
+        if (sizeInput > 2 || sizeInput < 0) {
 
             throw new PerfumeException();
 
-        }else{
-            this.size = size;
+        } else {
+            this.sizeInput = sizeInput;
 
         }
     }
@@ -148,18 +220,19 @@ public class Perfume {
     }
 
 
-
     /**
-    *ADDED AN EXCEPTION CONDITION TO TEST VALID RANGE FOR THE QUANTITY
-    * @author: fsar
-    * @since 20251018
-    * */
+     * ADDED AN EXCEPTION CONDITION TO TEST VALID RANGE FOR THE QUANTITY
+     *
+     * @author: fsar
+     * @since 20251018
+     *
+     */
 
     public void setQuantity(int quantity) throws PerfumeException {
 
         if (quantity > 50 || quantity < 0) {
             throw new PerfumeException();
-        }else{
+        } else {
             this.quantity = quantity;
         }
     }
@@ -209,11 +282,14 @@ public class Perfume {
     public String toString() {
         return "Perfume purchase details: \n" +
                 "Customer Name: " + customerName + "\n" +
-                "Perfume Name: " + perfumeName + "\n" +
-                "Perfume Size: " + size + "\n" +
+                "Phone Number: " + phoneNumber + "\n" +
+                "Perfume Choice: " + perfumeChoice + "\n" +
+                "Perfume Size: " + perfumeSize + "\n" +
                 "Perfume Quantity: " + quantity + "\n" +
-                "Total Price: " + totalPrice + "\n" +
-                "Total Tax Amount: " + taxAmount + "\n";
+                "Subtotal: " + subTotal + "\n" +
+                "Total Tax Amount: " + taxAmount + "\n" +
+                "Total Price: " + totalPrice + "\n";
+
 
     }
 

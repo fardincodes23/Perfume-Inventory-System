@@ -89,7 +89,7 @@ class PerfumeTest {
     void calculateTotalPrice_sizeOver2_throwsException() {
 
         Assertions.assertThrows(PerfumeException.class, () -> {
-            perfume.setSize(5);
+            perfume.setSizeInput(5);
 
         });
     }
@@ -98,7 +98,7 @@ class PerfumeTest {
     void calculateTotalPrice_negativeSize_throwsException() {
 
         Assertions.assertThrows(PerfumeException.class, () -> {
-            perfume.setSize(-1);
+            perfume.setSizeInput(-1);
 
         });
     }

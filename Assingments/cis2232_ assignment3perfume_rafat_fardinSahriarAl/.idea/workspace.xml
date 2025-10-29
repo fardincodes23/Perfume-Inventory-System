@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4d52477c-49a5-40bb-8f4f-8e4947ed5edd" name="Changes" comment="added the class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/entity/Perfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/entity/Perfume.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/services/PerfumeJournalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/services/PerfumeJournalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread1ConsolePerfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread1ConsolePerfume.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread2GUIPerfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/threads/Thread2GUIPerfume.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/util/CisUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/util/CisUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ca/hccis/entity/PerfumeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ca/hccis/entity/PerfumeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/entity/Perfume.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/entity/Perfume.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/services/PerfumeJournalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/services/PerfumeJournalService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread1ConsolePerfume.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread1ConsolePerfume.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread2GUIPerfume.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/threads/Thread2GUIPerfume.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/util/CisUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/util/CisUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/src/main/resources/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/src/main/resources/db/mysql/createDatabase1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/target/classes/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/target/classes/db/mysql/createDatabase1.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,34 +40,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Controller.executor": "Run",
-    "JUnit.PerfumeTest.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Assingments/cis2232_ assignment3perfume_rafat_fardinSahriarAl",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Assingments/cis2232_ assignment1perfume_rafat_fardinSahriarAl/pom.xml/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Controller.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PerfumeTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Assingments/cis2232_ assignment3perfume_rafat_fardinSahriarAl&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Assingments/cis2232_ assignment1perfume_rafat_fardinSahriarAl/pom.xml/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ca.hccis.threads" />
@@ -126,6 +120,7 @@
       <workItem from="1760767439360" duration="166000" />
       <workItem from="1760767641802" duration="59000" />
       <workItem from="1760845319872" duration="29506000" />
+      <workItem from="1761771527027" duration="3412000" />
     </task>
     <servers />
   </component>
