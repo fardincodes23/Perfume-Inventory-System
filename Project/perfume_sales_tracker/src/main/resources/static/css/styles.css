@@ -7,10 +7,10 @@ html{
 :root {
     /*Variable for team color*/
     /*light ac3e37 main 770711 dark 470000*/
-    --main-color-light: gray;
+    --main-color-light: #022b59;
     --main-color-primary: #b47511;
     --main-color-dark: #590210;
-    --main-color-text: #000000;
+    --main-color-text: #fb9e05;
     --main-color-bright: #333333;
 
 }
@@ -33,7 +33,7 @@ body {
     position: relative;
     height: 100%;
     min-height: 100vh;
-    background: var(--main-color-light);
+    background: darkgoldenrod;
 }
 
 th,tr,td{
@@ -104,14 +104,14 @@ table{
 
 .nav {
     margin-bottom: 50px;
-    background: var(--main-color-dark)
+    background: darkblue;
 }
 
 .ftr {
     margin-top: 50px;
     padding: 20px;
-    background: var(--main-color-dark);
-    color: var(--main-color-text);
+    background: darkred;
+    color: #dddbd5;
     bottom: 0;
     /*    position:absolute;*/
     width:100%
@@ -267,7 +267,7 @@ body,p,strong,th{
 }
 
 .container{
-    background: var(--main-color-light);
+    background: #a65e05;
 
 }
 .container button {
