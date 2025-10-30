@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d52477c-49a5-40bb-8f4f-8e4947ed5edd" name="Changes" comment="added the class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/entity/Perfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/entity/Perfume.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ca/hccis/entity/PerfumeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ca/hccis/entity/PerfumeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/hccis/entity/Perfume.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/hccis/entity/Perfume.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/src/main/resources/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/src/main/resources/db/mysql/createDatabase1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/target/classes/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/target/classes/db/mysql/createDatabase1.sql" afterDir="false" />
