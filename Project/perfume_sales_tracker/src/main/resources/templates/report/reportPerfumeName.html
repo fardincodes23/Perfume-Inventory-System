@@ -28,6 +28,7 @@ Task: This is where i will make changes for the perfume name report page
 
 -->
 
+
 <div class="container has-text-centered">
     <h2 class="title is-2" th:text="#{label.report.perfume.name.report}">_</h2>
 
@@ -35,10 +36,53 @@ Task: This is where i will make changes for the perfume name report page
     <form th:action="@{/report/perfume/name/submit}" method="post" class="wbb"
           style="display:inline-block;text-align:left!important">
         <label>Name (Perfumes): </label>
-        <input type="text" th:field="${reportInput.name}"></input>
+        <input type="text" th:field="${reportInput.perfumeChoice}"></input>
         <br></br>
         <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
     </form>
+
+    <!--    Table display block
+    @author Fardin
+    @since 2025-10-30
+    -->
+    <hr>
+
+    <!-- Show message if no records -->
+    <p th:text="${message}" style="color:red; font-weight:bold;"></p>
+
+    <!-- Show results if records exist -->
+    <table class="table is-striped is-fullwidth" th:if="${reportInput.perfumeTransaction != null}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Customer Name</th>
+            <th>Phone</th>
+            <th>Perfume Choice</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Tax</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="t : ${reportInput.perfumeTransaction}">
+            <td th:text="${t.id}"></td>
+            <td th:text="${t.transactionDate}"></td>
+            <td th:text="${t.customerName}"></td>
+            <td th:text="${t.phoneNumber}"></td>
+            <td th:text="${t.perfumeChoice}"></td>
+            <td th:text="${t.perfumeSize}"></td>
+            <td th:text="${t.pricePerBottle}"></td>
+            <td th:text="${t.quantity}"></td>
+            <td th:text="${t.subTotal}"></td>
+            <td th:text="${t.taxAmount}"></td>
+            <td th:text="${t.totalPrice}"></td>
+        </tr>
+        </tbody>
+    </table>
 
 
 </div>

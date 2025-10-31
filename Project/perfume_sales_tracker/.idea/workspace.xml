@@ -5,10 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/bo/PerfumeTransactionBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/dao/PerfumeTransactionDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Assingments/cis2232_ assignment3perfume_rafat_fardinSahriarAl/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Assingments/cis2232_ assignment3perfume_rafat_fardinSahriarAl/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/dao/PerfumeReportDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/entity/ReportPerfume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/entity/ReportPerfume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/PerfumeReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/PerfumeTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/buspass/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfume/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/buspass/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfume/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/report/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report/reportPerfumeName.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/report/reportPerfumeName.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/buspass/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/buspass/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/report/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/report/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +63,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Project/perfume_sales_tracker/src/main/resources/templates/report",
+    "last_opened_file_path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Project/perfume_sales_tracker",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,6 +81,7 @@
     ],
     "RunConfigurationTargetLRU": [
       "f3e22468-dcde-46ce-a7f9-efb84056c3cb",
+      "582c2d9a-2fb5-4b78-b1d1-333c03f2da6e",
       "11c99a47-0aaa-4bb4-9081-03c4f5f7f026",
       "9a49d57d-b04a-4b6f-a76a-1d1eb0557526",
       "339cfdf0-3db3-43dc-8f6c-98e20f98911c"
@@ -76,6 +93,7 @@
       <recent name="C:\Users\fardi\Documents\CIS2232\cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t\Project\perfume_sales_tracker\src\main\resources\templates\report" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ca.hccis.perfume.bo" />
       <recent name="info.hccis.bus.pass.entity" />
     </key>
   </component>
@@ -83,7 +101,7 @@
     <configuration name="createDatabase1.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" />
       <script-mode>FILE</script-mode>
-      <data-source id="9a49d57d-b04a-4b6f-a76a-1d1eb0557526" />
+      <data-source id="582c2d9a-2fb5-4b78-b1d1-333c03f2da6e" />
       <data-source id="f3e22468-dcde-46ce-a7f9-efb84056c3cb" />
       <method v="2" />
     </configuration>
@@ -125,7 +143,8 @@
       <workItem from="1760748815104" duration="614000" />
       <workItem from="1761616982856" duration="10835000" />
       <workItem from="1761657535814" duration="9354000" />
-      <workItem from="1761697351290" duration="13397000" />
+      <workItem from="1761697351290" duration="30135000" />
+      <workItem from="1761837037955" duration="7769000" />
     </task>
     <servers />
   </component>

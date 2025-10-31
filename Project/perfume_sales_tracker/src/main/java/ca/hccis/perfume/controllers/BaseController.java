@@ -39,6 +39,7 @@ public class BaseController {
         //BJM 20200602 Issue#1 Set the current date in the session
         String currentDate = CisUtility.getCurrentDate("yyyy-MM-dd");
         session.setAttribute("currentDate", currentDate);
+        session.setAttribute("pageTitle", "Index");
 
         BusPassBO.setBusPassTypes(_cvr, session);
 

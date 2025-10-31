@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title>Perfume List</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<!--
+Page: Perfume List
+@author Fardin
+@since 2025-10-30
+-->
+
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{label.perfume.list}">Perfume List</h2>
+
+    <p th:text="${message}" style="color:red; font-weight:bold;"></p>
+
+    <table class="table is-striped is-fullwidth" th:if="${perfumes != null}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Price per Bottle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${perfumes}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.size}"></td>
+            <td th:text="${p.pricePerBottle}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="button is-link" th:href="@{/perfume/add}">Add New Perfume</a>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

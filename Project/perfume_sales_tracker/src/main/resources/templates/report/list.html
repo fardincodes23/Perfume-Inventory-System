@@ -4,7 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
+
     <title id="pageTitle" th:text="${session.title}">Reports</title>
+
+
 </head>
 <body>
 <style scoped="scoped">th, tr, td {
@@ -29,9 +32,20 @@ tr:nth-child(even) {
 }</style>
 <!--^This is illegal. However, th:replace doesn't allow custom styling. This CSS is needed.^-->
 <nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<!--The top part is same for every pages-->
+
+
+
+
+
+
 <div class="container has-text-centered">
     <h2 class="title is-2" style="margin-bottom:-10px!important">Reports</h2>
     <br></br>
+
+    <!-- I only have one report on Perfume Name Record-->
+
     <table class="wbb centered" style="padding:0!important;display:inline-block!important">
 
         <tr>
@@ -39,11 +53,6 @@ tr:nth-child(even) {
             <td></td>
         </tr>
 
-<!--        <tr>-->
-<!--            <td><a th:href="@{/report/buspass/minlength}" th:text="#{label.report.bus.pass.min.length}">Min Pass-->
-<!--                Length</a></td>-->
-<!--            <td></td>-->
-<!--        </tr>-->
     </table>
 </div>
 <footer th:replace="fragments/footer :: footer"></footer>

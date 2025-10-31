@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d52477c-49a5-40bb-8f4f-8e4947ed5edd" name="Changes" comment="added the class">
-      <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/src/main/resources/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/src/main/resources/db/mysql/createDatabase1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/target/classes/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project/perfume_sales_tracker/target/classes/db/mysql/createDatabase1.sql" afterDir="false" />
-    </list>
+    <list default="true" id="4d52477c-49a5-40bb-8f4f-8e4947ed5edd" name="Changes" comment="added the class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,6 +113,7 @@
       <workItem from="1760767641802" duration="59000" />
       <workItem from="1760845319872" duration="29506000" />
       <workItem from="1761771527027" duration="3412000" />
+      <workItem from="1761781990316" duration="1316000" />
     </task>
     <servers />
   </component>

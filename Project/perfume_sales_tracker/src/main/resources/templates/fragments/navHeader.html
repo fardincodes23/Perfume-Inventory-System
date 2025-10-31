@@ -19,9 +19,9 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item has-dropdown is-hoverable">
-                <a th:href="@{/buspass}" href="/buspass" class=" navbar-link">Perfumes</a>
+                <a th:href="@{/templates/perfume}" href="/buspass" class=" navbar-link">Perfumes</a>
                 <div class="navbar-dropdown">
-<!--                    <a th:href="@{/buspass}" class="navbar-item">View All Perfume Records</a>-->
+                    <!--                    <a th:href="@{/buspass}" class="navbar-item">View All Perfume Records</a>-->
                     <a th:href="@{/report/perfume/records}" class="navbar-item"
                        th:text="#{label.report.perfume.records}">Perfume All Records</a>
                     <hr class="navbar-divider">
@@ -32,12 +32,12 @@
                     <a th:href="@{/report}" href="/about" class=" navbar-link">Reports</a>
                     <div class="navbar-dropdown">
 
+
+                        <!--Added my dropdown report list-->
+
+
                         <a th:href="@{/report/perfume/name}" class="navbar-item"
                            th:text="#{label.report.perfume.name.report}">Perfume Name Report</a>
-
-
-                        <!--                        <a th:href="@{/report/buspass/minlength}" class="navbar-item"-->
-                        <!--                           th:text="#{label.report.bus.pass.min.length}">Min Pass Length</a>-->
 
 
                         <hr class="navbar-divider">
