@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/bo/PerfumeTransactionBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/bo/PerfumeTransactionBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/PerfumeTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/PerfumeTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfume/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfume/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfume/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfume/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report/reportBusPassMinLength.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/report/reportBusPassMinLength.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/other/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/other/about.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +126,7 @@
       <workItem from="1761657535814" duration="9354000" />
       <workItem from="1761697351290" duration="30135000" />
       <workItem from="1761837037955" duration="7769000" />
-      <workItem from="1762268001318" duration="8600000" />
+      <workItem from="1762268001318" duration="8912000" />
     </task>
     <servers />
   </component>
