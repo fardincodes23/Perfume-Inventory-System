@@ -65,7 +65,7 @@ public class PerfumeTransactionDAO {
                 record.setQuantity(rs.getInt("quantity"));
                 record.setSubTotal(rs.getDouble("subTotal"));
                 record.setTaxAmount(rs.getDouble("taxAmount"));
-                record.setTotalPrice(rs.getDouble("totalPrice"));
+                record.setTotal(rs.getDouble("totalPrice"));
 
 
                 records.add(record);
@@ -116,7 +116,7 @@ public class PerfumeTransactionDAO {
                 record.setQuantity(rs.getInt("quantity"));
                 record.setSubTotal(rs.getDouble("subTotal"));
                 record.setTaxAmount(rs.getDouble("taxAmount"));
-                record.setTotalPrice(rs.getDouble("totalPrice"));
+                record.setTotal(rs.getDouble("total"));
 
 //                checking if DAO is
 //

@@ -60,8 +60,8 @@ public class PerfumeTransaction {
     private Double taxAmount;
 
     @NotNull
-    @Column(name = "totalPrice", nullable = false)
-    private Double totalPrice;
+    @Column(name = "total", nullable = false)
+    private Double total;
 
     // ====== Getters and Setters ======
     public Integer getId() {
@@ -144,12 +144,12 @@ public class PerfumeTransaction {
         this.taxAmount = taxAmount;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
+    public Double getTotal() {
+        return total;
     }
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     @Override
@@ -161,7 +161,7 @@ public class PerfumeTransaction {
                 ", perfumeChoice='" + perfumeChoice + '\'' +
                 ", perfumeSize='" + perfumeSize + '\'' +
                 ", quantity=" + quantity +
-                ", totalPrice=" + totalPrice +
+                ", totalPrice=" + total +
                 '}';
     }
 }

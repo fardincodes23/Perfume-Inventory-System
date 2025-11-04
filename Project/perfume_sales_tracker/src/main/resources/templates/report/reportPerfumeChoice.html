@@ -55,16 +55,16 @@ Task: This is where i will make changes for the perfume name report page
         <thead>
         <tr>
             <th>ID</th>
-            <th>Date</th>
+            <th>Transaction Date</th>
             <th>Customer Name</th>
-            <th>Phone</th>
+            <th>Phone Number</th>
             <th>Perfume Choice</th>
             <th>Size</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Subtotal</th>
             <th>Tax</th>
-            <th>Total</th>
+            <th>Total Price</th>
         </tr>
         </thead>
         <tbody>
@@ -79,7 +79,7 @@ Task: This is where i will make changes for the perfume name report page
             <td th:text="${t.quantity}"></td>
             <td th:text="${t.subTotal}"></td>
             <td th:text="${t.taxAmount}"></td>
-            <td th:text="${t.totalPrice}"></td>
+            <td th:text="${t.total}"></td>
         </tr>
         </tbody>
     </table>
