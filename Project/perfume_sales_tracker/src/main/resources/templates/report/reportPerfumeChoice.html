@@ -30,12 +30,12 @@ Task: This is where i will make changes for the perfume name report page
 
 
 <div class="container has-text-centered">
-    <h2 class="title is-2" th:text="#{label.report.perfume.name.report}">_</h2>
+    <h2 class="title is-2" th:text="#{label.report.perfume.choice.report}">_</h2>
 
 
-    <form th:action="@{/report/perfume/name/submit}" method="post" class="wbb"
+    <form th:action="@{/report/perfume/choice/submit}" method="post" class="wbb"
           style="display:inline-block;text-align:left!important">
-        <label>Name (Perfumes): </label>
+        <label>Name (Choice of Perfumes: Gucci/Dior/Chanel): </label>
         <input type="text" th:field="${reportInput.perfumeChoice}"></input>
         <br></br>
         <button style="display:block;margin-top:24px!important" class="centered">Submit</button>

@@ -43,18 +43,18 @@ public class ReportController {
     }
 
     /**
-     * Method to send user to the Perfume name report.
+     * Method to send user to the Perfume choice report.
      *
      * @param model
      * @return view for list
      * @author Fardin
      * @since 2025-10-28
      */
-    @RequestMapping("/perfume/name")
-    public String reportPerfumeNme(Model model, HttpSession session) {
+    @RequestMapping("/perfume/choice")
+    public String reportPerfumeChoice(Model model, HttpSession session) {
         logger.info("Running the reports controller perfume name method");
         model.addAttribute("reportInput", new ReportPerfume());
-        return "report/reportPerfumeName";
+        return "report/reportPerfumeChoice";
     }
 
 
@@ -67,8 +67,8 @@ public class ReportController {
      * @author Fardin
      * @since 2025-10-28
      */
-    @RequestMapping("/perfume/name/submit")
-    public String reportPerfumeNameSubmit(Model model, @ModelAttribute("reportInput") ReportPerfume reportPerfume) {
+    @RequestMapping("/perfume/choice/submit")
+    public String reportPerfumeChoiceSubmit(Model model, @ModelAttribute("reportInput") ReportPerfume reportPerfume) {
 
         System.out.println("Name from input form: " + reportPerfume.getPerfumeChoice());
 
@@ -90,7 +90,7 @@ public class ReportController {
         model.addAttribute("reportInput", reportPerfume);
 
 
-        return "report/reportPerfumeName"; //send user to another view
+        return "report/reportPerfumeChoice"; //send user to another view
     }
 
 
