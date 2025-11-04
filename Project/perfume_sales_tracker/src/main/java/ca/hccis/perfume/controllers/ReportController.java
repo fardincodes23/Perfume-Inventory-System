@@ -1,6 +1,6 @@
 package ca.hccis.perfume.controllers;
 
-import ca.hccis.perfume.dao.PerfumeTransactionDAO;
+import ca.hccis.perfume.bo.PerfumeTransactionBO;
 import ca.hccis.perfume.entity.ReportPerfume;
 import ca.hccis.perfume.jpa.entity.PerfumeTransaction;
 import org.slf4j.Logger;
@@ -51,7 +51,7 @@ public class ReportController {
      * @since 2025-10-28
      */
     @RequestMapping("/perfume/choice")
-    public String reportPerfumeChoice(Model model, HttpSession session) {
+    public String reportPerfumeChoice(Model model) {
         logger.info("Running the reports controller perfume name method");
         model.addAttribute("reportInput", new ReportPerfume());
         return "report/reportPerfumeChoice";
@@ -76,8 +76,10 @@ public class ReportController {
         //Write some model code to go to the db and get the appropriate reports
         //Add them to a collection in the ReportPerfume class
 
-        PerfumeTransactionDAO perfumeDAO = new PerfumeTransactionDAO();
-        ArrayList<PerfumeTransaction> theList = perfumeDAO.selectAllByPerfumeChoice(reportPerfume.getPerfumeChoice());
+
+
+        PerfumeTransactionBO perfumeTransactionBO = new PerfumeTransactionBO();
+        ArrayList<PerfumeTransaction> theList = perfumeTransactionBO.processSelectAllByPerfumeChoice(reportPerfume.getPerfumeChoice());
         reportPerfume.setPerfumeTransaction(theList);
 
 

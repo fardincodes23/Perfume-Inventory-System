@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class PerfumeTransactionBO {
 
-    public static ArrayList<PerfumeTransaction> processSelectAllByPerfumeName(String name) {
+    public static ArrayList<PerfumeTransaction> processSelectAllByPerfumeChoice(String perfumeChoice) {
 
         //**********************************************************************
         // This could be done using the repository but there will be times when
@@ -17,7 +17,7 @@ public class PerfumeTransactionBO {
         // are to use jdbc to obtain the data for the report.
         //**********************************************************************
         PerfumeTransactionDAO perfumeTransactionDAO = new PerfumeTransactionDAO();
-        ArrayList<PerfumeTransaction> records = perfumeTransactionDAO.selectAllByPerfumeChoice(name);
+        ArrayList<PerfumeTransaction> records = perfumeTransactionDAO.selectAllByPerfumeChoice(perfumeChoice);
 
         //Also write the report to a file
         CisUtilityFile.writeReportToFile("perfumeChoiceReport", records);
