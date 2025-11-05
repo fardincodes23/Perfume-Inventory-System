@@ -5,7 +5,7 @@
 <nav th:fragment="navbar" class="navbar nav" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a th:href="@{/}" class="vert-align">
-            <img src="/images/ic_launcher.png" class="logo"></span>
+            <img src="/images/logoPerfumeWaterColor.jpeg" class="logo"></span>
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" id="burg"
@@ -18,16 +18,30 @@
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a th:href="@{/templates/perfume}" href="/buspass" class=" navbar-link">Perfumes</a>
-                <div class="navbar-dropdown">
-                    <!--                    <a th:href="@{/buspass}" class="navbar-item">View All Perfume Records</a>-->
-                    <a th:href="@{/report/perfume/records}" class="navbar-item"
-                       th:text="#{label.report.perfume.records}">Perfume All Records</a>
-                    <hr class="navbar-divider">
-                </div>
-            </div>
-            <div class="navbar-end">
+
+
+                    <!--working to show the list of sold perfumes under Perfumes navBar
+                    @author: Fardin
+                    @since 2025-11-05
+                    -->
+
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a th:href="@{/report/records}" class="navbar-link"> Perfume Sale Transactions</a>
+                        <div class="navbar-dropdown">
+                            <a th:href="@{/report/records}" class="navbar-item">All records</a>
+                            <hr class="navbar-divider">
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+            <!--Reports Menu-->
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a th:href="@{/report}" href="/about" class=" navbar-link">Reports</a>
                     <div class="navbar-dropdown">
@@ -54,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
         </div>
     </div>
 </nav>

@@ -14,11 +14,11 @@ Page: Perfume List
 -->
 
 <div class="container has-text-centered">
-    <h2 class="title is-2" th:text="#{label.report.perfume.records}">Perfume List</h2>
+    <h2 class="title is-2" th:text="#{report.records}">All Perfume Sales</h2>
 
     <p th:text="${message}" style="color:red; font-weight:bold;"></p>
 
-    <table class="table is-striped is-fullwidth" th:if="${perfumeTransaction != null}">
+    <table class="table is-striped is-fullwidth" th:if="${perfumes != null}">
         <thead>
         <tr>
             <th>ID</th>
@@ -35,19 +35,20 @@ Page: Perfume List
         </tr>
         </thead>
         <tbody>
-        <tr th:each="p : ${perfumeTransaction}">
-            <td th:text="${t.id}"></td>
-            <td th:text="${t.transactionDate}"></td>
-            <td th:text="${t.customerName}"></td>
-            <td th:text="${t.phoneNumber}"></td>
-            <td th:text="${t.perfumeChoice}"></td>
-            <td th:text="${t.perfumeSize}"></td>
-            <td th:text="${t.pricePerBottle}"></td>
-            <td th:text="${t.quantity}"></td>
-            <td th:text="${t.subTotal}"></td>
-            <td th:text="${t.taxAmount}"></td>
-            <td th:text="${t.total}"></td>
+        <tr th:each="p : ${perfumes}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.transactionDate}"></td>
+            <td th:text="${p.customerName}"></td>
+            <td th:text="${p.phoneNumber}"></td>
+            <td th:text="${p.perfumeChoice}"></td>
+            <td th:text="${p.perfumeSize}"></td>
+            <td th:text="${p.pricePerBottle}"></td>
+            <td th:text="${p.quantity}"></td>
+            <td th:text="${p.subTotal}"></td>
+            <td th:text="${p.taxAmount}"></td>
+            <td th:text="${p.totalPrice}"></td>
         </tr>
+
         </tbody>
     </table>
 

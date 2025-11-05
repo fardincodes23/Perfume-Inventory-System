@@ -1,6 +1,7 @@
 package ca.hccis.perfume.controllers;
 
 import ca.hccis.perfume.bo.PerfumeTransactionBO;
+import ca.hccis.perfume.dao.PerfumeTransactionDAO;
 import ca.hccis.perfume.entity.ReportPerfume;
 import ca.hccis.perfume.jpa.entity.PerfumeTransaction;
 import org.slf4j.Logger;
