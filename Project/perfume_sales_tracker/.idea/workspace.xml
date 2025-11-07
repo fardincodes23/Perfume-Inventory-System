@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/logoPerfume.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/logoPerfumeWaterColor.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/logoPerfumeWhite.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/bo/BusPassValidationBO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/BusPassController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/dao/PerfumeTransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/dao/PerfumeTransactionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/PerfumeTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/PerfumeTransaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfume/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfume/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfume/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfume/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/report/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/report/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/report/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,46 +41,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Database Script.createDatabase1.sql.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.TheApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Project/perfume_sales_tracker/src/main/resources/static/images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Database Script.createDatabase1.sql.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.TheApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Project/perfume_sales_tracker",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb",
+      "mysql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;f3e22468-dcde-46ce-a7f9-efb84056c3cb&quot;,
-      &quot;582c2d9a-2fb5-4b78-b1d1-333c03f2da6e&quot;,
-      &quot;11c99a47-0aaa-4bb4-9081-03c4f5f7f026&quot;,
-      &quot;9a49d57d-b04a-4b6f-a76a-1d1eb0557526&quot;,
-      &quot;339cfdf0-3db3-43dc-8f6c-98e20f98911c&quot;
+    "RunConfigurationTargetLRU": [
+      "f3e22468-dcde-46ce-a7f9-efb84056c3cb",
+      "582c2d9a-2fb5-4b78-b1d1-333c03f2da6e",
+      "11c99a47-0aaa-4bb4-9081-03c4f5f7f026",
+      "9a49d57d-b04a-4b6f-a76a-1d1eb0557526",
+      "339cfdf0-3db3-43dc-8f6c-98e20f98911c"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\fardi\Documents\CIS2232\cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t\Project\perfume_sales_tracker\src\main\resources\static\images" />
@@ -143,7 +141,9 @@
       <workItem from="1761697351290" duration="30135000" />
       <workItem from="1761837037955" duration="7769000" />
       <workItem from="1762268001318" duration="9299000" />
-      <workItem from="1762331946402" duration="9415000" />
+      <workItem from="1762331946402" duration="28265000" />
+      <workItem from="1762443307797" duration="11000" />
+      <workItem from="1762446101383" duration="5384000" />
     </task>
     <servers />
   </component>

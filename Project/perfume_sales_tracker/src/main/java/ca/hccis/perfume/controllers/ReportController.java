@@ -58,6 +58,37 @@ public class ReportController {
         return "report/reportPerfumeChoice";
     }
 
+    /**
+     * Method to send user to the Perfume Sale Transaction to view All Records.
+     *
+     * @param model
+     * @return view for perfume/list
+     * @author Fardin
+     * @since 2025-11-06
+     */
+
+    @RequestMapping("/records")
+    public String listAllTransactions(Model model) {
+        logger.info("Running the reports controller to list all transactions");
+
+        // Step 1- Getting the data from the database
+        PerfumeTransactionDAO transactionDAO = new PerfumeTransactionDAO();
+        ArrayList<PerfumeTransaction> allTransactions = transactionDAO.selectAll();
+
+        // Step 2 - Put the list into the Spring Model using the KEY "records"
+        // This key matches the th:each="p : ${records}" in perfume/list.html
+        model.addAttribute("records", allTransactions);
+
+        // Step 3 - Check for an empty list
+        if (allTransactions == null || allTransactions.isEmpty()) {
+            model.addAttribute("message", "No perfume transactions found in the database.");
+        }
+
+        // Step 4 - Return the view name
+        // This tells Spring to load src/main/resources/templates/perfume/list.html
+        return "perfume/list";
+    }
+
 
     /**
      * Process the report
@@ -78,7 +109,6 @@ public class ReportController {
         //Add them to a collection in the ReportPerfume class
 
 
-
         PerfumeTransactionBO perfumeTransactionBO = new PerfumeTransactionBO();
         ArrayList<PerfumeTransaction> theList = perfumeTransactionBO.processSelectAllByPerfumeChoice(reportPerfume.getPerfumeChoice());
         reportPerfume.setPerfumeTransaction(theList);
@@ -95,9 +125,6 @@ public class ReportController {
 
         return "report/reportPerfumeChoice"; //send user to another view
     }
-
-
-//Remove below later
 
 
 }

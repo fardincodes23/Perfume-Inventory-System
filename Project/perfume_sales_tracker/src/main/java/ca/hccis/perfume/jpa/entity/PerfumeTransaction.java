@@ -63,6 +63,8 @@ public class PerfumeTransaction {
     private Double total;
 
     // ====== Getters and Setters ======
+
+
     public Integer getId() {
         return id;
     }

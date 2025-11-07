@@ -51,6 +51,11 @@ public class PerfumeTransactionDAO {
             stmt = conn.createStatement();
             rs = stmt.executeQuery("SELECT * FROM PerfumeTransaction;");
 
+            //  Temporary line for debugging:
+            if (rs.isBeforeFirst() == false) {
+                System.out.println("DEBUG: The SQL query returned ZERO rows.");
+            }
+
             records = new ArrayList<>();
 
             while (rs.next()) {
@@ -65,7 +70,7 @@ public class PerfumeTransactionDAO {
                 record.setQuantity(rs.getInt("quantity"));
                 record.setSubTotal(rs.getDouble("subTotal"));
                 record.setTaxAmount(rs.getDouble("taxAmount"));
-                record.setTotal(rs.getDouble("totalPrice"));
+                record.setTotal(rs.getDouble("total"));
 
 
                 records.add(record);
@@ -118,11 +123,6 @@ public class PerfumeTransactionDAO {
                 record.setTaxAmount(rs.getDouble("taxAmount"));
                 record.setTotal(rs.getDouble("total"));
 
-//                checking if DAO is
-//
-//
-//                returning data
-                System.out.println("Loaded record for: " + rs.getString("perfumeChoice"));
 
                 records.add(record);
             }

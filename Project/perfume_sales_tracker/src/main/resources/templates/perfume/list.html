@@ -18,7 +18,7 @@ Page: Perfume List
 
     <p th:text="${message}" style="color:red; font-weight:bold;"></p>
 
-    <table class="table is-striped is-fullwidth" th:if="${perfumes != null}">
+    <table class="table is-striped is-fullwidth" th:if="${records != null}">
         <thead>
         <tr>
             <th>ID</th>
@@ -35,7 +35,7 @@ Page: Perfume List
         </tr>
         </thead>
         <tbody>
-        <tr th:each="p : ${perfumes}">
+        <tr th:each="p : ${records}">
             <td th:text="${p.id}"></td>
             <td th:text="${p.transactionDate}"></td>
             <td th:text="${p.customerName}"></td>
@@ -46,7 +46,7 @@ Page: Perfume List
             <td th:text="${p.quantity}"></td>
             <td th:text="${p.subTotal}"></td>
             <td th:text="${p.taxAmount}"></td>
-            <td th:text="${p.totalPrice}"></td>
+            <td th:text="${p.total}"></td>
         </tr>
 
         </tbody>
