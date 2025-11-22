@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title>Add New Perfume Sale</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<div class="container">
+    <h2 class="title is-2">Add New Perfume Sale Transaction</h2>
+
+    <form th:action="@{/perfumetransaction/save}" th:object="${perfumeTransaction}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="field">
+            <label class="label">Customer Name:</label>
+            <div class="control">
+                <input type="text" th:field="*{customerName}" class="input" />
+            </div>
+            <p th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="help is-danger">Error Message</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Perfume Choice:</label>
+            <div class="control">
+                <input type="text" th:field="*{perfumeChoice}" class="input" />
+            </div>
+            <p th:if="${#fields.hasErrors('perfumeChoice')}" th:errors="*{perfumeChoice}" class="help is-danger">Error Message</p>
+        </div>
+
+        <div class="control">
+            <button type="submit" class="button is-link">Save Transaction</button>
+        </div>
+    </form>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

@@ -26,14 +26,23 @@
                     -->
 
 
-                    <div class="navbar-item has-dropdown is-hoverable">
+                   <!-- <div class="navbar-item has-dropdown is-hoverable">
                         <a th:href="@{/report/records}" class="navbar-link"> Perfume Sale Transactions</a>
                         <div class="navbar-dropdown">
                             <a th:href="@{/report/records}" class="navbar-item">All records</a>
                             <hr class="navbar-divider">
                         </div>
                     </div>
+-->
 
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a th:href="@{/templates/perfumetransaction}" href="/perfumetransaction/" class="accent navbar-link">Records</a>
+                <div class="accent-background navbar-dropdown">
+                    <a th:href="@{/perfumetransaction/list}">Perfume Transactions (CRUD)</a>
+                    <a th:href="@{/templates/perfumetransaction}" class="accent navbar-item">View</a>
+                    <a th:href="@{/templates/perfumetransaction/list/edit}" class="accent navbar-item">List Edit</a>
+                </div>
+            </div>
 
 
 
