@@ -1,0 +1,35 @@
+he has created a custom css called cisStyles-
+
+.perfume-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.perfume-table th, .skills-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.perfume-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.perfume-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.centered2 {
+    text-align: center;
+}
+
+.icon i {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.icon i:hover {
+    color: #007bff;
+}

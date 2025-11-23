@@ -156,6 +156,12 @@ TODO: change to html instead of using root.*/
     color: var(--main-color-bright) !important
 }
 
+.accent{
+    color: var(--main-color-bright) !important
+}
+.accent-background{
+    background-color: var(--main-color-bright) !important
+}
 
 /*better constrast, otherwise you can't see anything on a bad monitor.'*/
 body,p,strong,th{
