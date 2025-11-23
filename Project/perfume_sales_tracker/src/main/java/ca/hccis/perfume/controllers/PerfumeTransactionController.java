@@ -1,72 +1,134 @@
 package ca.hccis.perfume.controllers;
 
-import ca.hccis.perfume.repositories.PerfumeTransactionRepository; // The JPA Repository
+import ca.hccis.perfume.repositories.PerfumeTransactionRepository;
 import ca.hccis.perfume.jpa.entity.PerfumeTransaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/perfumetransaction") // Base URL for all actions: /perfumetransaction/...
+@RequestMapping("/perfumetransaction")
 public class PerfumeTransactionController {
 
-    // Inject the JPA Repository (DAO replacement)
+    private final PerfumeTransactionRepository _ptr;
+    private static final Logger logger = LoggerFactory.getLogger(PerfumeTransactionController.class);
+
     @Autowired
-    private PerfumeTransactionRepository perfumeTransactionRepository;
+    public PerfumeTransactionController(PerfumeTransactionRepository ptr) {
+        _ptr = ptr;
+    }
 
-    // ----------------------------------------------------------------------
-    // C - CREATE: Method to show the blank Add Form
-    // Maps to: http://localhost:8080/perfumetransaction/add
-    // ----------------------------------------------------------------------
-    @GetMapping("/add")
-    public String showAddForm(Model model) {
-        // 1. Give the form a blank object to bind to
+    /**
+     * Home page - Lists all transactions
+     */
+    @RequestMapping("")
+    public String home(Model model, HttpSession session) {
+
+        // Load all transactions from DB
+        Iterable<PerfumeTransaction> transactions = _ptr.findAll();
+
+        model.addAttribute("perfumeTransactions", transactions);
+        // This blank object is needed for the Search form on the list page
         model.addAttribute("perfumeTransaction", new PerfumeTransaction());
-        // 2. Return the new add template
-        return "perfumetransaction/add";
-    }
 
-    // ----------------------------------------------------------------------
-    // C - CREATE: Method to handle the POST submission (Saves the record)
-    // ----------------------------------------------------------------------
-    @PostMapping("/save")
-    public String saveTransaction(@Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
-                                  BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            // If validation fails, return to the form with error messages
-            return "perfumetransaction/add";
-        }
-
-        // Use the JPA Repository's save method
-        perfumeTransactionRepository.save(perfumeTransaction);
-
-        // Redirect to the list view to show the saved record
-        return "redirect:/perfumetransaction/list";
-    }
-
-    // ----------------------------------------------------------------------
-    // R - READ: Method to show the list of all transactions
-    // Maps to: http://localhost:8080/perfumetransaction/list
-    // ----------------------------------------------------------------------
-    @GetMapping("/list")
-    public String listAllTransactions(Model model) {
-        // Use JPA Repository's findAll() to get all records
-        model.addAttribute("transactions", perfumeTransactionRepository.findAll());
         return "perfumetransaction/list";
     }
 
-    // ----------------------------------------------------------------------
-    // D - DELETE: Method to delete a record
-    // Maps to: /perfumetransaction/delete?id=5
-    // ----------------------------------------------------------------------
-    @GetMapping("/delete")
-    public String deleteTransaction(@RequestParam int id) {
-        perfumeTransactionRepository.deleteById(id);
-        // Redirect back to the list
-        return "redirect:/perfumetransaction/list";
+    /**
+     * Delete a transaction
+     */
+    @RequestMapping("/delete/{id}")
+    public String delete(Model model, @PathVariable int id) {
+        try {
+            _ptr.deleteById(id);
+            model.addAttribute("messageSuccess", "Transaction deleted");
+        } catch(Exception e){
+            model.addAttribute("messageError", "Exception deleting transaction");
+        }
+
+        // Reload the list
+        Iterable<PerfumeTransaction> transactions = _ptr.findAll();
+        model.addAttribute("perfumeTransactions", transactions);
+        model.addAttribute("perfumeTransaction", new PerfumeTransaction());
+        return "perfumetransaction/list";
+    }
+
+    /**
+     * Page to add new entity
+     */
+    @RequestMapping("/add")
+    public String add(Model model, HttpSession session) {
+        PerfumeTransaction perfumeTransaction = new PerfumeTransaction();
+        // You might want to set default date here if needed
+        model.addAttribute("perfumeTransaction", perfumeTransaction);
+        return "perfumetransaction/add";
+    }
+
+    /**
+     * Page to edit an existing entity
+     */
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable int id, Model model, HttpSession session) {
+
+        Optional<PerfumeTransaction> transaction = _ptr.findById(id);
+        if (transaction.isPresent()) {
+            model.addAttribute("perfumeTransaction", transaction.get());
+            return "perfumetransaction/add"; // Re-uses the add page
+        }
+
+        model.addAttribute("messageError", "Could not load the transaction");
+        return "redirect:/perfumetransaction";
+    }
+
+    /**
+     * Submit method (Processes both Add and Edit)
+     */
+    @RequestMapping("/submit")
+    public String submit(Model model, HttpServletRequest request,
+                         @Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
+                         BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("Validation error");
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                System.out.println(error.getDefaultMessage());
+            }
+            // Send them back to the add page to fix errors
+            return "perfumetransaction/add";
+        }
+
+        // Calculate total if needed before saving (Optional business logic)
+        // perfumeTransaction.setTotal(perfumeTransaction.getQuantity() * perfumeTransaction.getPricePerBottle());
+
+        _ptr.save(perfumeTransaction);
+        return "redirect:/perfumetransaction";
+    }
+
+    /**
+     * Search for a customer name
+     */
+    @RequestMapping("/search")
+    public String search(Model model, @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction) {
+
+        // Use the repository method we added to find by customer name
+        List<PerfumeTransaction> searchResults = _ptr.findByCustomerNameContaining(perfumeTransaction.getCustomerName());
+
+        model.addAttribute("perfumeTransactions", searchResults);
+        logger.debug("searched for name:" + perfumeTransaction.getCustomerName());
+
+        return "perfumetransaction/list";
     }
 }

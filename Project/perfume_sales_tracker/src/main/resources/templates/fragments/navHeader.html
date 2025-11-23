@@ -36,11 +36,17 @@
 -->
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a th:href="@{/templates/perfumetransaction}" href="/perfumetransaction/" class="accent navbar-link">Records</a>
-                <div class="accent-background navbar-dropdown">
-                    <a th:href="@{/perfumetransaction/list}">Perfume Transactions (CRUD)</a>
-                    <a th:href="@{/templates/perfumetransaction}" class="accent navbar-item">View</a>
-                    <a th:href="@{/templates/perfumetransaction/list/edit}" class="accent navbar-item">List Edit</a>
+                <a th:href="@{/perfumetransaction}" href="/perfumetransaction/" class=" navbar-link">ALL Transaction Records</a>
+
+                <div class="navbar-dropdown">
+
+
+                    <!--Added my dropdown ALL Transaction Records list-->
+                    <a th:href="@{/perfumetransaction/list}" class="navbar-item"
+                       th:text="#{label.add.edit}">Perfume Transactions (CRUD)</a>
+
+
+                    <hr class="navbar-divider">
                 </div>
             </div>
 

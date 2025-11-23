@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/PerfumeTransactionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/repositories/PerfumeTransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/PerfumeTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/PerfumeTransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/repositories/PerfumeTransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/repositories/PerfumeTransactionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfume/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumeMain/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfume/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumeMain/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +141,7 @@
       <workItem from="1762443307797" duration="11000" />
       <workItem from="1762446101383" duration="5384000" />
       <workItem from="1763781871556" duration="3026000" />
-      <workItem from="1763832051174" duration="1484000" />
+      <workItem from="1763832051174" duration="8628000" />
     </task>
     <servers />
   </component>
