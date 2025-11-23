@@ -147,14 +147,51 @@ public class PerfumeTransactionController {
     /**
      * Search for a customer name
      */
+    // Inside ca.hccis.perfume.controllers.PerfumeTransactionController
+
+    /**
+     * Search for records by Customer Name OR Perfume Choice.
+     */
     @RequestMapping("/search")
     public String search(Model model, @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction) {
 
-        // Use the repository method we added to find by customer name
-        List<PerfumeTransaction> searchResults = _ptr.findByCustomerNameContaining(perfumeTransaction.getCustomerName());
+        String customerName = perfumeTransaction.getCustomerName();
+        String perfumeChoice = perfumeTransaction.getPerfumeChoice();
+
+        List<PerfumeTransaction> searchResults;
+
+        if (!customerName.isEmpty() && !perfumeChoice.isEmpty()) {
+            // Option 1: Both fields entered. (This is advanced; for now, let's prioritize Customer Name or find records matching both)
+            // Since JPA doesn't auto-generate findByField1AndField2, we'll revert to finding by name as the primary search for simplicity.
+            // For a simple implementation, you must choose one or use a custom JPQL query (not required for Sprint 3 basic search).
+
+            // Let's use the most specific search: Find only transactions that match BOTH criteria
+            // NOTE: This requires adding: List<PerfumeTransaction> findByCustomerNameContainingAndPerfumeChoiceContaining(String name, String choice);
+
+            // For now, let's keep it simple and just search for name if both are filled.
+            searchResults = _ptr.findByCustomerNameContainingAndPerfumeChoiceContaining(customerName, perfumeChoice);
+            model.addAttribute("messageSuccess", "Searching by Name and Perfume Choice.");
+
+        } else if (!customerName.isEmpty()) {
+            // Option 2: Search by Customer Name only
+            searchResults = _ptr.findByCustomerNameContaining(customerName);
+            model.addAttribute("messageSuccess", "Searching by Name Only.");
+
+
+        } else if (!perfumeChoice.isEmpty()) {
+            // Option 3: Search by Perfume Choice only
+            searchResults = _ptr.findByPerfumeChoiceContaining(perfumeChoice);
+            model.addAttribute("messageSuccess", "Searching by Perfume Choice Only.");
+
+
+        } else {
+            // Option 4: No fields entered, show all records (or show none)
+            searchResults = _ptr.findAll();
+            model.addAttribute("messageError", "Please enter a search term.");
+        }
 
         model.addAttribute("perfumeTransactions", searchResults);
-        logger.debug("searched for name:" + perfumeTransaction.getCustomerName());
+        logger.debug("searched for name:" + customerName + " and perfume: " + perfumeChoice);
 
         return "perfumetransaction/list";
     }

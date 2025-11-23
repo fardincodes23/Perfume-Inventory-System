@@ -13,6 +13,10 @@ public interface PerfumeTransactionRepository extends JpaRepository<PerfumeTrans
     // OPTIONAL requirement (example for FindBy non-primary key field):
     List<PerfumeTransaction> findByCustomerNameContaining(String customerName);
 
-    
+    //find by perfume choice
+    List<PerfumeTransaction> findByPerfumeChoiceContaining(String perfumeChoice);
+
+    //find by perfume choice and customer name
+    List<PerfumeTransaction> findByCustomerNameContainingAndPerfumeChoiceContaining(String name, String choice);
 
 }
