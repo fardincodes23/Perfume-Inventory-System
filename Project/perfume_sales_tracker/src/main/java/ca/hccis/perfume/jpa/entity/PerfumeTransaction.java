@@ -1,7 +1,6 @@
 package ca.hccis.perfume.jpa.entity;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 /**
  * Entity class representing a perfume sales transaction.
@@ -22,19 +21,15 @@ public class PerfumeTransaction {
     @Column(name = "transactionDate", nullable = false, length = 20)
     private String transactionDate;
 
-    @Size(max = 50)
-    @NotNull
-    @Column(name = "customerName", nullable = false, length = 50)
+    @Size(min = 2, max = 50, message = "Customer Name must be between 2 and 50 characters.")
+    @NotNull(message = "Customer Name is required.")
     private String customerName;
 
-    @Size(max = 15)
-    @NotNull
-    @Column(name = "phoneNumber", nullable = false, length = 15)
+    @Size(min = 10, max = 15, message = "Phone Number format is invalid.")
+    @NotNull(message = "Phone Number is required.")
     private String phoneNumber;
 
-    @Size(max = 50)
-    @NotNull
-    @Column(name = "perfumeChoice", nullable = false, length = 50)
+    @NotNull(message = "Perfume Choice cannot be empty.")
     private String perfumeChoice;
 
     @Size(max = 10)
@@ -42,23 +37,23 @@ public class PerfumeTransaction {
     @Column(name = "perfumeSize", nullable = false, length = 10)
     private String perfumeSize;
 
-    @NotNull
-    @Column(name = "pricePerBottle", nullable = false)
-    private Double pricePerBottle;
+    @DecimalMin(value = "0.01", message = "Price must be greater than zero.")
+    @NotNull(message = "Price per bottle is required.")
+    private double pricePerBottle;
 
-    @NotNull
-    @Column(name = "quantity", nullable = false)
-    private Integer quantity;
+    @Min(value = 1, message = "Quantity must be at least 1.")
+    @Max(value = 99, message = "Quantity cannot exceed 99.")
+    @NotNull(message = "Quantity is required.")
+    private int quantity;
 
-    @NotNull
+
     @Column(name = "subTotal", nullable = false)
     private Double subTotal;
 
-    @NotNull
+
     @Column(name = "taxAmount", nullable = false)
     private Double taxAmount;
 
-    @NotNull
     @Column(name = "total", nullable = false)
     private Double total;
 

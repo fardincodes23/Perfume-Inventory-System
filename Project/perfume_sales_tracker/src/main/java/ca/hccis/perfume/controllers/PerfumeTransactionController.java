@@ -55,7 +55,7 @@ public class PerfumeTransactionController {
         try {
             _ptr.deleteById(id);
             model.addAttribute("messageSuccess", "Transaction deleted");
-        } catch(Exception e){
+        } catch (Exception e) {
             model.addAttribute("messageError", "Exception deleting transaction");
         }
 
@@ -96,24 +96,51 @@ public class PerfumeTransactionController {
     /**
      * Submit method (Processes both Add and Edit)
      */
+    // Inside ca.hccis.perfume.controllers.PerfumeTransactionController
+
     @RequestMapping("/submit")
     public String submit(Model model, HttpServletRequest request,
                          @Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
                          BindingResult bindingResult) {
 
+        // 1. Check for validation errors (e.g., missing Customer Name, Quantity < 1)
         if (bindingResult.hasErrors()) {
-            System.out.println("Validation error");
-            for (ObjectError error : bindingResult.getAllErrors()) {
-                System.out.println(error.getDefaultMessage());
-            }
-            // Send them back to the add page to fix errors
-            return "perfumetransaction/add";
+            System.out.println("Validation error detected.");
+            return "perfumetransaction/add"; // Go back to form to fix input errors
         }
 
-        // Calculate total if needed before saving (Optional business logic)
-        // perfumeTransaction.setTotal(perfumeTransaction.getQuantity() * perfumeTransaction.getPricePerBottle());
+        // --- BUSINESS LOGIC: CALCULATE PRICE ---
+        try {
+            double quantity = perfumeTransaction.getQuantity();
+            double pricePerBottle = perfumeTransaction.getPricePerBottle();
 
+            // Calculate Sub Total
+            double sub = quantity * pricePerBottle;
+
+            // Calculate Tax (e.g., 10%)
+            final double TAX_RATE = 0.10;
+            double tax = sub * TAX_RATE;
+
+            // Calculate Total
+            double total = sub + tax;
+
+            // Set the calculated values back into the object
+            perfumeTransaction.setSubTotal(sub);
+            perfumeTransaction.setTaxAmount(tax);
+            perfumeTransaction.setTotal(total);
+
+        } catch (NullPointerException | ArithmeticException e) {
+            // This catch block handles cases where the quantity or price was somehow null
+            // (though @NotNull should catch it, this is a safety measure).
+            System.err.println("Error during calculation: " + e.getMessage());
+            model.addAttribute("messageError", "A fatal calculation error occurred. Check price and quantity values.");
+            return "perfumetransaction/add";
+        }
+        // --- END BUSINESS LOGIC ---
+
+        // 2. Save the fully populated object (which now has subTotal, taxAmount, and total)
         _ptr.save(perfumeTransaction);
+
         return "redirect:/perfumetransaction";
     }
 

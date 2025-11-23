@@ -58,17 +58,17 @@
 
         <p>
             <label>Sub Total:</label>
-            <input type="number" step="0.01" th:field="*{subTotal}" />
+            <input type="number" step="0.01" th:field="*{subTotal}" readonly="readonly" />
         </p>
 
         <p>
             <label>Tax Amount:</label>
-            <input type="number" step="0.01" th:field="*{taxAmount}" />
+            <input type="number" step="0.01" th:field="*{taxAmount}" readonly="readonly" />
         </p>
 
         <p>
             <label>Total:</label>
-            <input type="number" step="0.01" th:field="*{total}" />
+            <input type="number" step="0.01" th:field="*{total}" readonly="readonly" />
         </p>
 
         <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
