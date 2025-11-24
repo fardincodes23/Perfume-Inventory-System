@@ -12,6 +12,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,20 +51,22 @@ public class PerfumeTransactionController {
     /**
      * Delete a transaction
      */
+
     @RequestMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable int id) {
+    public String delete(Model model, @PathVariable int id, RedirectAttributes redirectAttributes) {
         try {
             _ptr.deleteById(id);
-            model.addAttribute("messageSuccess", "Transaction deleted");
+
+            // Use RedirectAttributes to pass the message across the redirect
+            redirectAttributes.addFlashAttribute("messageSuccess", "Transaction ID " + id + " was successfully deleted.");
+
         } catch (Exception e) {
-            model.addAttribute("messageError", "Exception deleting transaction");
+            // Use RedirectAttributes for the error message
+            redirectAttributes.addFlashAttribute("messageError", "Error deleting Transaction ID " + id + ". It may not exist.");
         }
 
-        // Reload the list
-        Iterable<PerfumeTransaction> transactions = _ptr.findAll();
-        model.addAttribute("perfumeTransactions", transactions);
-        model.addAttribute("perfumeTransaction", new PerfumeTransaction());
-        return "perfumetransaction/list";
+        // CRITICAL: Use "redirect:" to force the browser to make a new GET request to the list page
+        return "redirect:/perfumetransaction";
     }
 
     /**
@@ -99,16 +102,10 @@ public class PerfumeTransactionController {
     // Inside ca.hccis.perfume.controllers.PerfumeTransactionController
 
     @RequestMapping("/submit")
-    public String submit(Model model, HttpServletRequest request,
-                         @Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
-                         BindingResult bindingResult) {
+    public String submit(Model model, @Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
+                         BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        // 1. Check for validation errors (e.g., missing Customer Name, Quantity < 1)
-        if (bindingResult.hasErrors()) {
-            System.out.println("Validation error detected.");
-            return "perfumetransaction/add"; // Go back to form to fix input errors
-        }
-
+        // ... validation and calculation logic here ...
         // --- BUSINESS LOGIC: CALCULATE PRICE ---
         try {
             double quantity = perfumeTransaction.getQuantity();
@@ -136,10 +133,23 @@ public class PerfumeTransactionController {
             model.addAttribute("messageError", "A fatal calculation error occurred. Check price and quantity values.");
             return "perfumetransaction/add";
         }
-        // --- END BUSINESS LOGIC ---
 
-        // 2. Save the fully populated object (which now has subTotal, taxAmount, and total)
+        if (bindingResult.hasErrors()) {
+            // Validation fails, stay on the form page, no redirect needed
+            return "perfumetransaction/add";
+        }
+
+        // Check if an ID exists before saving
+        boolean isNew = perfumeTransaction.getId() == 0;
+
+        // Save the object (JPA handles Insert or Update based on ID)
         _ptr.save(perfumeTransaction);
+
+        if (isNew) {
+            redirectAttributes.addFlashAttribute("messageSuccess", "New Transaction added successfully!");
+        } else {
+            redirectAttributes.addFlashAttribute("messageSuccess", "Transaction ID " + perfumeTransaction.getId() + " updated successfully!");
+        }
 
         return "redirect:/perfumetransaction";
     }
@@ -161,14 +171,7 @@ public class PerfumeTransactionController {
         List<PerfumeTransaction> searchResults;
 
         if (!customerName.isEmpty() && !perfumeChoice.isEmpty()) {
-            // Option 1: Both fields entered. (This is advanced; for now, let's prioritize Customer Name or find records matching both)
-            // Since JPA doesn't auto-generate findByField1AndField2, we'll revert to finding by name as the primary search for simplicity.
-            // For a simple implementation, you must choose one or use a custom JPQL query (not required for Sprint 3 basic search).
-
-            // Let's use the most specific search: Find only transactions that match BOTH criteria
-            // NOTE: This requires adding: List<PerfumeTransaction> findByCustomerNameContainingAndPerfumeChoiceContaining(String name, String choice);
-
-            // For now, let's keep it simple and just search for name if both are filled.
+            //Option 1: Search by both customer name and perfume choice
             searchResults = _ptr.findByCustomerNameContainingAndPerfumeChoiceContaining(customerName, perfumeChoice);
             model.addAttribute("messageSuccess", "Searching by Name and Perfume Choice.");
 
