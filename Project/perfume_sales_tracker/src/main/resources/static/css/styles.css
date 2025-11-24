@@ -55,9 +55,15 @@ tr:nth-child(even){
 h2{
     /*    margin-bottom:-10px!important*/
 }
+
+/*
+display:inline-block!important
+removed this as it is conflicting with the bootstrap styles
+*/
+
 table{
     padding:0!important;
-    display:inline-block!important
+
 }
 
 .logo{
