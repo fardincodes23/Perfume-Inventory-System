@@ -93,8 +93,22 @@
             <label>Total:</label>
             <input type="number" step="0.01" th:field="*{total}" readonly="readonly" />
         </p>
+<!--buttons-->
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
 
-        <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
+                <button type="submit" class="btn btn-success me-3">
+                    Save Transaction
+                </button>
+
+                <a th:href="@{/perfumetransaction}" class="btn btn-warning text-dark">
+                    Go Back to List
+                </a>
+
+            </div>
+        </div>
+
+
     </form>
 
 </div>

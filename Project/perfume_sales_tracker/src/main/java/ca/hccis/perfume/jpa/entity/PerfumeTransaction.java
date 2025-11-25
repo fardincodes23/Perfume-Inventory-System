@@ -25,7 +25,7 @@ public class PerfumeTransaction {
     @NotNull(message = "Customer Name is required.")
     private String customerName;
 
-    @Size(min = 10, max = 15, message = "Phone Number format is invalid.")
+    @Size(max = 15, message = "Phone Number format is invalid.")
     @NotNull(message = "Phone Number is required.")
     private String phoneNumber;
 
