@@ -14,11 +14,22 @@
 
         <input type="hidden" th:field="*{id}" />
 
-        <p>
+       <!-- <p>
             <label>Date:</label>
-            <input type="text" th:field="*{transactionDate}" placeholder="YYYY-MM-DD" />
+            <input type="date" th:field="*{transactionDate}" placeholder="YYYY-MM-DD" />
         </p>
         <p class="cd" th:if="${#fields.hasErrors('transactionDate')}" th:errors="*{transactionDate}" style="color:red"></p>
+-->
+        <!--Adding a date box instead of manual typing-->
+        <p>
+            <label for="transactionDate">Transaction Date:</label>
+            <input type="date"
+                   id="transactionDate"
+                   th:field="*{transactionDate}"
+                   class="form-control" />
+
+            <span class="cd" th:if="${#fields.hasErrors('transactionDate')}" th:errors="*{transactionDate}" style="color:red"></span>
+        </p>
 
         <p>
             <label>Customer Name:</label>
@@ -32,9 +43,21 @@
         </p>
         <p class="cd" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" style="color:red"></p>
 
-        <p>
+        <!--<p>
             <label>Perfume Choice:</label>
             <input type="text" th:field="*{perfumeChoice}" />
+        </p>-->
+
+        <p>
+            <label for="perfumeChoice">Perfume Choice:</label>
+            <select id="perfumeChoice" th:field="*{perfumeChoice}" class="form-control">
+                <option value="">-- Select Brand --</option>
+
+                <option th:each="cv : ${perfumeBrands}"
+                        th:value="${cv.englishDescription}"
+                        th:text="${cv.englishDescription}">
+                </option>
+            </select>
         </p>
         <p class="cd" th:if="${#fields.hasErrors('perfumeChoice')}" th:errors="*{perfumeChoice}" style="color:red"></p>
 

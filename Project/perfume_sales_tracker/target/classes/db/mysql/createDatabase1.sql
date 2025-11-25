@@ -54,3 +54,49 @@ VALUES (1, '2025-10-01', 'Alice Johnson', '555-1234', 'Dior', '90ml', 40, 2, 80.
        (14, '2025-10-14', 'Noah Green', '555-9911', 'Gucci', '90ml', 40, 1, 40.00, 4.00, 44.00)
         ,
        (15, '2025-10-15', 'Olivia Roberts', '555-2233', 'Dior', '120ml', 60, 4, 240.00, 24.00, 264.00);
+
+
+-- Adding the optional codevalue thing to the project. for this i have created this table below
+
+-- 1. Create CodeType Table
+CREATE TABLE CodeType (
+                          codeTypeId int(3) NOT NULL COMMENT 'Primary Key',
+                          englishDescription varchar(100) NOT NULL,
+                          frenchDescription varchar(100) DEFAULT NULL,
+                          createdDateTime datetime DEFAULT NULL,
+                          createdUserId varchar(20) DEFAULT NULL,
+                          updatedDateTime datetime DEFAULT NULL,
+                          updatedUserId varchar(20) DEFAULT NULL,
+                          PRIMARY KEY (CodeTypeId)
+);
+
+-- 2. Create CodeValue Table (With Composite Key)
+CREATE TABLE CodeValue (
+                           codeTypeId int(3) NOT NULL,
+                           codeValueSequence int(3) NOT NULL,
+                           englishDescription varchar(100) NOT NULL,
+                           englishDescriptionShort varchar(20) NOT NULL,
+                           frenchDescription varchar(100) DEFAULT NULL,
+                           frenchDescriptionShort varchar(20) DEFAULT NULL,
+                           sortOrder int(3) DEFAULT NULL,
+                           createdDateTime datetime DEFAULT NULL,
+                           createdUserId varchar(20) DEFAULT NULL,
+                           updatedDateTime datetime DEFAULT NULL,
+                           updatedUserId varchar(20) DEFAULT NULL,
+                           PRIMARY KEY (codeTypeId, codeValueSequence)
+);
+
+-- 3. INSERT DATA
+-- Let's say ID 100 is for "Perfume Brands"
+INSERT INTO CodeType (codeTypeId, englishDescription, createdDateTime)
+VALUES (100, 'Perfume Brands', NOW());
+
+-- Now insert the specific brands linked to Type 100
+INSERT INTO CodeValue (codeTypeId, codeValueSequence, englishDescription, englishDescriptionShort, sortOrder)
+VALUES (100, 1, 'Chanel', 'Chanel', 1);
+
+INSERT INTO CodeValue (codeTypeId, codeValueSequence, englishDescription, englishDescriptionShort, sortOrder)
+VALUES (100, 2, 'Dior', 'Dior', 2);
+
+INSERT INTO CodeValue (codeTypeId, codeValueSequence, englishDescription, englishDescriptionShort, sortOrder)
+VALUES (100, 3, 'Gucci', 'Gucci', 3);

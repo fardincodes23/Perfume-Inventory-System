@@ -32,9 +32,21 @@
                         <input type="text" th:field="*{customerName}" class="form-control"/>
                     </div>
 
-                    <div class="input-group" style="max-width: 300px;">
+                    <!--<div class="input-group" style="max-width: 300px;">
                         <span class="input-group-text">Perfume Choice:</span>
                         <input type="text" th:field="*{perfumeChoice}" class="form-control"/>
+                    </div>-->
+
+                    <div class="input-group" style="max-width: 300px;">
+                        <span class="input-group-text">Perfume Choice:</span>
+                        <select th:field="*{perfumeChoice}"  class="form-control">
+                            <option value="">-- All Brands --</option>
+
+                            <option th:each="cv : ${perfumeBrands}"
+                                    th:value="${cv.englishDescription}"
+                                    th:text="${cv.englishDescription}">
+                            </option>
+                        </select>
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-2 mt-sm-0">Search</button>

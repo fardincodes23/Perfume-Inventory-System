@@ -6,13 +6,7 @@ package ca.hccis.perfume.jpa.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,19 +15,26 @@ import javax.validation.constraints.Size;
  * @author bjmaclean
  */
 @Entity
-@Table(name = "codevalue")
+@Table(name = "CodeValue")
 public class CodeValue implements Serializable {
 
+    // 1. PRIMARY KEY DEFINITION
+    // This tells JPA the key is complex and defined in CodeValueId
+    @EmbeddedId
+    private CodeValueId id; // <-- MUST use the CodeValueId class
+
+    // 2. REGULAR COLUMNS
+    // Note: codeTypeId and codeValueSequence are NOT defined here,
+    // as they are part of the 'id' object.
+
+    // ... other columns like englishDescription, sortOrder, etc., go here ...
+
+
+
+
+
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "codeTypeId")
-    private int codeTypeId;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "codeValueSequence")
-    private Integer codeValueSequence;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -67,33 +68,8 @@ public class CodeValue implements Serializable {
 
     public CodeValue() {
     }
-
-    public CodeValue(Integer codeValueSequence) {
-        this.codeValueSequence = codeValueSequence;
-    }
-
-    public CodeValue(Integer codeValueSequence, int codeTypeId, String englishDescription, String englishDescriptionShort) {
-        this.codeValueSequence = codeValueSequence;
-        this.codeTypeId = codeTypeId;
-        this.englishDescription = englishDescription;
-        this.englishDescriptionShort = englishDescriptionShort;
-    }
-
-    public int getCodeTypeId() {
-        return codeTypeId;
-    }
-
-    public void setCodeTypeId(int codeTypeId) {
-        this.codeTypeId = codeTypeId;
-    }
-
-    public Integer getCodeValueSequence() {
-        return codeValueSequence;
-    }
-
-    public void setCodeValueSequence(Integer codeValueSequence) {
-        this.codeValueSequence = codeValueSequence;
-    }
+    public CodeValueId getId() { return id; }
+    public void setId(CodeValueId id) { this.id = id; }
 
     public String getEnglishDescription() {
         return englishDescription;
@@ -166,30 +142,5 @@ public class CodeValue implements Serializable {
     public void setUpdatedUserId(String updatedUserId) {
         this.updatedUserId = updatedUserId;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (codeValueSequence != null ? codeValueSequence.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CodeValue)) {
-            return false;
-        }
-        CodeValue other = (CodeValue) object;
-        if ((this.codeValueSequence == null && other.codeValueSequence != null) || (this.codeValueSequence != null && !this.codeValueSequence.equals(other.codeValueSequence))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "entity.jpa.info.hccis.bus.pass.CodeValue[ codeValueSequence=" + codeValueSequence + " ]";
-    }
-    
 }
+

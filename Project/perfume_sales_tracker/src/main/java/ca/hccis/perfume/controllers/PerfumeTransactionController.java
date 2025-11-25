@@ -1,5 +1,7 @@
 package ca.hccis.perfume.controllers;
 
+import ca.hccis.perfume.jpa.entity.CodeValue;
+import ca.hccis.perfume.repositories.CodeValueRepository;
 import ca.hccis.perfume.repositories.PerfumeTransactionRepository;
 import ca.hccis.perfume.jpa.entity.PerfumeTransaction;
 import org.slf4j.Logger;
@@ -25,12 +27,26 @@ import java.util.Optional;
 public class PerfumeTransactionController {
 
     private final PerfumeTransactionRepository _ptr;
+    private final CodeValueRepository _cvr; // Inject the new repo
+
     private static final Logger logger = LoggerFactory.getLogger(PerfumeTransactionController.class);
 
     @Autowired
-    public PerfumeTransactionController(PerfumeTransactionRepository ptr) {
+    public PerfumeTransactionController(PerfumeTransactionRepository ptr, CodeValueRepository cvr) {
         _ptr = ptr;
+        _cvr = cvr;
     }
+
+    // Define the ID we used in SQL
+    private static final int PERFUME_TYPE_ID = 100;
+
+    // Helper method to load the dropdown list
+    private void loadPerfumeDropdown(Model model) {
+        // Use the magic method we made in Step 3
+        List<CodeValue> brandList = _cvr.findByCodeTypeId(PERFUME_TYPE_ID);
+        model.addAttribute("perfumeBrands", brandList);
+    }
+
 
     /**
      * Home page - Lists all transactions
@@ -45,6 +61,31 @@ public class PerfumeTransactionController {
         // This blank object is needed for the Search form on the list page
         model.addAttribute("perfumeTransaction", new PerfumeTransaction());
 
+        // --- CRITICAL CHECK 2: Load the list for the dropdown on search results ---
+        loadPerfumeDropdown(model);
+
+
+        return "perfumetransaction/list";
+    }
+
+    /*
+    * @author: Fardin
+    * @since: 20251124
+    * Goal: Adding a dropdown list to the view page so that user can select perfume brand and get the sorted result
+    *
+    * */
+
+    @RequestMapping(value = {"/", "/perfumetransaction"})
+    public String list(Model model) {
+        // ... (Your existing code to fetch all transactions) ...
+        Iterable<PerfumeTransaction> transactions = _ptr.findAll();
+        model.addAttribute("perfumeTransactions", transactions);
+
+        // --- ADD THE DROPDOWN LIST FOR SEARCH ---
+        loadPerfumeDropdown(model);
+        // ---------------------------------------
+
+        model.addAttribute("perfumeTransaction", new PerfumeTransaction());
         return "perfumetransaction/list";
     }
 
@@ -74,8 +115,10 @@ public class PerfumeTransactionController {
      */
     @RequestMapping("/add")
     public String add(Model model, HttpSession session) {
+
+        loadPerfumeDropdown(model); // <--- Call helper
+
         PerfumeTransaction perfumeTransaction = new PerfumeTransaction();
-        // You might want to set default date here if needed
         model.addAttribute("perfumeTransaction", perfumeTransaction);
         return "perfumetransaction/add";
     }
@@ -85,6 +128,8 @@ public class PerfumeTransactionController {
      */
     @RequestMapping("/edit/{id}")
     public String edit(@PathVariable int id, Model model, HttpSession session) {
+
+        loadPerfumeDropdown(model); // <--- Call helper
 
         Optional<PerfumeTransaction> transaction = _ptr.findById(id);
         if (transaction.isPresent()) {
@@ -100,10 +145,21 @@ public class PerfumeTransactionController {
      * Submit method (Processes both Add and Edit)
      */
     // Inside ca.hccis.perfume.controllers.PerfumeTransactionController
-
     @RequestMapping("/submit")
     public String submit(Model model, @Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
                          BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        // Line near the top of your submit method:
+        boolean isNew = (perfumeTransaction.getId() == null || perfumeTransaction.getId().intValue() == 0);
+
+        // Use this variable in your logic:
+        if (isNew) {
+            // ...
+            redirectAttributes.addFlashAttribute("messageSuccess", "New Transaction added successfully!");
+        } else {
+            // ...
+            redirectAttributes.addFlashAttribute("messageSuccess", "Transaction ID " + perfumeTransaction.getId() + " updated successfully!");
+        }
 
         // ... validation and calculation logic here ...
         // --- BUSINESS LOGIC: CALCULATE PRICE ---
@@ -131,25 +187,31 @@ public class PerfumeTransactionController {
             // (though @NotNull should catch it, this is a safety measure).
             System.err.println("Error during calculation: " + e.getMessage());
             model.addAttribute("messageError", "A fatal calculation error occurred. Check price and quantity values.");
+
+            loadPerfumeDropdown(model); // loading the list
             return "perfumetransaction/add";
         }
 
         if (bindingResult.hasErrors()) {
+
+            System.out.println("Validation error detected.");
+
+            // --- CRITICAL FIX START ---
+            // You MUST reload the dropdown list here.
+            // If you don't, Thymeleaf crashes because ${perfumeBrands} is null.
+            loadPerfumeDropdown(model);
+            // --- CRITICAL FIX END ---
             // Validation fails, stay on the form page, no redirect needed
             return "perfumetransaction/add";
         }
 
-        // Check if an ID exists before saving
-        boolean isNew = perfumeTransaction.getId() == 0;
 
         // Save the object (JPA handles Insert or Update based on ID)
         _ptr.save(perfumeTransaction);
 
-        if (isNew) {
-            redirectAttributes.addFlashAttribute("messageSuccess", "New Transaction added successfully!");
-        } else {
-            redirectAttributes.addFlashAttribute("messageSuccess", "Transaction ID " + perfumeTransaction.getId() + " updated successfully!");
-        }
+
+        // Check if an ID exists before saving
+        //boolean isNew = perfumeTransaction.getId() == null || perfumeTransaction.getId() == 0;
 
         return "redirect:/perfumetransaction";
     }
@@ -195,7 +257,8 @@ public class PerfumeTransactionController {
 
         model.addAttribute("perfumeTransactions", searchResults);
         logger.debug("searched for name:" + customerName + " and perfume: " + perfumeChoice);
-
+// --- CRITICAL CHECK 2: Load the list for the dropdown on search results ---
+        loadPerfumeDropdown(model);
         return "perfumetransaction/list";
     }
 }
