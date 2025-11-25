@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/CodeValueId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/PerfumeTransactionList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/listedit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/PerfumeTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/PerfumeTransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/CodeValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/jpa/entity/CodeValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/repositories/CodeValueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/repositories/CodeValueRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/mysql/createDatabase1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -147,7 +147,7 @@
       <workItem from="1763781871556" duration="3026000" />
       <workItem from="1763832051174" duration="23878000" />
       <workItem from="1763992237460" duration="10780000" />
-      <workItem from="1764037516772" duration="4849000" />
+      <workItem from="1764037516772" duration="11672000" />
     </task>
     <servers />
   </component>

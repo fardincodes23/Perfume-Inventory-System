@@ -50,9 +50,15 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-2 mt-sm-0">Search</button>
+                    <div class="text-center mt-3">
+                        <a th:href="@{/perfumetransaction/add}" class="btn btn-success">
+                            Add New Record
+                        </a>
+                    </div>
 
                 </div>
             </form>
+
         </div>
 
 
@@ -84,7 +90,13 @@
                     <td th:text="${current.perfumeSize}"></td>
                     <td th:text="${current.pricePerBottle}"></td>
                     <td th:text="${current.quantity}"></td>
+<!--
                     <td th:text="${current.total}"></td>
+-->
+                    <td class="text-end">
+                        <span th:text="${#numbers.formatCurrency(current.total)}"></span>
+                    </td>
+
 
                     <td class="text-center">
                         <div class="btn-group" role="group">
@@ -110,11 +122,6 @@
             </table>
         </div>
 
-        <div class="text-center mt-3">
-            <a th:href="@{/perfumetransaction/add}" class="btn btn-success">
-                Add New Record
-            </a>
-        </div>
     </div>
     <footer th:replace="fragments/footer :: footer"></footer>
 </body>

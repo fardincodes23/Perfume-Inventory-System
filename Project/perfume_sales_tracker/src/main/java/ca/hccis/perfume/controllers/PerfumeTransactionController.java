@@ -1,6 +1,7 @@
 package ca.hccis.perfume.controllers;
 
 import ca.hccis.perfume.jpa.entity.CodeValue;
+import ca.hccis.perfume.jpa.entity.PerfumeTransactionList;
 import ca.hccis.perfume.repositories.CodeValueRepository;
 import ca.hccis.perfume.repositories.PerfumeTransactionRepository;
 import ca.hccis.perfume.jpa.entity.PerfumeTransaction;
@@ -13,12 +14,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,11 +72,11 @@ public class PerfumeTransactionController {
     }
 
     /*
-    * @author: Fardin
-    * @since: 20251124
-    * Goal: Adding a dropdown list to the view page so that user can select perfume brand and get the sorted result
-    *
-    * */
+     * @author: Fardin
+     * @since: 20251124
+     * Goal: Adding a dropdown list to the view page so that user can select perfume brand and get the sorted result
+     *
+     * */
 
     @RequestMapping(value = {"/", "/perfumetransaction"})
     public String list(Model model) {
@@ -261,4 +264,91 @@ public class PerfumeTransactionController {
         loadPerfumeDropdown(model);
         return "perfumetransaction/list";
     }
+
+
+    /*
+     * Optional
+     * */
+    @RequestMapping("/listedit")
+    public String listEdit(Model model) {
+        // 1. Fetch all records from the database
+        List<PerfumeTransaction> allTransactions = (List<PerfumeTransaction>) _ptr.findAll();
+
+        // 2. Wrap the list in the form object
+        PerfumeTransactionList wrapper = new PerfumeTransactionList();
+        wrapper.setTransactions(allTransactions);
+
+        // 3. Add the wrapper object to the model
+        model.addAttribute("perfumeTransactionList", wrapper);
+
+        // Optional: Load dropdowns if needed on the edit page
+        loadPerfumeDropdown(model);
+
+        return "perfumetransaction/listedit";
+    }
+
+
+
+    @PostMapping("/listedit/submit")
+    public String listEditSubmit(
+            // The DTO wrapper is passed here
+            @ModelAttribute("perfumeTransactionList") PerfumeTransactionList transactionsList,
+            RedirectAttributes redirectAttributes) {
+
+        List<PerfumeTransaction> formList = transactionsList.getTransactions();
+        if (formList == null) {
+            return "redirect:/perfumetransaction";
+        }
+
+        List<PerfumeTransaction> recordsToSave = new ArrayList<>();
+        int updateCount = 0;
+
+        for (PerfumeTransaction formTransaction : formList) {
+
+            // 1. FETCH the existing, fully managed record (required due to required columns)
+            PerfumeTransaction dbRecord = _ptr.findById(formTransaction.getId()).orElse(null);
+
+            if (dbRecord != null) {
+
+                // 2. MERGE: Apply changes to the fetched entity
+                dbRecord.setCustomerName(formTransaction.getCustomerName());
+                dbRecord.setPhoneNumber(formTransaction.getPhoneNumber());
+                // ... set all other editable fields ...
+                dbRecord.setQuantity(formTransaction.getQuantity());
+                dbRecord.setPricePerBottle(formTransaction.getPricePerBottle());
+
+                // 3. RECALCULATE Totals (Business Logic)
+                if (dbRecord.getQuantity() != null && dbRecord.getPricePerBottle() != null) {
+                    double quantity = dbRecord.getQuantity();
+                    double price = dbRecord.getPricePerBottle();
+                    double sub = quantity * price;
+                    final double TAX_RATE = 0.10;
+                    double tax = sub * TAX_RATE;
+                    double total = sub + tax;
+
+                    // Set the required calculated fields
+                    dbRecord.setSubTotal(sub);
+                    dbRecord.setTaxAmount(tax);
+                    dbRecord.setTotal(total);
+                }
+
+                recordsToSave.add(dbRecord);
+                updateCount++;
+            }
+        }
+
+        // 4. Save all the managed records
+        try {
+            _ptr.saveAll(recordsToSave);
+            redirectAttributes.addFlashAttribute("messageSuccess", "Successfully updated " + updateCount + " records!");
+        } catch (Exception e) {
+            // ... Log the error
+            System.err.println("Batch Save Error: " + e.getMessage());
+            e.printStackTrace();
+            redirectAttributes.addFlashAttribute("messageError", "Batch update failed due to a database/mapping error.");
+        }
+
+        return "redirect:/perfumetransaction";
+    }
+
 }
