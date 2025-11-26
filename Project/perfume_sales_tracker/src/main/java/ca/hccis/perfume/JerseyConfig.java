@@ -8,6 +8,8 @@ package ca.hccis.perfume;
 import ca.hccis.perfume.rest.BusPassService;
 import javax.annotation.PostConstruct;
 import javax.ws.rs.ApplicationPath;
+
+import ca.hccis.perfume.rest.PerfumeTransactionService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +23,6 @@ public class JerseyConfig extends ResourceConfig {
 
     @PostConstruct
     private void init() {
-        registerClasses(BusPassService.class);
+        registerClasses(PerfumeTransactionService.class);
     }
 }
