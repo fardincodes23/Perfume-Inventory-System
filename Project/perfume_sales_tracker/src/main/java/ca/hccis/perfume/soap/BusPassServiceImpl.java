@@ -6,7 +6,7 @@ import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebService(endpointInterface = "soap.ca.hccis.perfume.BusPassService")
+@WebService(endpointInterface = "ca.hccis.perfume.soap.BusPassService")
 public class BusPassServiceImpl implements BusPassService {
 
     public BusPass getBusPass(int id) {
