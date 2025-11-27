@@ -140,4 +140,53 @@ public class PerfumeTransactionDAO {
 
         return records;
     }
+
+
+
+    /**
+     * Select perfume transactions by perfume id
+     *
+     * @since 20251127
+     */
+    public PerfumeTransaction findById(int id) {
+
+        PerfumeTransaction record = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "SELECT * FROM PerfumeTransaction WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                record = new PerfumeTransaction();
+                record.setId(rs.getInt("id"));
+                record.setTransactionDate(rs.getString("transactionDate"));
+                record.setCustomerName(rs.getString("customerName"));
+                record.setPhoneNumber(rs.getString("phoneNumber"));
+                record.setPerfumeChoice(rs.getString("perfumeChoice"));
+                record.setPerfumeSize(rs.getString("perfumeSize"));
+                record.setPricePerBottle(rs.getDouble("pricePerBottle"));
+                record.setQuantity(rs.getInt("quantity"));
+                record.setSubTotal(rs.getDouble("subTotal"));
+                record.setTaxAmount(rs.getDouble("taxAmount"));
+                record.setTotal(rs.getDouble("total"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Error closing statement");
+            }
+        }
+
+        return record;
+    }
+
 }
