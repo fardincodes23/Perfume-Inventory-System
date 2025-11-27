@@ -86,6 +86,8 @@ public class PerfumeTransactionService {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(String inJson) {
+        // DEBUG 1: Check what JSON the server actually received
+        System.out.println("DEBUG: Received JSON: " + inJson);
         try {
             String savedJson = save(inJson);
             return Response.status(HttpURLConnection.HTTP_CREATED) // 201
@@ -98,6 +100,10 @@ public class PerfumeTransactionService {
             return Response.status(HttpURLConnection.HTTP_NOT_ACCEPTABLE).entity(aane.getMessage()).build();
         } catch (Exception e) {
             System.out.println("Exception happened while adding transaction: " + e.getMessage());
+
+            // DEBUG 2: Print the full stack trace to see exactly WHERE it crashed
+            e.printStackTrace();
+
             // 400 Bad Request
             return Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(e.getMessage()).build();
         }
@@ -107,7 +113,7 @@ public class PerfumeTransactionService {
      * Method to update a transaction.
      * Path: PUT /api/PerfumeService/v1/transactions/{id}
      *
-     * @param id The ID to update (unused but required by signature).
+     * @param id              The ID to update (unused but required by signature).
      * @param transactionJson JSON representation of the PerfumeTransaction (must include ID).
      * @return The updated transaction with HTTP 201 or HTTP 400 on error.
      */
@@ -169,8 +175,14 @@ public class PerfumeTransactionService {
         PerfumeTransaction theObject = gson.fromJson(json, PerfumeTransaction.class);
 
         // 2. Simple Validation Check for required fields
-        if (theObject.getQuantity() == 0.0 || theObject.getPricePerBottle() == 0.0 || theObject.getCustomerName() == null || theObject.getPerfumeChoice() == null) {
-            throw new AllAttributesNeededException("All required fields (quantity, price, customerName, perfumeChoice) must be present and valid.");
+        if (    theObject.getQuantity() == 0.0 ||
+                theObject.getPricePerBottle() == 0.0 ||
+                theObject.getCustomerName() == null ||
+                theObject.getPerfumeChoice() == null ||
+                theObject.getTransactionDate() == null ||
+                theObject.getPhoneNumber() == null
+        ) {
+            throw new AllAttributesNeededException("All required fields (quantity, price, customerName, perfumeChoice etc) must be present and valid.");
         }
 
         // 3. Perform business logic calculations

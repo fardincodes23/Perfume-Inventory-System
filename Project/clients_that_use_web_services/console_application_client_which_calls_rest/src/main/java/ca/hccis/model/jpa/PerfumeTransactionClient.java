@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class PerfumeTransactionClient {
 
     private Integer id;
+    private String transactionDate;
+    private String phoneNumber;
     private double quantity;
     private double pricePerBottle;
     private String customerName;
@@ -24,6 +26,12 @@ public class PerfumeTransactionClient {
 
         System.out.print("Enter Customer Name: ");
         this.customerName = input.nextLine();
+
+        System.out.print("Enter Transaction Date (YYYY-MM-DD): ");
+        this.transactionDate = input.nextLine();
+
+        System.out.print("Enter Phone Number: ");
+        this.phoneNumber = input.nextLine();
 
         System.out.print("Enter Perfume Choice: ");
         this.perfumeChoice = input.nextLine();
@@ -55,7 +63,11 @@ public class PerfumeTransactionClient {
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
+    public String getTransactionDate() { return transactionDate; }
+    public void setTransactionDate(String transactionDate) { this.transactionDate = transactionDate; }
 
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
     public double getQuantity() { return quantity; }
     public void setQuantity(double quantity) { this.quantity = quantity; }
 
@@ -82,6 +94,8 @@ public class PerfumeTransactionClient {
         return "PerfumeTransaction {" +
                 "id=" + id +
                 ", customer='" + customerName + '\'' +
+                ", date='" + transactionDate + '\'' +
+                ", phone='" + phoneNumber + '\'' +
                 ", perfume='" + perfumeChoice + '\'' +
                 ", qty=" + quantity +
                 ", price=" + pricePerBottle +
