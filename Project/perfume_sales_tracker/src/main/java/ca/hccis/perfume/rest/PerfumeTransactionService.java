@@ -113,15 +113,15 @@ public class PerfumeTransactionService {
      * Method to update a transaction.
      * Path: PUT /api/PerfumeService/v1/transactions/{id}
      *
-     * @param id              The ID to update (unused but required by signature).
+     * @param id             The ID to update (unused but required by signature).
      * @param transactionJson JSON representation of the PerfumeTransaction (must include ID).
      * @return The updated transaction with HTTP 201 or HTTP 400 on error.
      */
     @PUT
-    @Path("/{id}")
+   // @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateTransaction(@javax.ws.rs.PathParam("id") int id, String transactionJson) {
+    public Response updateTransaction(String transactionJson) {
 
         try {
             // Re-use the save logic
@@ -174,8 +174,14 @@ public class PerfumeTransactionService {
         // 1. Deserialize
         PerfumeTransaction theObject = gson.fromJson(json, PerfumeTransaction.class);
 
+        if (theObject == null) {
+            // Return a better error code like 400 with a message,
+            // or let the validation below catch it if you prefer 406.
+            throw new AllAttributesNeededException("JSON payload was empty or invalid, object creation failed.");
+        }
+
         // 2. Simple Validation Check for required fields
-        if (    theObject.getQuantity() == 0.0 ||
+        if (theObject.getQuantity() == 0.0 ||
                 theObject.getPricePerBottle() == 0.0 ||
                 theObject.getCustomerName() == null ||
                 theObject.getPerfumeChoice() == null ||
@@ -205,5 +211,6 @@ public class PerfumeTransactionService {
         String temp = gson.toJson(theObject);
         return temp;
     }
+
 
 }

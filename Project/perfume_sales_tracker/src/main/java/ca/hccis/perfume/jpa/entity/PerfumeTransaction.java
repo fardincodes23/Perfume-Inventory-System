@@ -21,7 +21,7 @@ public class PerfumeTransaction {
     @Column(name = "transactionDate", nullable = false, length = 20)
     private String transactionDate;
 
-    @Size(min = 2, max = 50, message = "Customer Name must be between 2 and 50 characters.")
+    @Size(min = 1, max = 50, message = "Customer Name must be between 1 and 50 characters.")
     @NotNull(message = "Customer Name is required.")
     private String customerName;
 

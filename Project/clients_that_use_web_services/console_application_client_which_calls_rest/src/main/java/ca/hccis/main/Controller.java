@@ -1,17 +1,20 @@
 package ca.hccis.main; // Adjust package
 // Ensure you have the UtilityRest class available in your client project
+
 import ca.hccis.student.util.UtilityRest;
 import com.google.gson.Gson;
 // Import your client model class
 import ca.hccis.model.jpa.PerfumeTransactionClient;
 
 import org.json.JSONArray;
+
 import java.util.Scanner;
 
 public class Controller {
 
     final public static String MENU = "\nMain Menu \n"
             + "A) Add Transaction\n"
+            + "U) Update Transaction\n"
             + "V) View All Transactions\n"
             + "D) Delete Transaction\n"
             + "X) eXit";
@@ -43,8 +46,26 @@ public class Controller {
                     // Assuming UtilityRest returns a mapped object or you map it manually:
                     Object response = UtilityRest.addUsingRest(url, transaction);
 
-                    if(response != null) {
+                    if (response != null) {
                         System.out.println("Transaction processed.");
+                    }
+                    break;
+
+                case "U":
+                    System.out.print("Enter ID of transaction to update: ");
+                    int idToUpdate = Integer.parseInt(input.nextLine());
+
+                    PerfumeTransactionClient updatedTransaction = create(); // Re-use create to get all new field values
+                    updatedTransaction.setId(idToUpdate); // Set the required ID on the object
+
+                    url = URL_STRING; // Base URL is typically used for PUT
+
+                    System.out.println("Sending update for ID: " + idToUpdate);
+
+                    PerfumeTransactionClient temp = (PerfumeTransactionClient) UtilityRest.updateUsingRest(url, updatedTransaction);
+
+                    if (temp != null) {
+                        System.out.println("Successfully Updated Entity: " + temp.toString());
                     }
                     break;
 

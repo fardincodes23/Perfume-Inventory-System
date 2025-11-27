@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class PerfumeTransactionClient {
 
-    private Integer id;
+    private Integer id = 0;
     private String transactionDate;
     private String phoneNumber;
     private double quantity;
     private double pricePerBottle;
     private String customerName;
     private String perfumeChoice;
+    private String perfumeSize;
     // These are calculated by the server, but we might receive them back
     private double subTotal;
     private double taxAmount;
@@ -24,17 +25,18 @@ public class PerfumeTransactionClient {
 
         System.out.println("--- Enter Perfume Transaction Details ---");
 
-        System.out.print("Enter Customer Name: ");
-        this.customerName = input.nextLine();
-
         System.out.print("Enter Transaction Date (YYYY-MM-DD): ");
         this.transactionDate = input.nextLine();
+        System.out.print("Enter Customer Name: ");
+        this.customerName = input.nextLine();
 
         System.out.print("Enter Phone Number: ");
         this.phoneNumber = input.nextLine();
 
         System.out.print("Enter Perfume Choice: ");
         this.perfumeChoice = input.nextLine();
+        System.out.println("Enter Perfume Size: ");
+        this.perfumeSize = input.nextLine();
 
         // Loop for valid double input for Quantity
         while (true) {
@@ -65,6 +67,14 @@ public class PerfumeTransactionClient {
     public void setId(Integer id) { this.id = id; }
     public String getTransactionDate() { return transactionDate; }
     public void setTransactionDate(String transactionDate) { this.transactionDate = transactionDate; }
+
+    public String getPerfumeSize() {
+        return perfumeSize;
+    }
+
+    public void setPerfumeSize(String perfumeSize) {
+        this.perfumeSize = perfumeSize;
+    }
 
     public String getPhoneNumber() { return phoneNumber; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }

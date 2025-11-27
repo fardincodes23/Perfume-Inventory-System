@@ -130,72 +130,66 @@ public class UtilityRest {
         return objectReturned;
     }
 
+
+
     /**
-     * This method will access the CamperService to get all of the campers from
-     * the campers web application service.
-     *
-     * @since 20161115
-     * @author BJM
+     * This method will access the service to update a row
+     * @since 20251127
+     * @author Fardin
      */
-//    public static void updateUsingRest(String urlIn, Camper camper) {
-//        //**********************************
-//        //Create a test camper
-//        //**********************************
-//
-//        Gson gson = new Gson();
-//        String temp = "";
-//
-//        //************************************
-//        //convert the camper to a json string
-//        //************************************
-//        temp = gson.toJson(camper);
-//
-//        //*********************************************
-//        // Access the rest web service
-//        //https://www.tutorialspoint.com/restful/restful_quick_guide.htm
-//        //*********************************************
-//        try {
-//
-//            URL url = new URL(urlIn);
-//            //System.out.println(urlIn);
-//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//            conn.setDoOutput(true);
-//            conn.setRequestMethod("PUT");
-//            conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
-//
-//            //System.out.println("json=" + temp);
-//            String input = temp;
-//
-//            //Write the bytes of json to the output stream for the connection.
-//            OutputStream os = conn.getOutputStream();
-//            os.write(input.getBytes());
-//            os.flush();
-//
-//            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-//                System.out.println("Failed : HTTP error code : "
-//                        + conn.getResponseCode()
-//                        + conn.getResponseMessage());
-//            } else {
-//
-//                BufferedReader br = new BufferedReader(new InputStreamReader(
-//                        (conn.getInputStream())));
-//
-//                String output;
-//                String content = "";
-//                while ((output = br.readLine()) != null) {
-//                    content += output;
-//                }
-//                Camper camperReturned = gson.fromJson(content, Camper.class);
-//                System.out.println("Success : Updated camper (" + camperReturned.getId() + ")\n");
-//            }
-//            conn.disconnect();
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+
+    public static Object updateUsingRest(String urlIn, Object objectIn) {
+
+        Gson gson = new Gson();
+        String json = gson.toJson(objectIn); // Convert the updated object to JSON
+
+        Object objectReturned = null;
+        try {
+
+            // The update URL typically targets the base path, not the specific ID.
+            // The ID should be inside the objectIn payload.
+            URL url = new URL(urlIn);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setDoOutput(true);
+            conn.setRequestMethod("PUT"); // <-- Set method to PUT
+            conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+
+            // Write the JSON payload to the output stream
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(json.getBytes());
+                os.flush();
+            }
+
+            // Check for success codes (200 OK or 204 No Content are common for PUT)
+            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK
+                    && conn.getResponseCode() != HttpURLConnection.HTTP_NO_CONTENT
+                    && conn.getResponseCode() != HttpURLConnection.HTTP_CREATED)
+             {
+                System.out.println("Failed : HTTP error code : "
+                        + conn.getResponseCode()
+                        + conn.getResponseMessage());
+                return null; // Return null on failure
+            } else {
+                // Read the response (if the server returns the updated object)
+                try (BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())))) {
+                    String output;
+                    String content = "";
+                    while ((output = br.readLine()) != null) {
+                        content += output;
+                    }
+                    objectReturned = gson.fromJson(content, objectIn.getClass());
+                }
+                System.out.println("Success : Updated booking.\n");
+            }
+            conn.disconnect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return objectReturned;
+    }
     /**
      * This method will access the service to delete a row
      *
