@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title>Batch Edit</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<div class="container my-4 w-75 mx-auto">
+
+    <h2 class="mb-3 text-center title">Batch Edit Transactions</h2>
+
+    <form th:action="@{/listedit/submit}" th:object="${perfumeTransactionList}" method="post">
+
+        <div class="table-responsive">
+            <table class="perfume-table table-striped table-hover align-middle w-100">
+                <thead class="table-dark text-center">
+                <tr>
+                    <th>ID</th>
+                    <th>Customer Name</th>
+                    <th>Phone</th>
+                    <th>Size</th>
+                    <th>Date</th>
+                    <th>Perfume Choice</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="transaction, stat : *{transactions}">
+
+                    <td>
+                        <input type="hidden" th:field="*{transactions[__${stat.index}__].id}"/>
+                        <span th:text="${transaction.id}"></span>
+                    </td>
+
+                    <td>
+                        <input type="text" th:field="*{transactions[__${stat.index}__].customerName}"
+                               class="form-control"/>
+                    </td>
+
+                    <td>
+                        <input type="text" th:field="*{transactions[__${stat.index}__].phoneNumber}"
+                               class="form-control" style="width: 120px;"/>
+                    </td>
+
+                    <td>
+                        <input type="text" th:field="*{transactions[__${stat.index}__].perfumeSize}"
+                               class="form-control" style="width: 80px;"/>
+                    </td>
+
+                    <td>
+                        <input type="date" th:field="*{transactions[__${stat.index}__].transactionDate}"
+                               class="form-control"/>
+                    </td>
+
+
+                    <td>
+                        <select th:field="*{transactions[__${stat.index}__].perfumeChoice}" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option th:each="cv : ${perfumeBrands}"
+                                    th:value="${cv.englishDescription}"
+                                    th:text="${cv.englishDescription}">
+                            </option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <input type="number" th:field="*{transactions[__${stat.index}__].quantity}" class="form-control"
+                               style="width: 80px;"/>
+                    </td>
+
+                    <td>
+                        <input type="number" step="0.01" th:field="*{transactions[__${stat.index}__].pricePerBottle}"
+                               class="form-control" style="width: 100px;"/>
+                    </td>
+
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-4 mb-4">
+            <button type="submit" class="btn btn-primary btn-lg">Save All Changes</button>
+            <a th:href="@{/perfumetransaction}" class="btn btn-secondary btn-lg">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

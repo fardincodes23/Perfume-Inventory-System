@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title>Perfume List</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<!--
+Page: Perfume List
+@author Fardin
+@since 2025-10-30
+-->
+
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{report.records}">All Perfume Sales</h2>
+
+    <p th:text="${message}" style="color:red; font-weight:bold;"></p>
+
+    <table class="table is-striped is-fullwidth" th:if="${records != null}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Transaction Date</th>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>Perfume Choice</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Tax</th>
+            <th>Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${records}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.transactionDate}"></td>
+            <td th:text="${p.customerName}"></td>
+            <td th:text="${p.phoneNumber}"></td>
+            <td th:text="${p.perfumeChoice}"></td>
+            <td th:text="${p.perfumeSize}"></td>
+            <td th:text="${p.pricePerBottle}"></td>
+            <td th:text="${p.quantity}"></td>
+            <td th:text="${p.subTotal}"></td>
+            <td th:text="${p.taxAmount}"></td>
+            <td th:text="${p.total}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a class="button is-link" th:href="@{/templates/perfumeMain/add}">Add New Perfume</a>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

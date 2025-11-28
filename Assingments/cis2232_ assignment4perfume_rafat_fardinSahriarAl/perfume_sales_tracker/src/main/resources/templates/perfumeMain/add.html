@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title>Add Perfume</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<!--
+Page: Perfume Add
+@author Fardin
+@since 2025-10-30
+-->
+
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{report.records}">Add Perfume</h2>
+
+    <form th:action="@{/templates/perfumeMain/add/submit}" method="post" class="wbb"
+          style="display:inline-block;text-align:left!important">
+
+        <label>Name (Perfume): </label>
+        <input type="text" th:field="${perfume.name}" required><br><br>
+
+        <label>Size: </label>
+        <input type="text" th:field="${perfume.size}" required><br><br>
+
+        <label>Price per Bottle: </label>
+        <input type="number" th:field="${perfume.pricePerBottle}" required><br><br>
+
+        <button style="display:block;margin-top:24px!important" class="button is-link">Submit</button>
+    </form>
+
+    <p th:text="${message}" style="color:green; font-weight:bold;"></p>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

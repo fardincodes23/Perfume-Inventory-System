@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head :: headerFragment">
+        <title id="pageTitle">Performance Hall Administration</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container centered2">
+            <h2 class="title is-2"><span th:text="#{label.welcome.to}"></span> <span th:text="#{application.name}"></span></h2>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

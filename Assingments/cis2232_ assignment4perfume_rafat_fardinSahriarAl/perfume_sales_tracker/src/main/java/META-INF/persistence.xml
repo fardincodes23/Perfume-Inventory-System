@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <persistence-unit name="NewPersistenceUnit">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>ca.hccis.perfume.jpa.entity.CodeValue</class>
+    <properties>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/cis2232_tutor"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="hibernate.connection.username" value=""/>
+      <property name="hibernate.connection.password" value=""/>
+      <property name="hibernate.archive.autodetection" value="class"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+    </properties>
+  </persistence-unit>
+</persistence>

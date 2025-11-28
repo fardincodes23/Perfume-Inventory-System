@@ -1,0 +1,333 @@
+html{
+    overflow: auto !important;
+    min-width:246px;
+
+}
+
+:root {
+    /*Variable for team color*/
+    /*light ac3e37 main 770711 dark 470000*/
+    --main-color-light: #022b59;
+    --main-color-primary: #b47511;
+    --main-color-dark: #590210;
+    --main-color-text: #fb9e05;
+    --main-color-bright: #333333;
+
+}
+
+/*input:not(.hidden){
+    display:inline-block;
+    float:right
+}*/
+.cd{
+    color:#F00!important;
+/*    font-weight:bold;*/
+/*    margin-bottom:-48px*/
+}
+label{
+    margin-right:8px
+}
+
+/*Make body height 100% so that footer stays at the bottom and position relative to the footer*/
+body {
+    position: relative;
+    height: 100%;
+    min-height: 100vh;
+    background: darkgoldenrod;
+}
+
+th,tr,td{
+    text-align:left;
+}
+td{
+    padding:0!important
+}
+tr th{
+    line-height:1;
+    padding-bottom:8px
+}
+tr:nth-child(even){
+    background-color: #FFF
+}
+.a{
+    padding:0 32px 0 0
+}
+h2{
+    /*    margin-bottom:-10px!important*/
+}
+
+/*
+display:inline-block!important
+removed this as it is conflicting with the bootstrap styles
+*/
+
+table{
+    padding:0!important;
+
+}
+
+.logo{
+    height: 40px
+}
+.no-link {
+    color: inherit
+}
+
+.no-link:hover {
+    text-decoration: none;
+    color: inherit
+}
+
+.table-title {
+    display: flex;
+    justify-content: space-between
+}
+
+/*TODO:merge this with centered instead.*/
+.table-container {
+    margin: 0 auto
+}
+
+.field-id {
+    width: 20px;
+    display: none
+}
+
+.flex-sp-btw {
+    display: flex;
+    /*TODO: find way to tell NetBeans to ignore this.*/
+    justify-content: space-evenly;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between
+}
+
+.links > a {
+    margin-right: 24px
+}
+
+.nav {
+    margin-bottom: 50px;
+    background: darkblue;
+}
+
+.ftr {
+    margin-top: 50px;
+    padding: 20px;
+    background: darkred;
+    color: #dddbd5;
+    bottom: 0;
+    /*    position:absolute;*/
+    width:100%
+}
+
+.vert-align {
+    display: flex;
+    align-items: center
+}
+.centered{
+    margin: 0 auto
+}
+
+/*drop down link*/
+.ddl{
+    margin:0 8px 0 8px;
+    font-size:28px
+}
+
+/*.centered is a lie.*/
+.centered2{
+    text-align:center
+}
+
+/*reason why this ain't up there is because i want him to see it
+TODO: change to html instead of using root.*/
+/*:root{
+    background-color:var(--main-color-light);
+}*/
+
+/*blue on blisque is ugly.*/
+.navbar-link:not(.is-arrowless)::after{
+    border-color:var(--main-color-primary) !important;
+}
+
+/*better constrast, otherwise you can't see anything on a bad monitor.'*/
+.navbar-link,.navbar-link:focus,.navbar-bgn{
+    color: var(--main-color-text) !important
+}
+
+.title{
+    color: var(--main-color-bright) !important
+}
+
+.accent{
+    color: var(--main-color-bright) !important
+}
+.accent-background{
+    background-color: var(--main-color-bright) !important
+}
+
+/*better constrast, otherwise you can't see anything on a bad monitor.'*/
+body,p,strong,th{
+    color: #000 !important
+}
+
+
+/*overriding the hover*/
+.navbar-link:hover{
+    /*    background-color: #fff !important*/
+    /*    background-color: var(--main-color-primary) !important;*/
+    color: var(--main-color-dark)!important;
+}
+
+.navbar-link:active{
+    /*    background-color: #fff !important*/
+    /*    background-color: var(--main-color-primary) !important;*/
+    color: var(--main-color-dark)!important;
+}
+
+.navbar-item:hover{
+    /*    background-color: var(--main-color-primary) !important;*/
+}
+
+/*overriding the hover*/
+.navbar-item:visited{
+    color: var(--main-color-text) !important;
+    /*    background-color: var(--main-color-primary);*/
+}
+
+
+/*fixes weird issue with the index button.*/
+.navbar-bgn{
+    padding:1rem 1rem
+}
+
+.navbar-bgn:focus{
+    /*    background-color:var(--main-color-light);*/
+}
+
+.navbar-bgn:hover{
+    /*    background-color:var(--main-color-light);*/
+}
+
+/*this gives me a headache*/
+@media (max-width:1023px){
+    .navbar-bgn{
+        padding:1rem .75rem !important
+    }
+
+    /*instead of the hamburger button taking up all the space, just force it to
+    live with the object on the left.*/
+    .navbar-brand{
+        right:0;
+        position:absolute;
+        z-index:1
+    }
+
+    /*not perfect, but definitively better than before where the text would just
+    appear below it...*/
+    #navbarBasicExample{
+        width:100%;
+        position:absolute
+    }
+
+    /*align arrows with hamburger button.*/
+    .navbar-link:not(.is-arrowless)::after{
+        margin-right: 3.15px
+    }
+    /*window size compatibility*/
+    .ddl{
+        display:inline-block;
+        margin-top:16px !important
+    }
+    .nav{
+        margin-bottom:16px !important
+    }
+    .navbar-menu.is-active{
+        padding:0
+    }
+    .navbar-index{
+        padding-bottom:0.86rem;
+        padding-top:0.86rem;
+        margin-right:52px
+    }
+}
+/*white background box.*/
+.wbb, .ddl{
+    padding:0px 8px 0px 8px !important;
+    background-color:#ccc !important;
+    border:8px #ccc solid !important;
+    border-radius:12px !important;
+    white-space:nowrap !important
+}
+/*prevent text from disappearing*/
+@media screen and (min-width: 1024px){
+    .navbar-dropdown .navbar-item{
+        white-space:unset!important;
+        /*        background-color: var(--main-color-primary) !important;*/
+    }
+
+    .navbar-dropdown a.navbar-item{
+        padding-right: 16px!important
+    }
+
+    .navbar-end{
+        padding-right: 5px!important
+    }
+}
+
+.container{
+    background: #a65e05;
+
+}
+.container button {
+    margin-top: 30px;
+}
+/*
+Arrange invoice list tittle and add button
+#invoiceLitsTittle {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}*/
+
+/*Adjust invoiceAdd fields witdh*/
+.field:not(:last-child) {
+    margin: 0 6rem 0.75rem 6rem;
+}
+/*
+#btnInvoiceAdd {
+    margin-left: 6rem;
+}*/
+
+/*Table styles */
+.tableStyles {
+    padding: 0;
+    background: #ccc;
+    display: inline-block;
+    border: 8px #ccc solid;
+    border-collapse: collapse;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.tableStyles tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.tableStyles th, td {
+    padding-right: 45px;
+}
+
+.tableStyles th:first-child,
+.tableStyles td:first-child {
+    padding-left: 10px;
+}
+
+.tableStyles th:last-child,
+.tableStyles td:last-child {
+    padding-right: 10px;
+}
