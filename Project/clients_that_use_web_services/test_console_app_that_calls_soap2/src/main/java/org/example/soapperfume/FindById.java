@@ -7,15 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getAssessments complex type.
+ * <p>Java class for findById complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getAssessments">
+ * &lt;complexType name="findById">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,8 +26,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAssessments")
-public class GetAssessments {
+@XmlType(name = "findById", propOrder = {
+    "id"
+})
+public class FindById {
 
+    protected int id;
+
+    /**
+     * Gets the value of the id property.
+     * 
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     */
+    public void setId(int value) {
+        this.id = value;
+    }
 
 }

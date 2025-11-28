@@ -15,7 +15,9 @@ public class Controller {
     final public static String MENU = "\nMain Menu \n"
             + "A) Add Transaction\n"
             + "U) Update Transaction\n"
-            + "V) View All Transactions\n"
+            + "V) View All Transactions(REST)\n"
+            + "R) Read by ID (REST)\n"
+            + "G) Get by ID (SOAP)\n"
             + "D) Delete Transaction\n"
             + "X) eXit";
 
@@ -69,6 +71,23 @@ public class Controller {
                     }
                     break;
 
+                case "R":
+                    System.out.print("Enter ID of transaction to retrieve via REST: ");
+                    try {
+                        int idToGet = Integer.parseInt(input.nextLine());
+
+                        // Call the new UtilityRest method
+                        PerfumeTransactionClient transactionForIdView = (PerfumeTransactionClient) UtilityRest.getByIdUsingRest(URL_STRING, idToGet);
+
+                        if (transactionForIdView != null) {
+                            System.out.println("\n✅ Retrieved via REST:");
+                            System.out.println(transactionForIdView.toString());
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a number.");
+                    }
+                    break;
+
                 case "D":
                     System.out.print("Enter ID to delete: ");
                     int id = 0;
@@ -101,6 +120,10 @@ public class Controller {
                         PerfumeTransactionClient current = gson.fromJson(jsonArray.getJSONObject(i).toString(), PerfumeTransactionClient.class);
                         System.out.println(current.toString());
                     }
+                    break;
+                case "G":
+                    System.out.println("\nPlease run the client application for SOAP \n" +
+                            "It's inside the project folder. Thanks!");
                     break;
 
                 case "X":

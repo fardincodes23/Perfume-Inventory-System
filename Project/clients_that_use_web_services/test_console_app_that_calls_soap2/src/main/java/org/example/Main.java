@@ -1,37 +1,110 @@
 package org.example;
 
-import org.example.soap.BusPass;
-import org.example.soap.BusPassService;
-import org.example.soap.BusPassServiceImplService;
-import org.example.soapperfume.SkillsAssessmentSquashTechnical;
-import org.example.soapperfume.SkillsAssessmentSquashTechnicalService;
-import org.example.soapperfume.SkillsAssessmentSquashTechnicalServiceImplService;
+import org.example.soapperfume.PerfumeTransaction;
+import org.example.soapperfume.PerfumeTransactionSoapService;
+import org.example.soapperfume.PerfumeTransactionSoapServiceImplService;
 
-import java.util.List;
+import java.util.Scanner;
+import java.net.URL;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
+    private static final String WSDL_URL = "http://localhost:8083/perfumetransactionsoapservice?wsdl";
+
+    // --- MENU STRING ---
+
+    final public static String MENU = "\nMain Menu \n"
+            + "G) Get by ID (SOAP)\n"
+
+
+            //REST options
+            + "A) Add(REST\n"
+            + "U) Update(REST)\n"
+            + "V) View All (REST)\n"
+            + "D) Delete(REST)\n"
+            + "X) eXit";
+
+    // --- MAIN LOOP ---
+
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String option;
 
-        System.out.println("Hello, I'm calling the soap service!");
-//        BusPassServiceImplService busPassServiceImplService = new BusPassServiceImplService();
-//        BusPassService busPassService = busPassServiceImplService.getBusPassServiceImplPort();
-//        System.out.println("count="+busPassService.getCount());
-//
-//        List<BusPass> theList = busPassService.getBusPasses();
-//        for(BusPass current: theList){
-//            System.out.println(current);
-//        }
+        do {
+            System.out.println(MENU);
+            System.out.print("Enter option: ");
+            option = input.nextLine().toUpperCase();
 
-               SkillsAssessmentSquashTechnicalServiceImplService skillsAssessmentSquashTechnicalServiceImplService = new SkillsAssessmentSquashTechnicalServiceImplService();
-        SkillsAssessmentSquashTechnicalService skillsAssessmentSquashTechnicalService = skillsAssessmentSquashTechnicalServiceImplService.getSkillsAssessmentSquashTechnicalServiceImplPort();
+            switch (option) {
+                case "A":
+                    System.out.println("\nPlease run the REST client application.\n" +
+                            "Its inside the project folder. Thanks!\n");
+                    break;
+                case "U":
+                    System.out.println("\nPlease run the REST client application.\n" +
+                            "Its inside the project folder. Thanks!\n");
+                    break;
+                case "V":
+                    System.out.println("\nPlease run the REST client application.\n" +
+                            "Its inside the project folder. Thanks!\n");
+                    break;
+                case "D":
+                    System.out.println("\nPlease run the REST client application.\n" +
+                            "Its inside the project folder. Thanks!\n");
+                    break;
 
-        List<SkillsAssessmentSquashTechnical> theList = skillsAssessmentSquashTechnicalService.getAssessments();
-        for(SkillsAssessmentSquashTechnical current: theList){
-            System.out.println(current);
+                case "G":
+                    // G stands for Get by ID (SOAP)
+                    getByIdSoap(input);
+                    break;
+
+                case "X":
+                    System.out.println("Exiting the client application.");
+                    break;
+
+                default:
+                    if (!option.equals("X")) {
+                        System.out.println("Invalid option. Please try again.");
+                    }
+            }
+        } while (!option.equals("X"));
+
+        input.close();
+    }
+
+    // --- SOAP GET BY ID METHOD ---
+
+    public static void getByIdSoap(Scanner input) {
+        System.out.print("Enter ID of transaction to retrieve via SOAP: ");
+
+        try {
+            int idToGet = Integer.parseInt(input.nextLine());
+
+            // 1. Establish the connection to the generated SOAP port
+            URL wsdlLocation = new URL(WSDL_URL);
+            PerfumeTransactionSoapServiceImplService service = new PerfumeTransactionSoapServiceImplService(wsdlLocation);
+            PerfumeTransactionSoapService port = service.getPerfumeTransactionSoapServiceImplPort();
+
+            // 2. Call the service method, using the correct 'findById' name
+            PerfumeTransaction transaction = port.findById(idToGet); // <--- CORRECT METHOD CALL
+
+            if (transaction != null) {
+                System.out.println("\n✅ Retrieved via SOAP:");
+                // Outputting the details using the generated POJO's getters
+                System.out.println("ID: " + transaction.getId());
+                System.out.println("Date: " + transaction.getTransactionDate());
+                System.out.println("Customer: " + transaction.getCustomerName());
+                System.out.println("Choice: " + transaction.getPerfumeChoice());
+                System.out.println("Total: $" + transaction.getTotal());
+            } else {
+                System.out.println("❌ No transaction found with ID: " + idToGet);
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a numerical ID.");
+        } catch (Exception e) {
+            System.err.println("SOAP Service Error: Could not connect or retrieve data. Ensure the SOAP publisher is running on port 8083.");
+            // e.printStackTrace();
         }
-
-
     }
 }

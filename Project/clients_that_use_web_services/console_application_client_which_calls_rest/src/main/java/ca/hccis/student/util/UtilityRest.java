@@ -1,5 +1,6 @@
 package ca.hccis.student.util;
 
+import ca.hccis.model.jpa.PerfumeTransactionClient;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -20,8 +21,8 @@ public class UtilityRest {
     /**
      * This method will call the rest web service and give back the json
      *
-     * @since 20171117
      * @author BJM
+     * @since 20171117
      */
     public static String getJsonFromRest(String urlString) {
 
@@ -62,12 +63,12 @@ public class UtilityRest {
      * This method will access the service to get all of the objecrts from
      * the web application service.
      *
-     * @since 20161115
      * @author BJM
+     * @since 20161115
      */
     public static Object addUsingRest(String urlIn, Object objectIn) {
-        
-        
+
+
         //**********************************
         //Create a test camper
         //**********************************
@@ -103,7 +104,7 @@ public class UtilityRest {
             os.flush();
 
             if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED
-                    && conn.getResponseCode() != HttpURLConnection.HTTP_OK ) {
+                    && conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 System.out.println("Failed : HTTP error code : "
                         + conn.getResponseCode()
                         + conn.getResponseMessage());
@@ -117,9 +118,9 @@ public class UtilityRest {
                 while ((output = br.readLine()) != null) {
                     content += output;
                 }
-                objectReturned = gson.fromJson(content,objectIn.getClass());
+                objectReturned = gson.fromJson(content, objectIn.getClass());
                 //System.out.println("Success : Added booking (" + studentReturned.toString() + ")\n");
-                
+
             }
             conn.disconnect();
         } catch (MalformedURLException e) {
@@ -131,11 +132,11 @@ public class UtilityRest {
     }
 
 
-
     /**
      * This method will access the service to update a row
-     * @since 20251127
+     *
      * @author Fardin
+     * @since 20251127
      */
 
     public static Object updateUsingRest(String urlIn, Object objectIn) {
@@ -164,8 +165,7 @@ public class UtilityRest {
             // Check for success codes (200 OK or 204 No Content are common for PUT)
             if (conn.getResponseCode() != HttpURLConnection.HTTP_OK
                     && conn.getResponseCode() != HttpURLConnection.HTTP_NO_CONTENT
-                    && conn.getResponseCode() != HttpURLConnection.HTTP_CREATED)
-             {
+                    && conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
                 System.out.println("Failed : HTTP error code : "
                         + conn.getResponseCode()
                         + conn.getResponseMessage());
@@ -190,11 +190,12 @@ public class UtilityRest {
         }
         return objectReturned;
     }
+
     /**
      * This method will access the service to delete a row
      *
-     * @since 20251117
      * @author BJM
+     * @since 20251117
      */
     public static void deleteUsingRest(String urlIn, int id) {
         //*********************************************
@@ -203,7 +204,7 @@ public class UtilityRest {
         //*********************************************
         try {
 
-            URL url = new URL(urlIn +"/"+ id);
+            URL url = new URL(urlIn + "/" + id);
             System.out.println(urlIn);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
@@ -228,5 +229,51 @@ public class UtilityRest {
             e.printStackTrace();
         }
 
+    }
+
+    /*
+     *fulfilling the last requirement
+     * @author: Fardin
+     * @since 20251127
+     */
+
+    public static Object getByIdUsingRest(String urlIn, int id) {
+        String fullUrl = urlIn + "/" + id; // Append the ID to the base URL
+        Object objectReturned = null;
+
+        try {
+            URL url = new URL(fullUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+
+            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                if (conn.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
+                    System.out.println("No record found with ID: " + id);
+                } else {
+                    System.out.println("Failed : HTTP error code : "
+                            + conn.getResponseCode());
+                }
+                return null;
+            }
+
+            // Read the single transaction response
+            try (BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())))) {
+                String output;
+                String content = "";
+                while ((output = br.readLine()) != null) {
+                    content += output;
+                }
+
+                // Deserialize the JSON string back into a PerfumeTransactionClient object
+                Gson gson = new Gson();
+                objectReturned = gson.fromJson(content, PerfumeTransactionClient.class);
+            }
+            conn.disconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return objectReturned;
     }
 }

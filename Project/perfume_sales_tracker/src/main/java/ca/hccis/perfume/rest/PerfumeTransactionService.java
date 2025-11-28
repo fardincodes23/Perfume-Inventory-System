@@ -64,7 +64,7 @@ public class PerfumeTransactionService {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTransactionById(@PathParam("id") Integer id) {
+    public Response getTransactionById(@PathParam("id") int id) {
         Optional<PerfumeTransaction> theTransaction = _ptr.findById(id);
         if (!theTransaction.isPresent()) {
             return Response.status(HttpURLConnection.HTTP_NO_CONTENT).build(); // 204
@@ -96,14 +96,9 @@ public class PerfumeTransactionService {
                     .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
         } catch (AllAttributesNeededException aane) {
             System.out.println("AllAttributesNeededException happened while adding transaction.");
-            // 406 Not Acceptable - Per example logic
-            return Response.status(HttpURLConnection.HTTP_NOT_ACCEPTABLE).entity(aane.getMessage()).build();
+            return Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(aane.getMessage()).build(); //400 Bad Request
         } catch (Exception e) {
             System.out.println("Exception happened while adding transaction: " + e.getMessage());
-
-            // DEBUG 2: Print the full stack trace to see exactly WHERE it crashed
-            e.printStackTrace();
-
             // 400 Bad Request
             return Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(e.getMessage()).build();
         }

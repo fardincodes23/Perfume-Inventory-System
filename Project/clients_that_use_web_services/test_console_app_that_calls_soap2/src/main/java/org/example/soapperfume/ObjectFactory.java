@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.example.soapsquash package. 
+ * generated in the org.example.soapperfume package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,56 +24,56 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetAssessmentsResponse_QNAME = new QName("http://soap.squash.hccis.ca/", "getAssessmentsResponse");
-    private final static QName _GetAssessments_QNAME = new QName("http://soap.squash.hccis.ca/", "getAssessments");
+    private final static QName _FindById_QNAME = new QName("http://soap.perfume.hccis.ca/", "findById");
+    private final static QName _FindByIdResponse_QNAME = new QName("http://soap.perfume.hccis.ca/", "findByIdResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.example.soapsquash
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.example.soapperfume
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link GetAssessments }
+     * Create an instance of {@link FindById }
      * 
      */
-    public GetAssessments createGetAssessments() {
-        return new GetAssessments();
+    public FindById createFindById() {
+        return new FindById();
     }
 
     /**
-     * Create an instance of {@link GetAssessmentsResponse }
+     * Create an instance of {@link FindByIdResponse }
      * 
      */
-    public GetAssessmentsResponse createGetAssessmentsResponse() {
-        return new GetAssessmentsResponse();
+    public FindByIdResponse createFindByIdResponse() {
+        return new FindByIdResponse();
     }
 
     /**
-     * Create an instance of {@link SkillsAssessmentSquashTechnical }
+     * Create an instance of {@link PerfumeTransaction }
      * 
      */
-    public SkillsAssessmentSquashTechnical createSkillsAssessmentSquashTechnical() {
-        return new SkillsAssessmentSquashTechnical();
+    public PerfumeTransaction createPerfumeTransaction() {
+        return new PerfumeTransaction();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAssessmentsResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindById }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://soap.squash.hccis.ca/", name = "getAssessmentsResponse")
-    public JAXBElement<GetAssessmentsResponse> createGetAssessmentsResponse(GetAssessmentsResponse value) {
-        return new JAXBElement<GetAssessmentsResponse>(_GetAssessmentsResponse_QNAME, GetAssessmentsResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.perfume.hccis.ca/", name = "findById")
+    public JAXBElement<FindById> createFindById(FindById value) {
+        return new JAXBElement<FindById>(_FindById_QNAME, FindById.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAssessments }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindByIdResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://soap.squash.hccis.ca/", name = "getAssessments")
-    public JAXBElement<GetAssessments> createGetAssessments(GetAssessments value) {
-        return new JAXBElement<GetAssessments>(_GetAssessments_QNAME, GetAssessments.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.perfume.hccis.ca/", name = "findByIdResponse")
+    public JAXBElement<FindByIdResponse> createFindByIdResponse(FindByIdResponse value) {
+        return new JAXBElement<FindByIdResponse>(_FindByIdResponse_QNAME, FindByIdResponse.class, null, value);
     }
 
 }
