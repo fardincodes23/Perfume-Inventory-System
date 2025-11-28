@@ -5,22 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b96364c-c757-4519-8005-bdca24319eba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/src/main/java/ca/hccis/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/src/main/java/ca/hccis/main/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/src/main/java/ca/hccis/student/util/UtilityRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/src/main/java/ca/hccis/student/util/UtilityRest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/target/classes/ca/hccis/main/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/target/classes/ca/hccis/main/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/target/classes/ca/hccis/student/util/UtilityRest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../clients_that_use_web_services/console_application_client_which_calls_rest/target/classes/ca/hccis/student/util/UtilityRest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/GetAssessments.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/GetAssessmentsResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/ObjectFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/SkillsAssessmentSquashTechnical.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/SkillsAssessmentSquashTechnicalService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/skillsassessmentsquashtechnicalservice.wsdl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clients_that_use_web_services/test_console_app_that_calls_soap2/src/main/java/org/example/soapperfume/skillsassessmentsquashtechnicalservice1.wsdl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/client/FragranceDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/client/FragranceResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/client/PerfumeApiClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/config/RestClientConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/controllers/PerfumeApiTestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/perfumetransaction/testapi.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/rest/PerfumeTransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/hccis/perfume/rest/PerfumeTransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navHeader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navHeader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -64,7 +59,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fardi/Documents/CIS2232/cis2232_20252026_project_rafat_fardinsahriaral_perfume_sales_t/Project/perfume_sales_tracker",
+    "last_opened_file_path": "C:/Users/fardi/Documents/Bitbucket_Projects/perfume_sales/Project/perfume_sales_tracker",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -124,11 +119,12 @@
     <configuration name="createDatabase1.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/src/main/resources/db/mysql/createDatabase1.sql" />
       <script-mode>FILE</script-mode>
-      <data-source id="72d6c4bd-d8f0-4386-a0f6-30f9b11c6778" />
-      <data-source id="56a39aed-8e14-44d0-814d-ea2be2ee294e" />
+      <data-source id="829a39cf-3c24-46ee-a116-20d6dd145b96" />
       <method v="2" />
     </configuration>
     <configuration name="TheApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-25 (3)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="perfume_sales" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ca.hccis.perfume.TheApplication" />
@@ -187,11 +183,23 @@
       <workItem from="1764188693580" duration="8641000" />
       <workItem from="1764227497340" duration="17397000" />
       <workItem from="1764277717187" duration="14260000" />
+      <workItem from="1764358888657" duration="6895000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/perfume_sales_tracker$PerfumeTransactionSoapServicePublisher.ic" NAME="PerfumeTransactionSoapServicePublisher Coverage Results" MODIFIED="1764248966657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

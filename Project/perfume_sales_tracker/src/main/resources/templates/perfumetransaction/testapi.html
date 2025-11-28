@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Test External Perfume API</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<div class="container my-4 w-75 mx-auto">
+
+    <h2 class="mb-3 text-center title">Test the External Perfume API (Fragella)</h2>
+
+    <!-- Search Form -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form th:action="@{/perfumeapi/test/search}" method="post" class="form-inline d-flex gap-3 justify-content-center flex-wrap">
+                <div class="form-group flex-grow-1" style="max-width: 400px;">
+                    <label for="searchTerm" class="form-label">Search Perfume:</label>
+                    <input type="text" id="searchTerm" name="searchTerm" class="form-control"
+                           placeholder="e.g., Sauvage, Dior, Creed" required />
+                </div>
+                <button type="submit" class="btn btn-primary align-self-end">
+                    🔍 Search
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div th:if="${not #strings.isEmpty(messageSuccess)}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong>
+        <span th:text="${messageSuccess}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div th:if="${not #strings.isEmpty(messageError)}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong>
+        <span th:text="${messageError}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- Results Section -->
+    <div th:if="${not #lists.isEmpty(fragrances)}" class="results-section">
+        <h3 class="mb-4 text-center">Found <span th:text="${fragrances.size()}"></span> Fragrance(s)</h3>
+
+        <div class="row">
+            <div th:each="fragrance : ${fragrances}" class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <!-- Fragrance Image -->
+                    <div th:if="${fragrance.imageUrl != null}" class="card-img-top" style="height: 250px; overflow: hidden; background-color: #f5f5f5;">
+                        <img th:src="${fragrance.imageUrl}" alt="Fragrance Image"
+                             style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div th:if="${fragrance.imageUrl == null}" class="card-img-top"
+                         style="height: 250px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                        <span class="text-muted">No Image Available</span>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <!-- Name and Brand -->
+                        <h5 class="card-title" th:text="${fragrance.name}">Fragrance Name</h5>
+                        <p class="card-text text-muted" th:text="${fragrance.brand}">Brand</p>
+
+                        <!-- Key Info -->
+                        <div class="mb-3">
+                            <p class="mb-1">
+                                <strong>Type:</strong>
+                                <span th:text="${fragrance.oilType != null ? fragrance.oilType : 'N/A'}"></span>
+                            </p>
+                            <p class="mb-1">
+                                <strong>Gender:</strong>
+                                <span th:text="${fragrance.gender != null ? fragrance.gender : 'N/A'}"></span>
+                            </p>
+                            <p class="mb-1">
+                                <strong>Year:</strong>
+                                <span th:text="${fragrance.year != null ? fragrance.year : 'N/A'}"></span>
+                            </p>
+                            <p class="mb-1">
+                                <strong>Country:</strong>
+                                <span th:text="${fragrance.country != null ? fragrance.country : 'N/A'}"></span>
+                            </p>
+                        </div>
+
+                        <!-- Performance -->
+                        <div class="mb-3">
+                            <p class="mb-1">
+                                <strong>Longevity:</strong>
+                                <span th:text="${fragrance.longevity != null ? fragrance.longevity : 'N/A'}"></span>
+                            </p>
+                            <p class="mb-1">
+                                <strong>Sillage:</strong>
+                                <span th:text="${fragrance.sillage != null ? fragrance.sillage : 'N/A'}"></span>
+                            </p>
+                        </div>
+
+                        <!-- Rating and Price -->
+                        <div class="mb-3">
+                            <p class="mb-1">
+                                <strong>Rating:</strong>
+                                <span th:if="${fragrance.rating != null}">
+                                    <span th:text="${fragrance.rating}"></span> / 5 ⭐
+                                </span>
+                                <span th:if="${fragrance.rating == null}">N/A</span>
+                            </p>
+                            <p class="mb-1">
+                                <strong>Price:</strong>
+                                <span th:text="${fragrance.price != null ? fragrance.price : 'N/A'}"></span>
+                            </p>
+                        </div>
+
+                        <!-- Main Accords -->
+                        <div class="mb-3" th:if="${fragrance.mainAccords != null and fragrance.mainAccords.length > 0}">
+                            <strong>Main Accords:</strong>
+                            <div class="mt-2">
+                                <span th:each="accord : ${fragrance.mainAccords}"
+                                      class="badge bg-info me-2 mb-2" th:text="${accord}"></span>
+                            </div>
+                        </div>
+
+                        <!-- General Notes -->
+                        <div class="mb-3" th:if="${fragrance.generalNotes != null and fragrance.generalNotes.length > 0}">
+                            <strong>General Notes:</strong>
+                            <div class="mt-2">
+                                <span th:each="note : ${fragrance.generalNotes}"
+                                      class="badge bg-secondary me-2 mb-2" th:text="${note}"></span>
+                            </div>
+                        </div>
+
+                        <!-- Buy Link -->
+                        <a th:if="${fragrance.purchaseUrl != null}"
+                           th:href="${fragrance.purchaseUrl}"
+                           target="_blank"
+                           class="btn btn-sm btn-success">
+                            🛒 View on Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div th:if="${searched and #lists.isEmpty(fragrances)}" class="alert alert-info text-center py-5">
+        <h5>No fragrances found</h5>
+        <p>Try searching with a different term or fragrance name.</p>
+    </div>
+
+    <!-- Initial State (No Search Yet) -->
+    <div th:if="${!searched}" class="alert alert-info text-center py-5">
+        <h5>🔍 Get Started</h5>
+        <p>Use the search box above to find fragrances from the Fragella API database.</p>
+        <small class="text-muted">Try searching for popular fragrances like "Dior Sauvage", "Creed Aventus", or "Chanel No. 5"</small>
+    </div>
+
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<!-- Bootstrap JS for alert dismissal -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
