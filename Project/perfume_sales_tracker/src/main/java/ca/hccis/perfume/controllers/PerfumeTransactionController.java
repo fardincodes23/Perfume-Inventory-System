@@ -1,5 +1,7 @@
 package ca.hccis.perfume.controllers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import ca.hccis.perfume.jpa.entity.CodeValue;
 import ca.hccis.perfume.jpa.entity.PerfumeTransactionList;
 import ca.hccis.perfume.repositories.CodeValueRepository;
@@ -11,14 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -195,6 +195,41 @@ public class PerfumeTransactionController {
             return "perfumetransaction/add";
         }
 
+        // =================================================================
+        // STEP 1: BUSINESS VALIDATION (Paste this section)
+        // =================================================================
+
+        // Rule: If Quantity is > 50, Price per bottle cannot exceed $100.00
+        if (perfumeTransaction.getQuantity() > 50 && perfumeTransaction.getPricePerBottle() > 100.00) {
+            // rejectValue arguments: ("field name", "error code", "Error Message")
+            bindingResult.rejectValue("pricePerBottle", "error.perfumeTransaction",
+                    "Bulk Order Policy: For quantities over 50, price must be $100.00 or less.");
+        }
+
+        // =================================================================
+        // END BUSINESS VALIDATION
+        // =================================================================
+
+        // =================================================================
+        // BUSINESS VALIDATION: DATE CANNOT BE IN FUTURE
+        // =================================================================
+        try {
+            // Your entity stores date as String, so we must parse it.
+            // This assumes your HTML input is <input type="date"> which sends yyyy-MM-dd
+            if (perfumeTransaction.getTransactionDate() != null && !perfumeTransaction.getTransactionDate().isEmpty()) {
+                LocalDate inputDate = LocalDate.parse(perfumeTransaction.getTransactionDate());
+
+                if (inputDate.isAfter(LocalDate.now())) {
+                    bindingResult.rejectValue("transactionDate", "error.perfumeTransaction",
+                            "Transaction Date cannot be in the future.");
+                }
+            }
+        } catch (DateTimeParseException e) {
+            // Optional: Handle invalid format if needed, though HTML5 date pickers usually prevent this
+            System.err.println("Date parse error: " + e.getMessage());
+        }
+
+
         if (bindingResult.hasErrors()) {
 
             System.out.println("Validation error detected.");
@@ -286,7 +321,6 @@ public class PerfumeTransactionController {
 
         return "perfumetransaction/listedit";
     }
-
 
 
     @PostMapping("/listedit/submit")

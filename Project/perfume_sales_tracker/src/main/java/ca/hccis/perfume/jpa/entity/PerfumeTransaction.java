@@ -42,7 +42,7 @@ public class PerfumeTransaction {
     private double pricePerBottle;
 
     @Min(value = 1, message = "Quantity must be at least 1.")
-    @Max(value = 99, message = "Quantity cannot exceed 99.")
+    @Max(value = 100, message = "Quantity cannot exceed 100.")
     @NotNull(message = "Quantity is required.")
     private int quantity;
 
