@@ -5,7 +5,6 @@
  */
 package ca.hccis.perfume;
 
-import ca.hccis.perfume.rest.BusPassService;
 import javax.annotation.PostConstruct;
 import javax.ws.rs.ApplicationPath;
 
