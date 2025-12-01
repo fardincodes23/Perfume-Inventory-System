@@ -164,34 +164,12 @@ public class PerfumeTransactionController {
             redirectAttributes.addFlashAttribute("messageSuccess", "Transaction ID " + perfumeTransaction.getId() + " updated successfully!");
         }
 
-        // ... validation and calculation logic here ...
-        // --- BUSINESS LOGIC: CALCULATE PRICE ---
         try {
-            double quantity = perfumeTransaction.getQuantity();
-            double pricePerBottle = perfumeTransaction.getPricePerBottle();
-
-            // Calculate Sub Total
-            double sub = quantity * pricePerBottle;
-
-            // Calculate Tax (e.g., 10%)
-            final double TAX_RATE = 0.10;
-            double tax = sub * TAX_RATE;
-
-            // Calculate Total
-            double total = sub + tax;
-
-            // Set the calculated values back into the object
-            perfumeTransaction.setSubTotal(sub);
-            perfumeTransaction.setTaxAmount(tax);
-            perfumeTransaction.setTotal(total);
+            ca.hccis.perfume.bo.PerfumeBo.calculate(perfumeTransaction);
 
         } catch (NullPointerException | ArithmeticException e) {
-            // This catch block handles cases where the quantity or price was somehow null
-            // (though @NotNull should catch it, this is a safety measure).
-            System.err.println("Error during calculation: " + e.getMessage());
-            model.addAttribute("messageError", "A fatal calculation error occurred. Check price and quantity values.");
-
-            loadPerfumeDropdown(model); // loading the list
+            model.addAttribute("messageError", "Calculation error.");
+            loadPerfumeDropdown(model);
             return "perfumetransaction/add";
         }
 
