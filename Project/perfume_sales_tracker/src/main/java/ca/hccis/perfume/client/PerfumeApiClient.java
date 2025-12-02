@@ -1,3 +1,13 @@
+/**
+ * Service to interact with Fragella External Perfume API
+ * Provides methods to search and retrieve fragrance data
+ *
+ * JAVA 8 COMPATIBLE VERSION - FIXED API KEY AUTHENTICATION
+ *
+ * @author Fardin
+ * @since 2025-11-28
+ */
+
 package ca.hccis.perfume.client;
 
 import org.slf4j.Logger;
@@ -15,15 +25,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Service to interact with Fragella External Perfume API
- * Provides methods to search and retrieve fragrance data
- *
- * JAVA 8 COMPATIBLE VERSION - FIXED API KEY AUTHENTICATION
- *
- * @author Your Name
- * @since 2025-11-28
- */
 @Service
 public class PerfumeApiClient {
 
@@ -61,11 +62,9 @@ public class PerfumeApiClient {
             logger.info("Calling Fragella API: " + url);
             logger.info("Using API Key: " + (apiKey != null ? "Present" : "MISSING!"));
 
-            // Create headers with API key
             HttpHeaders headers = createHeaders();
             HttpEntity<String> entity = new HttpEntity<>(headers);
 
-            // Call the API using exchange method (supports headers)
             ResponseEntity<FragranceDto[]> response = restTemplate.exchange(
                     url,
                     HttpMethod.GET,
@@ -158,10 +157,9 @@ public class PerfumeApiClient {
         headers.set("Content-Type", "application/json");
 
         if (apiKey != null && !apiKey.isEmpty()) {
-            // Try multiple header names - some APIs use different conventions
-            headers.set("x-api-key", apiKey);        // Most common
-            headers.set("X-API-Key", apiKey);        // Also try with capital letters
-            headers.set("Authorization", "Bearer " + apiKey);  // Some APIs use Bearer token
+            headers.set("x-api-key", apiKey);
+            headers.set("X-API-Key", apiKey);
+            headers.set("Authorization", "Bearer " + apiKey);
             logger.debug("Added API key to headers");
         } else {
             logger.warn("API key is MISSING! Check your application.properties file!");

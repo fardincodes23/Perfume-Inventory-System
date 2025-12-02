@@ -16,10 +16,21 @@ public class CodeValueId implements Serializable {
     private Integer codeValueSequence;
 
     // Getters, Setters, HashCode, Equals (Paste instructor's code here)
-    public Integer getCodeTypeId() { return codeTypeId; }
-    public void setCodeTypeId(Integer codeTypeId) { this.codeTypeId = codeTypeId; }
-    public Integer getCodeValueSequence() { return codeValueSequence; }
-    public void setCodeValueSequence(Integer codeValueSequence) { this.codeValueSequence = codeValueSequence; }
+    public Integer getCodeTypeId() {
+        return codeTypeId;
+    }
+
+    public void setCodeTypeId(Integer codeTypeId) {
+        this.codeTypeId = codeTypeId;
+    }
+
+    public Integer getCodeValueSequence() {
+        return codeValueSequence;
+    }
+
+    public void setCodeValueSequence(Integer codeValueSequence) {
+        this.codeValueSequence = codeValueSequence;
+    }
 
     @Override
     public boolean equals(Object o) {

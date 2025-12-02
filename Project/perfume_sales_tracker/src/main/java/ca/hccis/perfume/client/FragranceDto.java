@@ -1,12 +1,14 @@
+
 package ca.hccis.perfume.client;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 /**
  * DTO for Fragrance data from Fragella API
  * Maps to the JSON response from the external API
+ *
+ * @author Fardin
+ * @since 2025-11-28
  */
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FragranceDto {
 
@@ -26,13 +28,13 @@ public class FragranceDto {
     private String purchaseUrl;
 
     @JsonProperty("OilType")
-    private String oilType;  // e.g., Eau de Parfum, EDT
+    private String oilType;
 
     @JsonProperty("Longevity")
-    private String longevity;  // e.g., Moderate, Long-lasting
+    private String longevity;
 
     @JsonProperty("Sillage")
-    private String sillage;  // e.g., Moderate, Soft
+    private String sillage;
 
     @JsonProperty("General Notes")
     private String[] generalNotes;

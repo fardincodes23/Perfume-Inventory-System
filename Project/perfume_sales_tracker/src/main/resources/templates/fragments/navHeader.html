@@ -18,77 +18,43 @@
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
-
-
-            <!--working to show the list of sold perfumes under Perfumes navBar
-            @author: Fardin
-            @since 2025-11-05
-            -->
-
-
-            <!-- <div class="navbar-item has-dropdown is-hoverable">
-                 <a th:href="@{/report/records}" class="navbar-link"> Perfume Sale Transactions</a>
-                 <div class="navbar-dropdown">
-                     <a th:href="@{/report/records}" class="navbar-item">All records</a>
-                     <hr class="navbar-divider">
-                 </div>
-             </div>
--->
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a th:href="@{/perfumetransaction}" href="/perfumetransaction/" class=" navbar-link">ALL Transaction
-                    Records</a>
-
-                <div class="navbar-dropdown">
-
-
-                    <!--Added my dropdown ALL Transaction Records list-->
-                    <a th:href="@{/perfumetransaction}" class="navbar-item"
-                       th:text="#{label.add.view}">Perfume Transactions (CRUD)</a>
-
-                    <a th:href="@{/perfumetransaction/add}" class="navbar-item"
-                       th:text="#{label.add.order}">Perfume Transactions (CRUD)</a>
-                    <!--new page-->
-                    <a th:href="@{/perfumetransaction/listedit}" class="navbar-item"
-                    th:text="#{label.edit.order}">Batch Edit All</a>
-
-
-                    <hr class="navbar-divider">
-                </div>
-            </div>
-
-
-            <!--Reports Menu-->
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a th:href="@{/report}" href="/about" class=" navbar-link">Reports</a>
-                <div class="navbar-dropdown">
-
-
-                    <!--Added my dropdown report list-->
-
-
-                    <a th:href="@{/report/perfume/choice}" class="navbar-item"
-                       th:text="#{label.report.perfume.choice.report}">Perfume Choice Report</a>
-
-
-                    <hr class="navbar-divider">
-                </div>
-            </div>
             <div class="navbar-end">
+
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a th:href="@{/about}" href="/about" class=" navbar-link">Perfume Api Service</a>
+                    <a th:href="@{/perfumetransaction}" class="navbar-link">ALL Transaction Records</a>
                     <div class="navbar-dropdown">
-                        <a th:href="@{/perfumeapi/test}" class="navbar-item">Test the external api</a>
-                        <hr class="navbar-divider">
-                        <a th:href="@{/about}" href="/about" class="navbar-item">About</a>
-                        <hr class="navbar-divider">
-                        <a th:href="@{/pirate}" href="/pirate" class="navbar-item">Pirate</a>
+                        <a th:href="@{/perfumetransaction}" class="navbar-item" th:text="#{label.add.view}">View Orders</a>
+                        <a th:href="@{/perfumetransaction/add}" class="navbar-item" th:text="#{label.add.order}">Add Order</a>
+                        <a th:href="@{/perfumetransaction/listedit}" class="navbar-item" th:text="#{label.edit.order}">Batch Edit</a>
                         <hr class="navbar-divider">
                     </div>
                 </div>
-            </div>
 
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a th:href="@{/report}" class="navbar-link">Reports</a>
+                    <div class="navbar-dropdown">
+                        <a th:href="@{/report/perfume/choice}" class="navbar-item" th:text="#{label.report.perfume.choice.report}">Perfume Choice Report</a>
+                        <hr class="navbar-divider">
+                    </div>
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a th:href="@{/perfumeapi/test}" class="navbar-link">Perfume Api Service & About Page</a>
+
+                    <div class="navbar-dropdown">
+                        <a th:href="@{/perfumeapi/test}" class="navbar-item">Perfume API Service</a>
+                        <hr class="navbar-divider">
+                        <a th:href="@{/about}" class="navbar-item">About</a>
+                        <hr class="navbar-divider">
+                        <a th:href="@{/pirate}" class="navbar-item">Pirate</a>
+                        <hr class="navbar-divider">
+                    </div>
+                </div>
+
+            </div>
         </div>
+
+    </div>
     </div>
 </nav>
 </body>

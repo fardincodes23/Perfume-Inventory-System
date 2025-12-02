@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Controller for testing the external Fragella Perfume API
  * Handles all API test and search functionality
  *
- * JAVA 8 COMPATIBLE VERSION
- *
- * @author Your Name
+ * @author Fardin
  * @since 2025-11-28
  */
+
+
 @Controller
 @RequestMapping("/perfumeapi")
 public class PerfumeApiTestController {
@@ -36,10 +37,6 @@ public class PerfumeApiTestController {
         this.perfumeApiClient = perfumeApiClient;
     }
 
-    /**
-     * Display the Test API page with search form
-     * GET /perfumeapi/test
-     */
     @RequestMapping("/test")
     public String testApi(Model model) {
         model.addAttribute("searched", false);
@@ -53,14 +50,13 @@ public class PerfumeApiTestController {
      * POST /perfumeapi/test/search
      *
      * @param searchTerm The fragrance name to search for
-     * @param model Spring Model to pass data to view
+     * @param model      Spring Model to pass data to view
      * @return View name (testapi.html)
      */
     @PostMapping("/test/search")
     public String testApiSearch(Model model,
                                 @RequestParam("searchTerm") String searchTerm) {
         try {
-            // Input validation - Java 8 compatible
             if (searchTerm == null || searchTerm.trim().isEmpty()) {
                 model.addAttribute("messageError", "Please enter a search term");
                 model.addAttribute("searched", false);
@@ -69,11 +65,8 @@ public class PerfumeApiTestController {
             }
 
             logger.info("Searching fragrances for: " + searchTerm);
-
-            // Call the external API
             List<FragranceDto> results = perfumeApiClient.searchFragrances(searchTerm, 10);
 
-            // Check results
             if (results == null || results.isEmpty()) {
                 model.addAttribute("messageError",
                         "No fragrances found for: " + searchTerm +

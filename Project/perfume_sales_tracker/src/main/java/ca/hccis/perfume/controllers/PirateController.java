@@ -38,13 +38,7 @@ public class PirateController {
      */
     @RequestMapping("")
     public String home(Model model, HttpSession session) {
-
-        //BJM 20241104 Connect to the network to get some json
-        //String result = CisUtilityNetwork.connectToApi("https://api.funtranslations.com/translate/pirate.json?text=My%20friend");
-        //System.out.println("BJM Network:"+result);
-
         model.addAttribute("translate", new Translate());
-
         return "/pirate/translate";
     }
 
@@ -60,8 +54,6 @@ public class PirateController {
     @RequestMapping("/submit")
     public String submitTranslation(Model model, @ModelAttribute("translate") Translate translate) {
 
-        //BJM 20241104 Connect to the network to get some json
-
         //TODO Assignment 4 - url encode the string (check for non depracted method)
         String textToSend = "";
         try {
@@ -72,15 +64,12 @@ public class PirateController {
         } catch (UnsupportedEncodingException e) {
             logger.error("Error encoding"+e.getMessage());
         }
-        //Assignment 4 - use JSON object to get the translated (contents / translated)
         String result = CisUtilityNetwork.connectToApi("https://api.funtranslations.com/translate/pirate.json?text="+textToSend);
         System.out.println("BJM Network:"+result);
 
         JSONObject jsonObject = new JSONObject(result);
         JSONObject innerJsonObject = jsonObject.getJSONObject("contents");
         String translated = innerJsonObject.getString("translated");
-
-        //Put object in model so it can be used on the view (html)
         translate.setPirate(translated);
         model.addAttribute("translate", translate);
         return "pirate/translate";

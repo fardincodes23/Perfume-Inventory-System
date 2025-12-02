@@ -18,10 +18,10 @@ import java.util.Optional;
  * Service class for accessing Perfume Transactions using JAX-RS (Jersey).
  * Path: /PerfumeService/v1/transactions
  *
- * @author BJM
+ * @author Fardin Sahriar Al Rafat
  * @since 20251125
  */
-@Component // Must be a Spring component to enable Autowiring
+@Component
 @Path("/PerfumeService/v1/transactions")
 public class PerfumeTransactionService {
 
@@ -36,9 +36,12 @@ public class PerfumeTransactionService {
     /**
      * Method to get all transactions.
      * Path: GET /api/PerfumeService/v1/transactions
-     *
+     * @author Fardin Sahriar Al Rafat
+     * @since 20251125
      * @return List of transactions or HTTP 204 No Content.
+     *
      */
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
@@ -60,7 +63,11 @@ public class PerfumeTransactionService {
      *
      * @param id The ID of the transaction.
      * @return The transaction or HTTP 204 No Content.
+     * @author Fardin Sahriar Al Rafat
+     * @since 20251125
+
      */
+
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,12 +115,11 @@ public class PerfumeTransactionService {
      * Method to update a transaction.
      * Path: PUT /api/PerfumeService/v1/transactions/{id}
      *
-     * @param id             The ID to update (unused but required by signature).
      * @param transactionJson JSON representation of the PerfumeTransaction (must include ID).
      * @return The updated transaction with HTTP 201 or HTTP 400 on error.
      */
+
     @PUT
-   // @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateTransaction(String transactionJson) {
@@ -166,16 +172,11 @@ public class PerfumeTransactionService {
      */
     public String save(String json) throws AllAttributesNeededException {
 
-        // 1. Deserialize
         PerfumeTransaction theObject = gson.fromJson(json, PerfumeTransaction.class);
 
         if (theObject == null) {
-            // Return a better error code like 400 with a message,
-            // or let the validation below catch it if you prefer 406.
             throw new AllAttributesNeededException("JSON payload was empty or invalid, object creation failed.");
         }
-
-        // 2. Simple Validation Check for required fields
         if (theObject.getQuantity() == 0.0 ||
                 theObject.getPricePerBottle() == 0.0 ||
                 theObject.getCustomerName() == null ||
@@ -185,8 +186,6 @@ public class PerfumeTransactionService {
         ) {
             throw new AllAttributesNeededException("All required fields (quantity, price, customerName, perfumeChoice etc) must be present and valid.");
         }
-
-        // 3. Perform business logic calculations
         double quantity = theObject.getQuantity();
         double price = theObject.getPricePerBottle();
 
@@ -198,11 +197,7 @@ public class PerfumeTransactionService {
         theObject.setSubTotal(subTotal);
         theObject.setTaxAmount(tax);
         theObject.setTotal(total);
-
-        // 4. Save
         theObject = _ptr.save(theObject);
-
-        // 5. Reserialize and return
         String temp = gson.toJson(theObject);
         return temp;
     }

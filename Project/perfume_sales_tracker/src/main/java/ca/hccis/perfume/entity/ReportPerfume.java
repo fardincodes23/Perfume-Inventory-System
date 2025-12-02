@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Entity class to hold the attributes of the reports.
+ *
  * @author bjmaclean
  * @since 20241010
  */

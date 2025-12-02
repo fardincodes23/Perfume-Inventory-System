@@ -1,3 +1,10 @@
+/**
+ * Write to file
+ *
+ * @author Fardin
+ * @since 2025-11-14
+ */
+
 package ca.hccis.perfume.bo;
 
 import ca.hccis.perfume.dao.PerfumeTransactionDAO;
@@ -10,16 +17,9 @@ import java.util.ArrayList;
 public class PerfumeTransactionBO {
 
     public static ArrayList<PerfumeTransaction> processSelectAllByPerfumeChoice(String perfumeChoice) {
-
-        //**********************************************************************
-        // This could be done using the repository but there will be times when
-        // jdbc will be useful.  For the reports, the requirements state that you
-        // are to use jdbc to obtain the data for the report.
-        //**********************************************************************
         PerfumeTransactionDAO perfumeTransactionDAO = new PerfumeTransactionDAO();
         ArrayList<PerfumeTransaction> records = perfumeTransactionDAO.selectAllByPerfumeChoice(perfumeChoice);
 
-        //Also write the report to a file
         CisUtilityFile.writeReportToFile("perfumeChoiceReport", records);
 
         return records;

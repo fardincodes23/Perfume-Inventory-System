@@ -1,8 +1,6 @@
 package ca.hccis.perfume.soap;
-
 import ca.hccis.perfume.jpa.entity.PerfumeTransaction;
 import ca.hccis.perfume.dao.PerfumeTransactionDAO; // You must create DAO
-
 import javax.jws.WebService;
 
 @WebService(endpointInterface = "ca.hccis.perfume.soap.PerfumeTransactionSoapService")

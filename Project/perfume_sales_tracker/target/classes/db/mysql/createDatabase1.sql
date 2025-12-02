@@ -52,7 +52,7 @@ VALUES (1, '2025-10-01', 'Bj MacLean', '555-1234', 'Dior', '90ml', 40, 2, 80.00,
        (15, '2025-10-15', 'Olivia Roberts', '555-2233', 'Dior', '120ml', 60, 4, 240.00, 24.00, 264.00);
 
 
--- Adding the optional CodeValue thing to the project. for this I have created this table below
+-- Adding the optional CodeValue thing to the project. For this I have created this table below
 
 -- 1. Create CodeType Table
 CREATE TABLE CodeType (

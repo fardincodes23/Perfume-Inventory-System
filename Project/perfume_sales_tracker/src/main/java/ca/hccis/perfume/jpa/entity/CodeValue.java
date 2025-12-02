@@ -18,21 +18,9 @@ import javax.validation.constraints.Size;
 @Table(name = "CodeValue")
 public class CodeValue implements Serializable {
 
-    // 1. PRIMARY KEY DEFINITION
-    // This tells JPA the key is complex and defined in CodeValueId
+
     @EmbeddedId
-    private CodeValueId id; // <-- MUST use the CodeValueId class
-
-    // 2. REGULAR COLUMNS
-    // Note: codeTypeId and codeValueSequence are NOT defined here,
-    // as they are part of the 'id' object.
-
-    // ... other columns like englishDescription, sortOrder, etc., go here ...
-
-
-
-
-
+    private CodeValueId id;
     private static final long serialVersionUID = 1L;
 
     @Basic(optional = false)
@@ -68,8 +56,14 @@ public class CodeValue implements Serializable {
 
     public CodeValue() {
     }
-    public CodeValueId getId() { return id; }
-    public void setId(CodeValueId id) { this.id = id; }
+
+    public CodeValueId getId() {
+        return id;
+    }
+
+    public void setId(CodeValueId id) {
+        this.id = id;
+    }
 
     public String getEnglishDescription() {
         return englishDescription;
