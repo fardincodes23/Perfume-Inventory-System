@@ -52,6 +52,7 @@ public class PerfumeTransactionController {
     }
 
     private static final int PERFUME_TYPE_ID = 100;
+
     private void loadPerfumeDropdown(Model model) {
         List<CodeValue> brandList = _cvr.findByCodeTypeId(PERFUME_TYPE_ID);
         model.addAttribute("perfumeBrands", brandList);
@@ -59,32 +60,22 @@ public class PerfumeTransactionController {
 
 
     /**
-     * Home page - Lists all transactions
+     * Home page / List page
+     * Handles: /perfumetransaction, /perfumetransaction/, and /perfumetransaction/list
+     * * @author Fardin
+     * @since 2025-11-24
      */
-    @RequestMapping("")
-    public String home(Model model, HttpSession session) {
-
-        Iterable<PerfumeTransaction> transactions = _ptr.findAll();
-        model.addAttribute("perfumeTransactions", transactions);
-        model.addAttribute("perfumeTransaction", new PerfumeTransaction());
-        loadPerfumeDropdown(model);
-        return "perfumetransaction/list";
-    }
-
-    /**
-     * @author: Fardin
-     * @since: 20251124
-     * Goal: Adding a dropdown list to the view page so that user can select perfume brand
-     * and get the sorted result
-     *
-     */
-
-    @RequestMapping(value = {"/", "/perfumetransaction"})
+    @RequestMapping(value = {"", "/", "/list"})
     public String list(Model model) {
         Iterable<PerfumeTransaction> transactions = _ptr.findAll();
         model.addAttribute("perfumeTransactions", transactions);
+
+        // Load dropdowns for the view
         loadPerfumeDropdown(model);
+
+        // Needed for the 'Add' modal or search inputs on the list page
         model.addAttribute("perfumeTransaction", new PerfumeTransaction());
+
         return "perfumetransaction/list";
     }
 
@@ -138,22 +129,14 @@ public class PerfumeTransactionController {
      * Submit method (Processes both Add and Edit)
      */
 
-
     @RequestMapping("/submit")
-    public String submit(Model model, @Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
-                         BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
-        boolean isNew = (perfumeTransaction.getId() == null || perfumeTransaction.getId().intValue() == 0);
-
-        if (isNew) {
-            redirectAttributes.addFlashAttribute("messageSuccess", "New Transaction added successfully!");
-        } else {
-            redirectAttributes.addFlashAttribute("messageSuccess", "Transaction ID " + perfumeTransaction.getId() + " updated successfully!");
-        }
+    public String submit(Model model,
+                         @Valid @ModelAttribute("perfumeTransaction") PerfumeTransaction perfumeTransaction,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes) {
 
         try {
             ca.hccis.perfume.bo.PerfumeBo.calculate(perfumeTransaction);
-
         } catch (NullPointerException | ArithmeticException e) {
             model.addAttribute("messageError", "Calculation error.");
             loadPerfumeDropdown(model);
@@ -164,27 +147,35 @@ public class PerfumeTransactionController {
             bindingResult.rejectValue("pricePerBottle", "error.perfumeTransaction",
                     "Bulk Order Policy: For quantities over 50, price must be $100.00 or less.");
         }
-        try {
 
+        try {
             if (perfumeTransaction.getTransactionDate() != null && !perfumeTransaction.getTransactionDate().isEmpty()) {
                 LocalDate inputDate = LocalDate.parse(perfumeTransaction.getTransactionDate());
-
                 if (inputDate.isAfter(LocalDate.now())) {
                     bindingResult.rejectValue("transactionDate", "error.perfumeTransaction",
                             "Transaction Date cannot be in the future.");
                 }
             }
         } catch (DateTimeParseException e) {
-            System.err.println("Date parse error: " + e.getMessage());
+            bindingResult.rejectValue("transactionDate", "error.perfumeTransaction",
+                    "Invalid date format.");
         }
 
-
         if (bindingResult.hasErrors()) {
-            System.out.println("Validation error detected.");
+            System.out.println("Validation error detected - Save Skipped");
             loadPerfumeDropdown(model);
             return "perfumetransaction/add";
         }
+
+        boolean isNew = (perfumeTransaction.getId() == null || perfumeTransaction.getId().intValue() == 0);
+        if (isNew) {
+            redirectAttributes.addFlashAttribute("messageSuccess", "New Transaction added successfully!");
+        } else {
+            redirectAttributes.addFlashAttribute("messageSuccess", "Transaction Updated!");
+        }
+
         _ptr.save(perfumeTransaction);
+
         return "redirect:/perfumetransaction";
     }
 
