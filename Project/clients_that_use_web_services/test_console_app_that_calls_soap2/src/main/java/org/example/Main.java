@@ -15,13 +15,6 @@ public class Main {
 
     final public static String MENU = "\nMain Menu \n"
             + "G) Get by ID (SOAP)\n"
-
-
-            //REST options
-            + "A) Add(REST\n"
-            + "U) Update(REST)\n"
-            + "V) View All (REST)\n"
-            + "D) Delete(REST)\n"
             + "X) eXit";
 
     // --- MAIN LOOP ---
@@ -36,22 +29,6 @@ public class Main {
             option = input.nextLine().toUpperCase();
 
             switch (option) {
-                case "A":
-                    System.out.println("\nPlease run the REST client application.\n" +
-                            "Its inside the project folder. Thanks!\n");
-                    break;
-                case "U":
-                    System.out.println("\nPlease run the REST client application.\n" +
-                            "Its inside the project folder. Thanks!\n");
-                    break;
-                case "V":
-                    System.out.println("\nPlease run the REST client application.\n" +
-                            "Its inside the project folder. Thanks!\n");
-                    break;
-                case "D":
-                    System.out.println("\nPlease run the REST client application.\n" +
-                            "Its inside the project folder. Thanks!\n");
-                    break;
 
                 case "G":
                     // G stands for Get by ID (SOAP)

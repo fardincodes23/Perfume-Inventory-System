@@ -29,7 +29,7 @@
             <label>Customer Name:</label>
             <input type="text" th:field="*{customerName}"/>
         </p>
-        <p class="cd" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" style="color:red"></p>
+        <p class="cd" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" style="[color:red"></p>
 
         <p>
             <label>Phone Number:</label>

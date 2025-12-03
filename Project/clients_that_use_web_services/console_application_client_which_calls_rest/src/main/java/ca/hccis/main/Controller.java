@@ -12,12 +12,11 @@ import java.util.Scanner;
 
 public class Controller {
 
-    final public static String MENU = "\nMain Menu \n"
+    final public static String MENU = "\nMain Menu for the REST service\n"
             + "A) Add Transaction\n"
             + "U) Update Transaction\n"
-            + "V) View All Transactions(REST)\n"
-            + "R) Read by ID (REST)\n"
-            + "G) Get by ID (SOAP)\n"
+            + "V) View All Transactions\n"
+            + "R) Read by ID\n"
             + "D) Delete Transaction\n"
             + "X) eXit";
 
@@ -120,10 +119,6 @@ public class Controller {
                         PerfumeTransactionClient current = gson.fromJson(jsonArray.getJSONObject(i).toString(), PerfumeTransactionClient.class);
                         System.out.println(current.toString());
                     }
-                    break;
-                case "G":
-                    System.out.println("\nPlease run the client application for SOAP \n" +
-                            "It's inside the project folder. Thanks!");
                     break;
 
                 case "X":
