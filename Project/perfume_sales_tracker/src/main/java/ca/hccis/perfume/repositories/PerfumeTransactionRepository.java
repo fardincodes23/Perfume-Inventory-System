@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface PerfumeTransactionRepository extends JpaRepository<PerfumeTransaction, Integer> {
     List<PerfumeTransaction> findByCustomerNameContaining(String customerName);
-
     List<PerfumeTransaction> findByPerfumeChoiceContaining(String perfumeChoice);
-
     List<PerfumeTransaction> findByCustomerNameContainingAndPerfumeChoiceContaining(String name, String choice);
 
 }

@@ -1,5 +1,4 @@
-package ca.hccis.main; // Adjust package
-// Ensure you have the UtilityRest class available in your client project
+package ca.hccis.main;
 
 import ca.hccis.student.util.UtilityRest;
 import com.google.gson.Gson;
@@ -9,6 +8,13 @@ import ca.hccis.model.jpa.PerfumeTransactionClient;
 import org.json.JSONArray;
 
 import java.util.Scanner;
+
+/**
+ * Handles REST operations
+ *
+ * @author Fardin
+ * @since 2025-11-24
+ */
 
 public class Controller {
 
@@ -21,8 +27,6 @@ public class Controller {
             + "X) eXit";
 
     final static Scanner input = new Scanner(System.in);
-
-    // **IMPORTANT:** Update this URL to match your server's port and path
     private static final String URL_STRING = "http://localhost:8080/api/PerfumeService/v1/transactions";
 
     public static void main(String[] args) {
@@ -37,14 +41,8 @@ public class Controller {
 
             switch (choice.toUpperCase()) {
                 case "A":
-                    // 1. Create object and get input from user
                     transaction = create();
                     System.out.println("Sending to URL: " + url);
-
-                    // 2. Send object to API
-                    // Note: UtilityRest.addUsingRest needs to return a generic Object that we cast
-                    // You might need to adjust UtilityRest or how you cast depending on that class's implementation.
-                    // Assuming UtilityRest returns a mapped object or you map it manually:
                     Object response = UtilityRest.addUsingRest(url, transaction);
 
                     if (response != null) {
@@ -56,10 +54,10 @@ public class Controller {
                     System.out.print("Enter ID of transaction to update: ");
                     int idToUpdate = Integer.parseInt(input.nextLine());
 
-                    PerfumeTransactionClient updatedTransaction = create(); // Re-use create to get all new field values
-                    updatedTransaction.setId(idToUpdate); // Set the required ID on the object
+                    PerfumeTransactionClient updatedTransaction = create();
+                    updatedTransaction.setId(idToUpdate);
 
-                    url = URL_STRING; // Base URL is typically used for PUT
+                    url = URL_STRING;
 
                     System.out.println("Sending update for ID: " + idToUpdate);
 
@@ -74,10 +72,7 @@ public class Controller {
                     System.out.print("Enter ID of transaction to retrieve via REST: ");
                     try {
                         int idToGet = Integer.parseInt(input.nextLine());
-
-                        // Call the new UtilityRest method
                         PerfumeTransactionClient transactionForIdView = (PerfumeTransactionClient) UtilityRest.getByIdUsingRest(URL_STRING, idToGet);
-
                         if (transactionForIdView != null) {
                             System.out.println("\n✅ Retrieved via REST:");
                             System.out.println(transactionForIdView.toString());
@@ -92,7 +87,6 @@ public class Controller {
                     int id = 0;
                     try {
                         id = Integer.parseInt(input.nextLine());
-                        // 3. Call Delete
                         UtilityRest.deleteUsingRest(url, id);
                         System.out.println("Delete request sent.");
                     } catch (NumberFormatException e) {
@@ -101,7 +95,6 @@ public class Controller {
                     break;
 
                 case "V":
-                    // 4. Get JSON String from API
                     String jsonReturned = UtilityRest.getJsonFromRest(url);
 
                     if (jsonReturned == null || jsonReturned.isEmpty()) {
@@ -113,9 +106,7 @@ public class Controller {
                     JSONArray jsonArray = new JSONArray(jsonReturned);
                     Gson gson = new Gson();
 
-                    // 5. Loop and Display
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        // Deserialize JSON back to your Client Object
                         PerfumeTransactionClient current = gson.fromJson(jsonArray.getJSONObject(i).toString(), PerfumeTransactionClient.class);
                         System.out.println(current.toString());
                     }
@@ -137,7 +128,7 @@ public class Controller {
      */
     public static PerfumeTransactionClient create() {
         PerfumeTransactionClient pt = new PerfumeTransactionClient();
-        pt.getInformation(); // This calls the method we wrote in Step 1
+        pt.getInformation();
         return pt;
     }
 }

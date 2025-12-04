@@ -3,6 +3,7 @@ package ca.hccis.perfume.controllers;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+import ca.hccis.perfume.bo.PerfumeBo;
 import ca.hccis.perfume.jpa.entity.CodeValue;
 import ca.hccis.perfume.jpa.entity.PerfumeTransactionList;
 import ca.hccis.perfume.repositories.CodeValueRepository;
@@ -62,21 +63,37 @@ public class PerfumeTransactionController {
     /**
      * Home page / List page
      * Handles: /perfumetransaction, /perfumetransaction/, and /perfumetransaction/list
-     * * @author Fardin
+     *
+     * @author Fardin
      * @since 2025-11-24
      */
+
     @RequestMapping(value = {"", "/", "/list"})
     public String list(Model model) {
         Iterable<PerfumeTransaction> transactions = _ptr.findAll();
         model.addAttribute("perfumeTransactions", transactions);
-
-        // Load dropdowns for the view
         loadPerfumeDropdown(model);
-
-        // Needed for the 'Add' modal or search inputs on the list page
         model.addAttribute("perfumeTransaction", new PerfumeTransaction());
 
         return "perfumetransaction/list";
+    }
+
+    /**
+     * Page to edit an existing entity
+     */
+
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable int id, Model model, HttpSession session) {
+
+        loadPerfumeDropdown(model);
+        Optional<PerfumeTransaction> t = _ptr.findById(id);
+        if (t.isPresent()) {
+            model.addAttribute("perfumeTransaction", t.get());
+            return "perfumetransaction/add";
+        }
+        model.addAttribute("messageError", "Could not load the transaction");
+
+        return "redirect:/perfumetransaction";
     }
 
     /**
@@ -99,31 +116,12 @@ public class PerfumeTransactionController {
      */
     @RequestMapping("/add")
     public String add(Model model, HttpSession session) {
-
         loadPerfumeDropdown(model);
-
-        PerfumeTransaction perfumeTransaction = new PerfumeTransaction();
-        model.addAttribute("perfumeTransaction", perfumeTransaction);
+        PerfumeTransaction pt = new PerfumeTransaction();
+        model.addAttribute("perfumeTransaction", pt);
         return "perfumetransaction/add";
     }
 
-    /**
-     * Page to edit an existing entity
-     */
-    @RequestMapping("/edit/{id}")
-    public String edit(@PathVariable int id, Model model, HttpSession session) {
-
-        loadPerfumeDropdown(model);
-
-        Optional<PerfumeTransaction> transaction = _ptr.findById(id);
-        if (transaction.isPresent()) {
-            model.addAttribute("perfumeTransaction", transaction.get());
-            return "perfumetransaction/add";
-        }
-
-        model.addAttribute("messageError", "Could not load the transaction");
-        return "redirect:/perfumetransaction";
-    }
 
     /**
      * Submit method (Processes both Add and Edit)
@@ -136,7 +134,7 @@ public class PerfumeTransactionController {
                          RedirectAttributes redirectAttributes) {
 
         try {
-            ca.hccis.perfume.bo.PerfumeBo.calculate(perfumeTransaction);
+            PerfumeBo.calculate(perfumeTransaction);
         } catch (NullPointerException | ArithmeticException e) {
             model.addAttribute("messageError", "Calculation error.");
             loadPerfumeDropdown(model);
@@ -188,7 +186,6 @@ public class PerfumeTransactionController {
 
         String customerName = perfumeTransaction.getCustomerName();
         String perfumeChoice = perfumeTransaction.getPerfumeChoice();
-
         List<PerfumeTransaction> searchResults;
 
         if (!customerName.isEmpty() && !perfumeChoice.isEmpty()) {
@@ -234,48 +231,22 @@ public class PerfumeTransactionController {
             RedirectAttributes redirectAttributes) {
 
         List<PerfumeTransaction> formList = transactionsList.getTransactions();
-        if (formList == null) {
+        if (formList == null || formList.isEmpty()) {
             return "redirect:/perfumetransaction";
         }
-
-        List<PerfumeTransaction> recordsToSave = new ArrayList<>();
-        int updateCount = 0;
-
-        for (PerfumeTransaction formTransaction : formList) {
-
-            PerfumeTransaction dbRecord = _ptr.findById(formTransaction.getId()).orElse(null);
-
-            if (dbRecord != null) {
-                dbRecord.setCustomerName(formTransaction.getCustomerName());
-                dbRecord.setPhoneNumber(formTransaction.getPhoneNumber());
-                dbRecord.setQuantity(formTransaction.getQuantity());
-                dbRecord.setPricePerBottle(formTransaction.getPricePerBottle());
-
-                if (dbRecord.getQuantity() != null && dbRecord.getPricePerBottle() != null) {
-                    double quantity = dbRecord.getQuantity();
-                    double price = dbRecord.getPricePerBottle();
-                    double sub = quantity * price;
-                    final double TAX_RATE = 0.10;
-                    double tax = sub * TAX_RATE;
-                    double total = sub + tax;
-
-                    dbRecord.setSubTotal(sub);
-                    dbRecord.setTaxAmount(tax);
-                    dbRecord.setTotal(total);
-                }
-
-                recordsToSave.add(dbRecord);
-                updateCount++;
-            }
+        for (PerfumeTransaction transaction : formList) {
+            PerfumeBo.calculate(transaction);
         }
 
         try {
-            _ptr.saveAll(recordsToSave);
-            redirectAttributes.addFlashAttribute("messageSuccess", "Successfully updated " + updateCount + " records!");
+            _ptr.saveAll(formList);
+
+            redirectAttributes.addFlashAttribute("messageSuccess",
+                    "Successfully updated " + formList.size() + " records!");
+
         } catch (Exception e) {
             System.err.println("Batch Save Error: " + e.getMessage());
-            e.printStackTrace();
-            redirectAttributes.addFlashAttribute("messageError", "Batch update failed due to a database/mapping error.");
+            redirectAttributes.addFlashAttribute("messageError", "Batch update failed.");
         }
 
         return "redirect:/perfumetransaction";

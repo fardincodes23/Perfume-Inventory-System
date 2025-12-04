@@ -1,4 +1,4 @@
-package ca.hccis.model.jpa; // Adjust package to match your structure
+package ca.hccis.model.jpa;
 
 import java.util.Scanner;
 
@@ -12,7 +12,6 @@ public class PerfumeTransactionClient {
     private String customerName;
     private String perfumeChoice;
     private String perfumeSize;
-    // These are calculated by the server, but we might receive them back
     private double subTotal;
     private double taxAmount;
     private double total;
@@ -38,7 +37,6 @@ public class PerfumeTransactionClient {
         System.out.println("Enter Perfume Size: ");
         this.perfumeSize = input.nextLine();
 
-        // Loop for valid double input for Quantity
         while (true) {
             System.out.print("Enter Quantity: ");
             try {
@@ -49,7 +47,6 @@ public class PerfumeTransactionClient {
             }
         }
 
-        // Loop for valid double input for Price
         while (true) {
             System.out.print("Enter Price Per Bottle: ");
             try {
