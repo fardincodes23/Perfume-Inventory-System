@@ -81,8 +81,10 @@ The system includes file I/O capabilities for generating sales reports.
 
 ## 🌐 API Services
 This project demonstrates interoperability by exposing data via two protocols:
+
 1.  **REST API (JSON):** `http://localhost:8080/api/PerfumeService/v1/transactions`
     * Supports standard CRUD (GET, POST, PUT, DELETE).
+    
 2.  **SOAP Web Service (XML):** `http://localhost:8083/perfumetransactionsoapservice?wsdl`
     * Legacy support using JAX-WS (Java 8) for retrieval by ID.
 
