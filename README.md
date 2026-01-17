@@ -5,7 +5,7 @@ This is a comprehensive Java application designed to track perfume sales transac
 
 The system allows users to select their choice of perfume and bottle size, automatically calculating financial totals including tax. It supports full CRUD operations, complex reporting, and enterprise-level API integration (REST & SOAP).
 
-## 👨‍💻 Development Team
+## Development Team
 * **Lead Developer:** Fardin Sahriar AL Rafat
 * **Business Client:** Farhan Farhan
 * **Quality Control:** Chris Hopkins
